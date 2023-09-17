@@ -1,16 +1,96 @@
 .header {
-    margin: 0;
-    padding: 0 0 0 0;
+    padding: 21px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: calc(292px + (1140 - 292) * ((100vw - 320px) / (1280 - 320)));
+    max-width: 1140px;
+    min-height: 74px;
+}
+
+.header__button {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    padding: 0;
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+    cursor: pointer;
+}
+
+.header__button:hover {
+    opacity: 0.5;
+}
+
+.header__movies-conteiner {
+    display: flex;
+    gap:16px
+}
+
+.header__profile-conteiner {
+    display: flex;
+    gap:30px
+}
+
+.header__button_account {
+    background-color: rgba(49, 49, 49, 1);
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+
+    width: 100px;
+    height: 32px;
+    border-radius: 20px;
+}
+
+
+.header__button_sign-up {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+}
+
+.header__button_sign-in {
+    width: 76px;
+    height: 32px;
+    border-radius: 3px;
+    background-color: rgba(61, 220, 132, 1);
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
 }
 
 @media screen and (max-width: 768px) {
     .header {
-
+        width: calc(292px + (708 - 292) * ((100vw - 320px) / (1280 - 320)));
+        max-width: 708px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .header {
 
+    }
+
+    .header__button_sign-up {
+        font-size: 10px;
+    }
+
+    .header__button_sign-in {
+        width: 54px;
+        height: 26px;
+        border-radius: 3px;
+        font-size: 10px;
     }
 }
