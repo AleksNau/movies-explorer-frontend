@@ -1,0 +1,16 @@
+.preloader {
+    margin: 0;
+    padding: 0 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+    .preloader {
+
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .preloader {
+
+    }
+}

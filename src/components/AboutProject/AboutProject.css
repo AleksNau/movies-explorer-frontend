@@ -1,0 +1,16 @@
+.about-project {
+    margin: 0;
+    padding: 0 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+    .about-project {
+
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .about-project {
+
+    }
+}

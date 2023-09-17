@@ -1,0 +1,16 @@
+.filter-сheckbox {
+    margin: 0;
+    padding: 0 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+    .filter-сheckbox {
+
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .filter-сheckbox {
+
+    }
+}
