@@ -3,9 +3,11 @@ import "./NavTab.css";
 
 const NavTab = () => {
     return (
-        <div className="navtab">
-
-        </div>
+        <nav className="nav-tab">
+            <li className="nav-tab__button">О проекте</li>
+            <li className="nav-tab__button">Технологии</li>
+            <li className="nav-tab__button">Студент</li>
+        </nav>
     );
 };
 
