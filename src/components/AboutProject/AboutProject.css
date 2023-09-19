@@ -1,8 +1,8 @@
 .about-project {
     margin: 0 auto;
-    padding: 110px 0;
+    padding: calc(90px + (110 - 90) * ((100vw - 768px) / (1280 - 768))) 30px;
     box-sizing: border-box;
-    max-width: 1140px;
+    max-width: 1200px;
 }
 
 .about-project__title {
@@ -104,12 +104,46 @@
 
 @media screen and (max-width: 768px) {
     .about-project {
-
+        padding: calc(70px + (90 - 70) * ((100vw - 320px) / (768 - 320))) calc(4px + (30 - 4) * ((100vw - 320px) / (768 - 320)));
     }
+    .about-project__title {
+        font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (768 - 320)));
+    }
+
+    .about-project__text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
 }
 
 @media screen and (max-width: 320px) {
     .about-project {
 
+    }
+
+    .about-project__conteiner {
+        flex-direction: column;
+        gap: 56px;
+    }
+
+    .about-project__subtitle {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .about-project__text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about-project__weeks {
+        font-size: 11px;
+        line-height: 35px;
+    }
+
+    .about-project__stack {
+        font-size: 11px;
+        line-height: 35px;
     }
 }
