@@ -104,7 +104,7 @@
 
 @media screen and (max-width: 768px) {
     .about-project {
-        padding: calc(70px + (90 - 70) * ((100vw - 320px) / (768 - 320))) calc(4px + (30 - 4) * ((100vw - 320px) / (768 - 320)));
+        padding: calc(70px + (90 - 70) * ((100vw - 320px) / (768 - 320))) calc(18px + (30 - 18) * ((100vw - 320px) / (768 - 320)));
     }
     .about-project__title {
         font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (768 - 320)));

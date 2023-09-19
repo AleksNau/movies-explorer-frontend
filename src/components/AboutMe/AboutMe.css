@@ -21,6 +21,7 @@
 .about-me__conteiner {
     display: flex;
     justify-content: space-between;
+    gap: 49px;
     padding-top: 66px;
 }
 
@@ -37,6 +38,7 @@
     font-weight: 400;
     line-height: 58px; /* 116% */
     letter-spacing: -2px;
+    margin: 0;
 }
 
 .about-me__profession {
@@ -74,16 +76,95 @@
 .about-me__photo {
     width: 270px;
     height: 327px;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 768px) {
     .about-me {
+        padding: 0 calc(14px + (30 - 14) * ((100vw - 320px) / (768 - 320)));
+    }
 
+    .about-me__name {
+        font-size: 40px;
+        line-height: 40px; /* 100% */
+        letter-spacing: -1.6px;
+    }
+
+    .about-me__profession {
+        padding-top: 16px;
+        font-size: 12px;
+        line-height: 18px; /* 150% */
+    }
+
+    .about-me__bio {
+        padding-top: 20px;
+        font-size: 12px;
+        line-height: 18px; /* 150% */
+    }
+
+    .about-me__github {
+        padding-top: 87px;
+        font-size: 14px;
+    }
+
+    .about-me__photo {
+        width: 255px;
+        height: 307px;
+        border-radius: 10px;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .about-me__conteiner {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0 0;
+        grid-auto-flow: row;
+        grid-template-areas:
+    "photo"
+    "info";
+    }
+    .about-me__photo {
+        width: 292px;
+        height: 352px;
+        grid-area: photo;
+        margin: 0 auto;
+    }
+    .about-me__info {
+        grid-area: info;
+    }
+
+    .about-me__github {
+        padding-top: 40px;
+    }
+}
+
+
 
 @media screen and (max-width: 320px) {
     .about-me {
 
+    }
+
+    .about-me__name {
+
+        font-size: 30px;
+        line-height: normal;
+        letter-spacing: -1.2px;
+    }
+
+    .about-me__profession {
+        font-size: 11px;
+        line-height: 16px; /* 145.455% */
+    }
+
+    .about-me__bio {
+        font-size: 11px;
+        line-height: 16px; /* 145.455% */
+    }
+
+    .about-me__github {
+        font-size: 14px;
     }
 }
