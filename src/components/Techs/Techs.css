@@ -73,7 +73,31 @@ padding: 90px 0 100px 0;
 
 @media screen and (max-width: 768px) {
     .techs {
+        padding: 0 calc(4px + (30 - 4) * ((100vw - 320px) / (768 - 320)));
+    }
 
+    .techs__list {
+        flex-wrap: wrap;
+    }
+
+    .techs__list-item {
+        font-size: 12px;
+        letter-spacing: -0.48px;
+    }
+
+    .techs__container {
+        padding: calc(60px + (80 - 60) * ((100vw - 320px) / (768 - 320))) 0 calc(70px + (90 - 70) * ((100vw - 320px) / (768 - 320))) 0;
+    }
+
+    .techs__sub-title {
+        font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (768 - 320)));
+    }
+
+    .techs__description {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px; /* 150% */
+        letter-spacing: -0.48px;
     }
 }
 
