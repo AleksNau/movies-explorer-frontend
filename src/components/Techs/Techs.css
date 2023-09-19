@@ -73,7 +73,7 @@ padding: 90px 0 100px 0;
 
 @media screen and (max-width: 768px) {
     .techs {
-        padding: 0 calc(18px + (30 - 18) * ((100vw - 320px) / (768 - 320)));
+        padding: 0 calc(18px + (50 - 18) * ((100vw - 320px) / (768 - 320)));
     }
 
     .techs__list {
