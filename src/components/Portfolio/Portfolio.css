@@ -38,6 +38,26 @@
 .portfolio__link {
     text-decoration: none;
     color: #FFF;
+
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+    cursor: pointer;
+}
+
+.portfolio__link:hover {
+    opacity: 0.5;
+}
+
+.portfolio__link-image {
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+    cursor: pointer;
+}
+
+.portfolio__link-image:hover {
+    opacity: 0.5;
 }
 
 @media screen and (max-width: 768px) {

@@ -19,6 +19,15 @@
     font-size: 12px;
     font-weight: 500;
     color: #ffffff;
+
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+    cursor: pointer;
+}
+
+.nav-tab__button:hover {
+    opacity: 0.5;
 }
 
 @media screen and (max-width: 768px) {
