@@ -1,7 +1,14 @@
 .filter-сheckbox {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(66, 66, 66, 1);
+}
+
+.filter-сheckbox__conteiner {
     margin: 0 auto;
     width: 40px;
     padding: 28px 0 0 0;
+    display: flex;
+    align-items: center;
 }
 
 .check {
@@ -22,13 +29,13 @@
 
 .check:not(checked) + label {
     position: relative;
-    padding: 0 0 0 60px;
+    padding: 0 0 0 46px;
 }
 
 .check:not(checked) + label:before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 2px;
     left: -1px;
     width: 34px;
     height: 14px;
@@ -42,7 +49,7 @@
 .check:not(checked) + label:after {
     content: '';
     position: absolute;
-    top: 2px;
+    top: 4px;
     left: 2px;
     width: 10px;
     height: 10px;
@@ -60,6 +67,16 @@
 
 .check:checked + label:after {
     left: 20px;
+}
+
+.filter-сheckbox__name {
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+    color: #ffffff;
+
 }
 
 @media screen and (max-width: 768px) {

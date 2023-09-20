@@ -4,8 +4,10 @@ import "./FilterCheckbox.css";
 const FilterCheckbox = () => {
     return (
         <div className="filter-сheckbox">
+        <div className="filter-сheckbox__conteiner">
             <input className="check" type="checkbox" name="check" id="newchec" value="Название"/>
-            <label htmlFor="newchec"></label>
+            <label For="newchec" className="filter-сheckbox__name">Короткометражки</label>
+        </div>
         </div>
     );
 };
