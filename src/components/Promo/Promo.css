@@ -1,7 +1,7 @@
 .promo {
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 0 40px;
+    padding: 0 calc(20px + (40 - 20) * ((100vw - 768px) / (1280 - 768)));
     max-width: 1280px;
 }
 .promo__container {
@@ -28,7 +28,7 @@
 
 @media screen and (max-width: 768px) {
     .promo {
-
+        padding: 0 calc(14px + (20 - 14) * ((100vw - 320px) / (768 - 320)));
     }
 
     .promo__container {
@@ -49,5 +49,11 @@
 
     .promo__container {
         padding: 17px 0;
+    }
+
+    .promo__title {
+        font-size: 29px;
+        line-height: 37px; /* 127.586% */
+        letter-spacing: -1.16px;
     }
 }

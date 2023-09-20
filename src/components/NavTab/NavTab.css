@@ -36,7 +36,7 @@
     }
 
     .nav-tab__button {
-        width: calc(86px + (96 - 86) * ((100vw - 320px) / (768 - 320)));
+        width: calc(82px + (96 - 82) * ((100vw - 320px) / (768 - 320)));
         height: calc(26px + (36 - 26) * ((100vw - 320px) / (768 - 320)));
     }
 }
@@ -44,5 +44,11 @@
 @media screen and (max-width: 320px) {
     .nav-tab {
 
+    }
+
+    .nav-tab__button {
+        font-size: 10px;
+        line-height: 26px;
+        border-radius: 6px;
     }
 }

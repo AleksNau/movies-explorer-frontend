@@ -4,7 +4,7 @@ import "./Techs.css";
 const Techs = () => {
     return (
         <section className="techs">
-
+            <div className="techs__conteiner-main">
                 <h2 className="techs__title">Технологии</h2>
             <div className="techs__container">
                 <h3 className="techs__sub-title">7 технологий</h3>
@@ -20,6 +20,7 @@ const Techs = () => {
                     <li className="techs__list-item">Express.js</li>
                     <li className="techs__list-item">mongoDB</li>
                 </ul>
+            </div>
             </div>
         </section>
     );
