@@ -3,6 +3,7 @@
     padding: 0 0 0 0;
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .search-form__input {
@@ -19,6 +20,15 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 18px; /* 128.571% */
+}
+
+.search-form__submit {
+    width: 44px;
+    height: 44px;
+
+    background: #4285F4 url('../../images/search.svg') center no-repeat;
+    border-style: none;
+    border-radius: 6px;
 }
 
 @media screen and (max-width: 768px) {

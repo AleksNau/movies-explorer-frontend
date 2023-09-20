@@ -5,7 +5,7 @@ const SearchForm = () => {
     return (
             <form className="search-form">
                 <input type="search" placeholder="Фильм" className="search-form__input"></input>
-                <button className="search-form__submit">Искать!</button>
+                <button className="search-form__submit"></button>
             </form>
     );
 };
