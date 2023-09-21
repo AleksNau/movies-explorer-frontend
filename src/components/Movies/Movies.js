@@ -7,7 +7,7 @@ const Movies = () => {
     return (
         <section className="movies">
 <SearchForm/>
-            <ul>
+            <ul className="test-list">
             <MoviesCard/>
             </ul>
         </section>

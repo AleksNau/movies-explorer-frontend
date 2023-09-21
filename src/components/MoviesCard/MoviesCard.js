@@ -8,24 +8,11 @@ const MoviesCard = ({cardData,isOwn}) => {
                    /* src={cardData.link}
                     alt={cardData.name}*/
                     className="movies-card__image"
+                    alt="Превью"
                 />
                 <div className="movies-card__info">
-                    <p className="movies-card__text">Что-то</p>
-                    <div className="movies-card__like-container">
-                        <button
-                            type="button"
-                        />
-                    </div>
-                    {isOwn && (
-                        <button
-                            type="button"
-                            className="movies-card__delete"
-                            onClick={() => {
-                               /* setActive(!isOpen);
-                                setCardToDelete(cardData);*/
-                            }}
-                        />
-                    )}
+                    <p className="movies-card__name">33 слова о дизайне</p>
+                    <p className="movies-card__time">1ч 17м</p>
                 </div>
             </li>
     );
