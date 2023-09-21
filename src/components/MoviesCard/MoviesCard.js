@@ -1,31 +1,25 @@
 import React from "react";
 import "./MoviesCard.css";
 
-const MoviesCard = ({cardData}) => {
+const MoviesCard = ({cardData,isOwn}) => {
     return (
             <li className="movies-card">
                 <img
                     src={cardData.link}
                     alt={cardData.name}
-                    className="elements__image"
-                    onClick={() => {
-                        onCardClick(cardData);
-                    }}
+                    className="movies-card__image"
                 />
-                <div className="elements__info">
-                    <p className="elements__text">{cardData.name}</p>
-                    <div className="elements__like-container">
+                <div className="movies-card__info">
+                    <p className="movies-card__text">{cardData.name}</p>
+                    <div className="movies-card__like-container">
                         <button
                             type="button"
-                            className={cardLikeButtonClassName}
-                            onClick={() => onCardLike(cardData)}
                         />
-                        <p className="elements__like-counter">{likes.length}</p>
                     </div>
                     {isOwn && (
                         <button
                             type="button"
-                            className="elements__delete"
+                            className="movies-card__delete"
                             onClick={() => {
                                 setActive(!isOpen);
                                 setCardToDelete(cardData);
