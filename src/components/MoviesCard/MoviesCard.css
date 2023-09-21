@@ -1,6 +1,8 @@
 .movies-card {
     margin: 0;
     padding: 0 0 0 0;
+    width: 339px;
+    height: 233px;
 }
 
 @media screen and (max-width: 768px) {

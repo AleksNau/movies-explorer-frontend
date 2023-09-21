@@ -5,12 +5,12 @@ const MoviesCard = ({cardData,isOwn}) => {
     return (
             <li className="movies-card">
                 <img
-                    src={cardData.link}
-                    alt={cardData.name}
+                   /* src={cardData.link}
+                    alt={cardData.name}*/
                     className="movies-card__image"
                 />
                 <div className="movies-card__info">
-                    <p className="movies-card__text">{cardData.name}</p>
+                    <p className="movies-card__text">Что-то</p>
                     <div className="movies-card__like-container">
                         <button
                             type="button"
@@ -21,8 +21,8 @@ const MoviesCard = ({cardData,isOwn}) => {
                             type="button"
                             className="movies-card__delete"
                             onClick={() => {
-                                setActive(!isOpen);
-                                setCardToDelete(cardData);
+                               /* setActive(!isOpen);
+                                setCardToDelete(cardData);*/
                             }}
                         />
                     )}
