@@ -2,13 +2,47 @@
     margin: 0;
     padding: 0 0 0 0;
     box-sizing: border-box;
-    width: 360px;
+    max-width: 360px;
+    position: relative;
+}
+.movies-card__button-save {
+    box-sizing: border-box;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 72px;
+    height: 21px;
+    background-color: #313131;
+    border-style: none;
+    border-radius: 30px;
+    cursor: pointer;
+
+    color: #FFFFFF;
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 9px;
+    text-align: center;
+}
+
+.movies-card__button-checked {
+    position: absolute;
+    box-sizing: border-box;
+    top: 14px;
+    left: 14px;
+    width: 21px;
+    height: 21px;
+    border-style: none;
+    border-radius: 30px;
+    background-color: #FF3055;
+    cursor: pointer;
 }
 
 .movies-card__image {
     box-sizing: border-box;
-    width: 360px;
-    height: 201px;
+    width: calc(339px + (360 - 339) * ((100vw - 320px) / (1280 - 768)));
+    max-width: 360px;
+    height: calc(190px + (201 - 190) * ((100vw - 320px) / (1280 - 768)));
     background-color: red;
 }
 
@@ -28,7 +62,7 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 16px;
-    width: 250px;
+    max-width: 250px;
     margin: 0;
 
     color: #FFFFFF;
@@ -51,13 +85,38 @@
 
 
 @media screen and (max-width: 768px) {
-    .movies-card {
+    .movies-card__image {
+        box-sizing: border-box;
+        width: calc(300px + (339 - 300) * ((100vw - 320px) / (768 - 320)));
+        max-width: 360px;
+        height: calc(168px + (190 - 168) * ((100vw - 320px) / (768 - 320)));
+        background-color: red;
+    }
 
+    .movies-card__info{
+        padding: 0;
+    }
+    .movies-card__time {
+        width: 44px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .movies-card {
 
+    }
+
+    .movies-card__time {
+        width: 44px;
+    }
+
+    .movies-card__button-save {
+        top: 10px;
+        right: 10px;
+    }
+
+    .movies-card__button-checked {
+        top: 10px;
+        left: 10px;
     }
 }
