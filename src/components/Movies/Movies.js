@@ -1,15 +1,15 @@
 import React from "react";
 import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
-import MoviesCard from "../MoviesCard/MoviesCard";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+
+
 
 const Movies = () => {
     return (
         <section className="movies">
 <SearchForm/>
-            <ul className="test-list">
-            <MoviesCard/>
-            </ul>
+            <MoviesCardList/>
         </section>
     );
 };

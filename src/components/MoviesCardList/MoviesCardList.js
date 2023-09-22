@@ -1,23 +1,28 @@
 import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
-
+const emojis = [
+    {
+        emoji: '😀',
+        name: "test grinning face"
+    },
+    {
+        emoji: '🎉',
+        name: "party popper"
+    },
+    {
+        emoji: '💃',
+        name: "woman dancing"
+    }
+];
 const MoviesCardList = ({cards}) => {
     return (
             <ul className="movies-card-list">
-                {cards.map((card) => {
-                    return (
-                        <MoviesCard
-                            key={card._id}
-                            cardData={card}
-                            isOpen={isPopupSubmit}
-                            setActive={onSubmitDelete}
-                            onCardClick={onCardClick}
-                            onCardDelete={onCardDelete}
-                            setCardToDelete={setCardToDelete}
-                        />
-                    );
-                })}
+                {
+                    emojis.map(emoji => (
+                        <MoviesCard/>
+                    ))
+                }
             </ul>
     );
 };

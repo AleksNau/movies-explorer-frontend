@@ -4,7 +4,7 @@ import "./MoviesCard.css";
 const MoviesCard = ({cardData,isOwn}) => {
     return (
             <li className="movies-card">
-                <img
+                <video
                    /* src={cardData.link}
                     alt={cardData.name}*/
                     className="movies-card__image"
