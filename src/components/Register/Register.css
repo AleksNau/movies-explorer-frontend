@@ -45,9 +45,6 @@
     background-color: #2F2F2F;
     border-style: none;
 }
-.register__error {
-    height: 10px;
-}
 
 .register__submit {
     margin-top: 69px;
@@ -64,6 +61,14 @@
     line-height: 17px;
     text-align: center;
     border-style: none;
+    cursor: pointer;
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+}
+
+.register__submit:hover {
+    opacity: 0.8;
 }
 
 .register__question {
@@ -90,6 +95,7 @@
 }
 
 .register__error {
+    height: 10px;
     font-family: 'Inter', ‘Arial’, sans-serif;
     font-size: 10px;
     line-height: 12px;
