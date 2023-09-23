@@ -8,7 +8,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 const Movies = () => {
     return (
         <section className="movies">
-<SearchForm/>
+            <SearchForm/>
             <MoviesCardList/>
         </section>
     );
