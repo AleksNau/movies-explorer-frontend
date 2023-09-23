@@ -2,13 +2,14 @@ import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import data from "../../utils/constants"
+
 const MoviesCardList = ({cards}) => {
     return (
         <>
             <ul className="movies-card-list">
             {
                 data.map(card => (
-                    <MoviesCard/>
+                    <MoviesCard cardData={card}/>
                 ))
             }
         </ul>

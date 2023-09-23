@@ -4,12 +4,13 @@ import "./MoviesCard.css";
 const MoviesCard = ({cardData,isOwn}) => {
     return (
             <li className="movies-card">
+
                 <video
-                   /* src={cardData.link}
-                    alt={cardData.name}*/
+                    alt={cardData.trailer}
                     className="movies-card__image"
-                    alt="Превью"
-                />
+                    poster={cardData.image}
+                >
+                </video>
                 <button className="movies-card__button-save">Сохранить</button>
                 <button className="movies-card__button-checked">
                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,11 +19,15 @@ const MoviesCard = ({cardData,isOwn}) => {
 
                 </button>
                 <div className="movies-card__info">
-                    <p className="movies-card__name">33 слова о дизайне</p>
-                    <p className="movies-card__time">1ч 17м</p>
+                    <p className="movies-card__name">{cardData.description}</p>
+                    <p className="movies-card__time">{cardData.duration}</p>
                 </div>
             </li>
     );
 };
 
 export default MoviesCard;
+
+/* <iframe className="movies-card__image"src={cardData.trailer} poster={cardData.image}  frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen title={cardData.movieId}></iframe>*/

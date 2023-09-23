@@ -43,7 +43,6 @@
     width: calc(339px + (360 - 339) * ((100vw - 320px) / (1280 - 768)));
     max-width: 360px;
     height: calc(190px + (201 - 190) * ((100vw - 320px) / (1280 - 768)));
-    background-color: red;
 }
 
 .movies-card__info {
