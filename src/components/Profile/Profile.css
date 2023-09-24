@@ -1,16 +1,99 @@
 .profile {
-    margin: 0;
+    margin: 0 auto;
     padding: 0 0 0 0;
+    max-width: 410px;
+    height: calc(100vh - 250px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.profile__title {
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0;
+    padding-bottom: 123px;
+}
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.profile__field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 14px;
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 11px;
+    line-height: 13px;
+    color: #ffffff;
+}
+
+.profile__input {
+    box-sizing: border-box;
+    height: 14px;
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: right;
+
+    background-color: transparent;
+    border-style: none;
+    width: 122px;
+    color: #ffffff;
+}
+
+.profile__button {
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+}
+
+.profile__button:hover {
+    opacity: 0.8;
+}
+
+.profile__button_submit {
+    margin-top: 210px;
+    color: #ffffff;
+}
+
+.profile__button_logout {
+    margin-top: 16px;
+    color: #EE3465;
 }
 
 @media screen and (max-width: 768px) {
     .profile {
-
+        max-width: calc(260px + (410 - 260) * ((100vw - 320px) / (768 - 320)));
     }
+    .profile__title {
+        padding-bottom: calc(80px + (123 - 80) * ((100vw - 320px) / (768 - 320)));
+    }
+
+
 }
 
 @media screen and (max-width: 320px) {
     .profile {
 
+    }
+
+    .profile__button_submit {
+        margin-top: 379px;
     }
 }

@@ -4,7 +4,7 @@ import "./Login.css";
 const Login = ({onLogin}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    function handlEmail(e) {
+    function handleEmail(e) {
         setEmail(e.target.value);
     }
 
@@ -40,7 +40,7 @@ const Login = ({onLogin}) => {
                             minLength="2"
                             maxLength="40"
                             placeholder="Email"
-                            onChange={handlEmail}
+                            onChange={handleEmail}
                             required
                         />
                         <span id="name-error" className="login__error">
