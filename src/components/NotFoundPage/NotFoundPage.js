@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "./NotFaundPage.css";
+import "./NotFoundPage.css";
 
-const NotFaundPage = () => {
+const NotFoundPage = () => {
     return (
         <section className="not-found-page">
             <h2 className="not-found-page__title">404</h2>
@@ -14,4 +14,4 @@ const NotFaundPage = () => {
     );
 };
 
-export default NotFaundPage;
+export default NotFoundPage;
