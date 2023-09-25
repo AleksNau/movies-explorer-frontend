@@ -1,11 +1,14 @@
 import React from "react";
 import "./Navigation.css";
 
-const Navigation = () => {
+const Navigation = ({setActive,active}) => {
     return (
-        <div className="navigation">
+            <nav className="navigation">
+                <button className="navigation__button" onClick={() => setActive(!active)}>
+                    <span className="navigation__button-line"></span>
+                </button>
+            </nav>
 
-        </div>
     );
 };
 

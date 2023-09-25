@@ -1,6 +1,53 @@
 .navigation {
     margin: 0;
-    padding: 0 0 0 0;
+    padding: 20px;
+    height: 50px;
+    width: 100%;
+    background-color: pink;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+}
+
+.navigation__button {
+    box-sizing: border-box;
+    border-style: none;
+    background-color: transparent;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.navigation__button:before {
+    top: 0;
+    left: 0;
+    content: '';
+    position: absolute;
+    width: 30px;
+    background-color: #000;
+    height: 2px;
+}
+
+.navigation__button-line {
+    top: 13px;
+    left: 0;
+    content: '';
+    position: absolute;
+    width: 30px;
+    background-color: #000;
+    height: 2px;
+}
+
+.navigation__button:after {
+    left: 0;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    width: 30px;
+    background-color: #000;
+    height: 2px;
 }
 
 @media screen and (max-width: 768px) {
