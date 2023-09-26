@@ -3,7 +3,7 @@ import { Route, Routes,useNavigate } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/logo.svg";
 
-const Header = () => {
+const Header = ({setActive,active}) => {
     const navigate = useNavigate();
     return (
         <header className="header">
@@ -23,7 +23,9 @@ const Header = () => {
                     <button className="header__button header__button_account" onClick={() => {navigate("/sign-up")}}>Аккаунт</button>
                 </div>}/>
             </Routes>
-
+            <button className="header__button-burger" onClick={() => setActive(!active)}>
+                <span className="header__button-line"></span>
+            </button>
         </header>
     );
 };

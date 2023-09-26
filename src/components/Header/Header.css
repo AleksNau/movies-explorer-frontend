@@ -70,9 +70,65 @@
     line-height: 16px;
 }
 
+
+
+.header__button-burger {
+    display: none;
+    box-sizing: border-box;
+    border-style: none;
+    background-color: transparent;
+    padding: 0;
+    width: 28px;
+    height: 21px;
+    position: relative;
+    cursor: pointer;
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+}
+
+.header__button-burger:hover {
+    opacity: 0.8;
+}
+
+.header__button-burger:before {
+    top: 0;
+    left: 0;
+    content: '';
+    position: absolute;
+    width: 28px;
+    background-color: #FFF;
+    height: 3px;
+}
+
+.header__button-line {
+    top: 9px;
+    left: 0;
+    content: '';
+    position: absolute;
+    width: 28px;
+    background-color: #FFF;
+    height: 3px;
+}
+
+.header__button-burger:after {
+    left: 0;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    width: 28px;
+    background-color: #FFF;
+    height: 3px;
+}
+
+
 @media screen and (max-width: 768px) {
     .header {
         padding: 0 calc(14px + (50 - 14) * ((100vw - 320px) / (768 - 320)));
+    }
+
+    .header__button-burger {
+        display: block;
     }
 }
 
