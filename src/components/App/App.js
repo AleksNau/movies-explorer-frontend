@@ -19,6 +19,7 @@ function App() {
         <div className="App">
             <Header active={menuActive} setActive={setMenuActive}/>
             <Navigation active={menuActive} setActive={setMenuActive} items={items}/>
+            <Movies/>
             <Main/>
         </div>
     );
