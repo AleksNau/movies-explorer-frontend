@@ -95,6 +95,14 @@
     opacity: 0.8;
 }
 
+.login__error {
+    height: 10px;
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+}
+
 @media screen and (max-width: 768px) {
     .login {
         max-width: calc(260px + (396 - 260) * ((100vw - 320px) / (768 - 320)));

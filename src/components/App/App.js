@@ -17,12 +17,14 @@ function App() {
     const items = [{value: "Главная", href:"/index"},{value: "Фильмы", href:"/index"},{value: "Сохранённые фильмы", href:"/index"}]
     return (
         <div className="App">
-            <Header active={menuActive} setActive={setMenuActive}/>
-            <Navigation active={menuActive} setActive={setMenuActive} items={items}/>
-            <Movies/>
-            <Main/>
+            <Login/>
+
         </div>
     );
 }
 
 export default App;
+/*            <Header active={menuActive} setActive={setMenuActive}/>
+            <Navigation active={menuActive} setActive={setMenuActive} items={items}/>
+            <Movies/>
+            <Main/>*/

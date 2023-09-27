@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import "./Register.css";
+import {useForm} from "react-hook-form";
 
 const Register = ({onRegister}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+
+    const {
+        register,
+        handleSubmit,
+        formState: {errors,isValid},
+        reset
+    } = useForm({mode:"onChange"});
+
+    const onSubmit = (data) => {
+        alert(JSON.stringify(data))
+    }
+
     function handleName(e) {
         setName(e.target.value);
     }
@@ -17,16 +30,15 @@ const Register = ({onRegister}) => {
         setPassword(e.target.value);
     }
 
-    function handleSubmit() {
+    function handleSubmit23() {
         onRegister(name,email, password)
     }
     return (
         <div className="register">
             <form
-                onSubmit={(event) => {
-                    event.preventDefault();
-                    handleSubmit();
-                }}
+                onSubmit={
+                    handleSubmit(onSubmit)
+                }
                 name={`sign-up-form`}
                 className={`register__form register__form_sign-up`}
                 id={`sign-up-form`}
@@ -36,33 +48,54 @@ const Register = ({onRegister}) => {
                     <legend className="register__title">Добро пожаловать!</legend>
                     <label className="register__label">Имя
                         <input
-                            name="name"
                             id="name"
                             type="text"
                             className="register__input"
-                            minLength="2"
-                            maxLength="40"
                             placeholder="имя"
                             onChange={handleName}
-                            required
+                            {...register('name',{
+                                minLength:
+                                    {
+                                    value:2,
+                                    message:"Минимум 2 символа"
+                                    },
+                                maxLength:
+                                    {
+                                    value:40,
+                                    message:"Максимум 40 символов"
+                                    },
+                                required:"Поле обязательно к заполнению"
+
+                            })}
                         />
-                        <span id="name-error" className="register__error">
+                        <span id="name-error" className="register__error">{errors?.name?.message}
               &nbsp;
             </span>
+
                     </label>
                     <label className="register__label">E-mail
                         <input
-                            name="email"
                             id="email"
                             type="email"
                             className="register__input"
-                            minLength="2"
-                            maxLength="40"
                             placeholder="Email"
                             onChange={handleEmail}
-                            required
+                            {...register('email',{
+                                minLength:
+                                    {
+                                        value:2,
+                                        message:"Минимум 2 символа"
+                                    },
+                                maxLength:
+                                    {
+                                        value:40,
+                                        message:"Максимум 40 символов"
+                                    },
+                                required:"Поле обязательно к заполнению",
+
+                            })}
                         />
-                        <span id="name-error" className="register__error">
+                        <span id="name-error" className="register__error">{errors?.email?.message}
               &nbsp;
             </span>
                     </label>
@@ -72,21 +105,32 @@ const Register = ({onRegister}) => {
                             id="pass"
                             type="password"
                             className="register__input"
-                            minLength="2"
-                            maxLength="30"
                             placeholder="Пароль"
                             onChange={(e) => handlePassword(e)}
-                            required
+                            {...register('password',{
+                                minLength:
+                                    {
+                                        value:2,
+                                        message:"Минимум 2 символа"
+                                    },
+                                maxLength:
+                                    {
+                                        value:30,
+                                        message:"Максимум 30 символов"
+                                    },
+                                required:"Поле обязательно к заполнению"
+
+                            })}
                         />
-                        <span id="info-error" className="register__error">
+                        <span id="info-error" className="register__error">{errors?.password?.message}
               &nbsp;
             </span>
                     </label>
                     <button
                         type="submit"
+                        disabled={!isValid}
                         className="register__submit"
                         form={`sign-up-form`}
-                        value="Зарегистрироваться"
                     >
                         Зарегистрироваться
                     </button>

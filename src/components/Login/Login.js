@@ -1,9 +1,21 @@
 import React, { useState } from "react";
+import {useForm} from "react-hook-form";
 import "./Login.css";
 
 const Login = ({onLogin}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const {
+        register,
+        handleSubmit,
+        formState: {errors,isValid},
+        reset
+    } = useForm({mode:"onChange"});
+
+    const onSubmit = (data) => {
+        alert(JSON.stringify(data))
+    }
     function handleEmail(e) {
         setEmail(e.target.value);
     }
@@ -13,16 +25,15 @@ const Login = ({onLogin}) => {
         setPassword(e.target.value);
     }
 
-    function handleSubmit() {
+    /*function handleSubmit() {
         onLogin(email, password)
-    }
+    }*/
     return (
         <div className="login">
             <form
-                onSubmit={(event) => {
-                    event.preventDefault();
-                    handleSubmit();
-                }}
+                onSubmit={
+                    handleSubmit(onSubmit)
+                }
                 name={`sign-up-form`}
                 className={`login__form login__form_sign-up`}
                 id={`sign-up-form`}
@@ -33,33 +44,53 @@ const Login = ({onLogin}) => {
 
                     <label className="login__label">E-mail
                         <input
-                            name="email"
                             id="email"
                             type="email"
                             className="login__input"
-                            minLength="2"
-                            maxLength="40"
                             placeholder="Email"
                             onChange={handleEmail}
-                            required
+                            {...register('email',{
+                                minLength:
+                                    {
+                                        value:2,
+                                        message:"Минимум 2 символа"
+                                    },
+                                maxLength:
+                                    {
+                                        value:40,
+                                        message:"Максимум 40 символов"
+                                    },
+                                required:"Поле обязательно к заполнению"
+
+                            })}
                         />
-                        <span id="name-error" className="login__error">
+                        <span id="name-error" className="login__error">{errors?.email?.message}
               &nbsp;
             </span>
                     </label>
                     <label className="login__label">Пароль
                         <input
-                            name="password"
                             id="pass"
                             type="password"
                             className="login__input"
-                            minLength="2"
-                            maxLength="30"
                             placeholder="Пароль"
                             onChange={handlePassword}
-                            required
+                            {...register('password',{
+                                minLength:
+                                    {
+                                        value:2,
+                                        message:"Минимум 2 символа"
+                                    },
+                                maxLength:
+                                    {
+                                        value:30,
+                                        message:"Максимум 30 символов"
+                                    },
+                                required:"Поле обязательно к заполнению"
+
+                            })}
                         />
-                        <span id="info-error" className="login__error">
+                        <span id="info-error" className="login__error">{errors?.password?.message}
               &nbsp;
             </span>
                     </label>
