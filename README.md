@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# ***Проект Movies-explorer (фронтенд)***
+Проект является **дипломной работой** на курсе веб-разработчик ***Яндекс.Практикума***.
+## *Описание*
+----
+### ***О чём проект?***
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Данное вэб-приложение является сайтом-портфолио и мини-кинопоиском, открывающимся после регистрации.
 
-## Available Scripts
+Бэкэнд часть проекта располагается [тут](https://github.com/AleksNau/movies-explorer-api).
 
-In the project directory, you can run:
+***В нём представлены:***
 
-### `npm start`
+* Лендинг c кратким описанием:
+    + Работы над дипломом (этапы, дэдлайны)
+    + Изученных технологий во время обучения
+    + Информации о себе
+    + Портфолио (часть проектов)
+* Поисковик фильмов с возможностью сохранения их к себе в коллекцию
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
+## *Используемые технологии:*
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* React 18
+* JS
+* HTML 5
+* CSS 3
 
-### `npm test`
+---
+## *Директории:*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`/components` — папка с фунциональными компонентами
 
-### `npm run build`
+`/context` — папка с контекстом
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`/images` — папка c изображениями
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`/vendor` — папка с кодом сторонних разработчиков
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`/utils` — папка с файлами, требуемых для работы сервиса (утилитарные функции, запросы к серверу, константы)
 
-### `npm run eject`
+---
+## *Запуск проекта:*
+`npm i` — установка зависимостей
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`npm run start` — запускает приложение
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+## *Ссылки:*
+* Макет dark-2
+* Ссылка на индивидульный [макет](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82?type=design&node-id=1-7266), по которому верстался проект
