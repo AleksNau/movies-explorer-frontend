@@ -1,9 +1,22 @@
 import React,{useState} from "react";
 import "./Profile.css";
+import {useForm} from "react-hook-form";
 
 const Profile = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
+
+    const {
+        register,
+        handleSubmit,
+        formState: {errors,isValid},
+        reset
+    } = useForm({mode:"onChange"});
+
+    const onSubmit = (data) => {
+        alert(JSON.stringify(data))
+    }
+
     function handleName(e) {
         setName(e.target.value);
     }
@@ -14,19 +27,31 @@ const Profile = () => {
     return (
         <section className="profile">
                 <h3 className="profile__title">Привет,Виталий!</h3>
-                <form id="form" className="profile__form" noValidate>
+                <form id="form" className="profile__form" onSubmit={
+                    handleSubmit(onSubmit)
+                } >
                     <label className="profile__field">
                         Имя
                         <input
-                            name="name"
                             className="profile__input"
                             id="name-input"
                             type="text"
-                            minLength="2"
-                            maxLength="40"
-                            required
                             value="Виталий"
                             onChange={handleName}
+                            {...register('name',{
+                                minLength:
+                                    {
+                                        value:2,
+                                        message:"Минимум 2 символа"
+                                    },
+                                maxLength:
+                                    {
+                                        value:40,
+                                        message:"Максимум 40 символов"
+                                    },
+                                required:"Поле обязательно к заполнению"
+
+                            })}
                         />
 
                     </label>
@@ -34,13 +59,24 @@ const Profile = () => {
                     <label className="profile__field">
                         E-mail
                         <input
-                            name="email"
                             className="profile__input"
                             id="email-input"
-                            type="email"
                             value="test@mail.ru"
-                            required
                             onChange={handleEmail}
+                            {...register('email',{
+                                pattern:
+                                    {
+                                        value:/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g,
+                                        message:"Введите коректный эмейл"
+                                    },
+                                maxLength:
+                                    {
+                                        value:40,
+                                        message:"Максимум 40 символов"
+                                    },
+                                required:"Поле обязательно к заполнению"
+
+                            })}
                         />
 
                     </label>

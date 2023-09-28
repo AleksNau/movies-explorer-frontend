@@ -15,6 +15,7 @@ const Login = ({onLogin}) => {
 
     const onSubmit = (data) => {
         alert(JSON.stringify(data))
+        //onLogin(email, password)
     }
     function handleEmail(e) {
         setEmail(e.target.value);
@@ -25,9 +26,6 @@ const Login = ({onLogin}) => {
         setPassword(e.target.value);
     }
 
-    /*function handleSubmit() {
-        onLogin(email, password)
-    }*/
     return (
         <div className="login">
             <form
@@ -45,11 +43,15 @@ const Login = ({onLogin}) => {
                     <label className="login__label">E-mail
                         <input
                             id="email"
-                            type="email"
                             className="login__input"
                             placeholder="Email"
                             onChange={handleEmail}
                             {...register('email',{
+                                pattern:
+                                    {
+                                        value:/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g,
+                                        message:"Введите коректный эмейл"
+                                    },
                                 minLength:
                                     {
                                         value:2,
@@ -97,6 +99,7 @@ const Login = ({onLogin}) => {
                     <button
                         type="submit"
                         className="login__submit"
+                        disabled={!isValid}
                         form={`sign-up-form`}
                         value="Войти"
                     >

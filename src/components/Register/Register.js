@@ -16,6 +16,7 @@ const Register = ({onRegister}) => {
 
     const onSubmit = (data) => {
         alert(JSON.stringify(data))
+        //onRegister(name,email, password)
     }
 
     function handleName(e) {
@@ -30,9 +31,6 @@ const Register = ({onRegister}) => {
         setPassword(e.target.value);
     }
 
-    function handleSubmit23() {
-        onRegister(name,email, password)
-    }
     return (
         <div className="register">
             <form
@@ -81,6 +79,11 @@ const Register = ({onRegister}) => {
                             placeholder="Email"
                             onChange={handleEmail}
                             {...register('email',{
+                                pattern:
+                                    {
+                                        value:/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g,
+                                        message:"Введите коректный эмейл"
+                                    },
                                 minLength:
                                     {
                                         value:2,
