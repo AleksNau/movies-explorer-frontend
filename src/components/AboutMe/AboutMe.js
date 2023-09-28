@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutMe.css";
-import cat from '../../images/cat.jpg'
+import myPhoto from '../../images/my-photo.jpg'
 
 const AboutMe = () => {
     return (
@@ -14,7 +14,7 @@ const AboutMe = () => {
                         и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
                     <a href="https://github.com/AleksNau" className="about-me__github" target="_blank" rel="noreferrer">Github</a>
                 </div>
-                <img src={cat} className="about-me__photo" alt="author"></img>
+                <img src={myPhoto} className="about-me__photo" alt="author"></img>
             </div>
         </section>
     );
