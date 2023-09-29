@@ -1,9 +1,9 @@
 import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import data from "../../utils/constants"
 
-const MoviesCardList = ({cards}) => {
+
+const MoviesCardList = ({data}) => {
     const listLength = data.length;
     let maxList = 6;
 
