@@ -13,6 +13,7 @@ const createObject = () => ({
     thumbnail : faker.image.url(),
     movieId : faker.string.uuid(),
     trailerLink : faker.image.urlLoremFlickr(),
+    isSaved: faker.datatype.boolean({ probability: 0.5 })
 });
 
 const data = Array.from({ length: 9 }, createObject);
