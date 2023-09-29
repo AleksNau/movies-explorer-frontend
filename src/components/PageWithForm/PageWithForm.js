@@ -2,6 +2,7 @@ import React from "react";
 import "./PageWithForm.css";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
+import logo from "../../images/logo.svg";
 
 const PageWithForm = ({title,buttonTitle,children,subtitle,linkText,link}) => {
 
@@ -29,7 +30,8 @@ const PageWithForm = ({title,buttonTitle,children,subtitle,linkText,link}) => {
     }
 
 
-    return (
+    return (<>
+        <img src={logo} alt="логотип" className="form__logo" />
             <form
                 onSubmit={
                     handleSubmit(onSubmit)
@@ -110,6 +112,7 @@ const PageWithForm = ({title,buttonTitle,children,subtitle,linkText,link}) => {
                     <p className="form__question">{subtitle} <a href={link} className="form__link">{linkText}</a></p>
                 </fieldset>
             </form>
+    </>
     );
 };
 

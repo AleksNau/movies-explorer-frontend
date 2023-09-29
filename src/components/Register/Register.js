@@ -18,6 +18,7 @@ const Register = ({onRegister}) => {
 
     return (
         <div className="register">
+
             <PageWithForm
                 title={'Добро пожаловать!'}
                 buttonTitle={'Зарегистрироваться'}
