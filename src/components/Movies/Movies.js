@@ -4,11 +4,11 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 
-const Movies = ({data,isChecked, setCheck}) => {
+const Movies = ({data, isChecked, setCheck}) => {
     return (
         <section className="movies">
             <SearchForm isChecked={isChecked} setCheck={setCheck}/>
-                <MoviesCardList data={data}/>
+            <MoviesCardList data={data}/>
         </section>
     );
 };

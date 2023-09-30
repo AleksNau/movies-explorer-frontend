@@ -78,9 +78,11 @@
     .portfolio {
 
     }
+
     .portfolio__list {
         padding: 40px 0 0 0;
     }
+
     .portfolio__item {
         font-size: 18px;
         line-height: 28px; /* 155.556% */

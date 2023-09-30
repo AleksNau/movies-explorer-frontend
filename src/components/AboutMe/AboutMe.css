@@ -124,11 +124,13 @@
     "photo"
     "info";
     }
+
     .about-me__photo {
         width: 292px;
         grid-area: photo;
         margin: 0 auto;
     }
+
     .about-me__info {
         grid-area: info;
     }

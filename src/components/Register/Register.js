@@ -8,9 +8,9 @@ const Register = ({onRegister}) => {
     const [name, setName] = useState("");
     const {
         register,
-        formState: {errors,isValid},
+        formState: {errors, isValid},
         getValues
-    } = useForm({mode:"onChange"});
+    } = useForm({mode: "onChange"});
 
     function handleName(e) {
         setName(e.target.value);
@@ -60,23 +60,23 @@ const Register = ({onRegister}) => {
                         id="email"
                         className="form__input"
                         placeholder="Email"
-                        {...register('email',{
+                        {...register('email', {
                             pattern:
                                 {
-                                    value:/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g,
-                                    message:"Введите коректный эмейл"
+                                    value: /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g,
+                                    message: "Введите коректный эмейл"
                                 },
                             minLength:
                                 {
-                                    value:2,
-                                    message:"Минимум 2 символа"
+                                    value: 2,
+                                    message: "Минимум 2 символа"
                                 },
                             maxLength:
                                 {
-                                    value:40,
-                                    message:"Максимум 40 символов"
+                                    value: 40,
+                                    message: "Максимум 40 символов"
                                 },
-                            required:"Поле обязательно к заполнению"
+                            required: "Поле обязательно к заполнению"
 
                         })}
                     />
@@ -90,18 +90,18 @@ const Register = ({onRegister}) => {
                         type="password"
                         className="form__input"
                         placeholder="Пароль"
-                        {...register('password',{
+                        {...register('password', {
                             minLength:
                                 {
-                                    value:2,
-                                    message:"Минимум 2 символа"
+                                    value: 2,
+                                    message: "Минимум 2 символа"
                                 },
                             maxLength:
                                 {
-                                    value:30,
-                                    message:"Максимум 30 символов"
+                                    value: 30,
+                                    message: "Максимум 30 символов"
                                 },
-                            required:"Поле обязательно к заполнению"
+                            required: "Поле обязательно к заполнению"
 
                         })}
                     />

@@ -96,15 +96,16 @@
     }
 }
 
-    @media screen and (max-width: 320px) {
+@media screen and (max-width: 320px) {
     .footer {
         padding-left: 10px;
         padding-right: 10px;
     }
 
-    .footer__title{
+    .footer__title {
         font-size: 12px;
     }
+
     .footer__item {
         font-size: 12px;
     }

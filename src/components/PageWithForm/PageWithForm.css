@@ -31,7 +31,8 @@
     border-style: none;
     width: 100%;
 }
-.form__label{
+
+.form__label {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -116,6 +117,7 @@
     .form {
 
     }
+
     .form__submit {
         margin-top: 267px;
     }

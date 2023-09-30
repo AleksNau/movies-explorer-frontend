@@ -8,7 +8,7 @@ const SearchForm = ({isChecked, setCheck}) => {
                 <input type="search" placeholder="Фильм" className="search-form__input"></input>
                 <button className="search-form__submit"></button>
             </form>
-        <FilterCheckbox isChecked={isChecked} setCheck={setCheck}/>
+            <FilterCheckbox isChecked={isChecked} setCheck={setCheck}/>
         </>
     );
 };

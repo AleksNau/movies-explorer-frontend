@@ -25,6 +25,7 @@
     color: #ffffff;
     padding-bottom: 40px;
 }
+
 .register__label {
     display: flex;
     flex-direction: column;
@@ -105,7 +106,7 @@
 
 @media screen and (max-width: 768px) {
     .register {
-    max-width: calc(260px + (396 - 260) * ((100vw - 320px) / (768 - 320)));
+        max-width: calc(260px + (396 - 260) * ((100vw - 320px) / (768 - 320)));
     }
 }
 

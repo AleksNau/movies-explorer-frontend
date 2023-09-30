@@ -1,18 +1,25 @@
 import React from "react";
-import { useNavigate,useLocation } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/logo.svg";
 
-const Header = ({setActive,active,loggedIn}) => {
+const Header = ({setActive, active, loggedIn}) => {
     const navigate = useNavigate();
     let {pathname} = useLocation();
     return (
         <header className="header">
-            <img src={logo} alt="логотип" className="header__logo" />
+            <img src={logo} alt="логотип" className="header__logo"/>
 
-                {pathname === "/movies" || pathname === "/saved-movies" || pathname === "/profile"? (<div className="header__movies-conteiner">
-                    <button className="header__button" onClick={() => {navigate("/movies")}}>Фильмы</button>
-                    <button className="header__button" onClick={() => {navigate("/saved-movies")}}>Сохраненые фильмы</button>
+            {pathname === "/movies" || pathname === "/saved-movies" || pathname === "/profile" ? (
+                <div className="header__movies-conteiner">
+                    <button className="header__button" onClick={() => {
+                        navigate("/movies")
+                    }}>Фильмы
+                    </button>
+                    <button className="header__button" onClick={() => {
+                        navigate("/saved-movies")
+                    }}>Сохраненые фильмы
+                    </button>
                 </div>) : ("")}
 
 
@@ -25,8 +32,11 @@ const Header = ({setActive,active,loggedIn}) => {
                     navigate("/signin")
                 }}>Войти
                 </button>
-            </div>): (<div>
-                <button className="header__button header__button_account" onClick={() => {navigate("/profile")}}>Аккаунт</button>
+            </div>) : (<div>
+                <button className="header__button header__button_account" onClick={() => {
+                    navigate("/profile")
+                }}>Аккаунт
+                </button>
             </div>)}
 
 

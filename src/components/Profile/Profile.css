@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
 }
+
 .profile__title {
     font-family: 'Inter', ‘Arial’, sans-serif;
     font-size: 24px;
@@ -18,6 +19,7 @@
     margin: 0;
     padding-bottom: 123px;
 }
+
 .profile__form {
     display: flex;
     flex-direction: column;
@@ -81,6 +83,7 @@
     .profile {
         max-width: calc(260px + (410 - 260) * ((100vw - 320px) / (768 - 320)));
     }
+
     .profile__title {
         padding-bottom: calc(80px + (123 - 80) * ((100vw - 320px) / (768 - 320)));
     }

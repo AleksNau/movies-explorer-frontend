@@ -33,7 +33,8 @@
     border-style: none;
     width: 100%;
 }
-.login__label{
+
+.login__label {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -115,7 +116,7 @@
 
     }
 
-    .login__submit{
+    .login__submit {
         margin-top: 267px;
     }
 }

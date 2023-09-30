@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    height:100vh;
+    height: 100vh;
 }
 
 .not-found-page__title {
@@ -61,6 +61,7 @@
     .not-found-page {
 
     }
+
     .not-found-page__button {
         padding-top: 284px;
     }

@@ -31,12 +31,12 @@
 
 .header__movies-conteiner {
     display: flex;
-    gap:16px
+    gap: 16px
 }
 
 .header__profile-conteiner {
     display: flex;
-    gap:30px
+    gap: 30px
 }
 
 .header__button_account {
@@ -69,7 +69,6 @@
     font-weight: 500;
     line-height: 16px;
 }
-
 
 
 .header__button-burger {

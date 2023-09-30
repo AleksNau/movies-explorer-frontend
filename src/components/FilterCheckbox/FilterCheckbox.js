@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "./FilterCheckbox.css";
-
 
 
 const FilterCheckbox = ({isChecked, setCheck}) => {
@@ -11,7 +10,7 @@ const FilterCheckbox = ({isChecked, setCheck}) => {
                 <input className="check" type="checkbox" name="check" id="newchec" value="Название"
                        onClick={() => {
                            setCheck(!isChecked)
-                         /*  !isChecked? navigate("/saved-movies") : navigate("/movies")*/
+                           /*  !isChecked? navigate("/saved-movies") : navigate("/movies")*/
                        }}/>
                 <label For="newchec" className="filter-сheckbox__name">Короткометражки</label>
             </div>

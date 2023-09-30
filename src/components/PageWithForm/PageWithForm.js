@@ -1,10 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "./PageWithForm.css";
-import {useState} from "react";
 import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
 
-const PageWithForm = ({title,buttonTitle,children,subtitle,linkText,link,onSubmit}) => {
+const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit}) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,9 +11,9 @@ const PageWithForm = ({title,buttonTitle,children,subtitle,linkText,link,onSubmi
     const {
         register,
         handleSubmit,
-        formState: {errors,isValid},
+        formState: {errors, isValid},
         reset
-    } = useForm({mode:"onChange"});
+    } = useForm({mode: "onChange"});
 
     function handleEmail(e) {
         setEmail(e.target.value);
@@ -27,7 +26,7 @@ const PageWithForm = ({title,buttonTitle,children,subtitle,linkText,link,onSubmi
 
 
     return (<>
-        <img src={logo} alt="логотип" className="form__logo" />
+            <img src={logo} alt="логотип" className="form__logo"/>
             <form
                 onSubmit={
                     handleSubmit(onSubmit)
@@ -52,7 +51,7 @@ const PageWithForm = ({title,buttonTitle,children,subtitle,linkText,link,onSubmi
                     <p className="form__question">{subtitle} <a href={link} className="form__link">{linkText}</a></p>
                 </fieldset>
             </form>
-    </>
+        </>
     );
 };
 

@@ -1,7 +1,7 @@
 import './App.css';
 import Header from "../Header/Header";
-import React,{useState,useEffect}  from "react";
-import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
+import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 
@@ -13,7 +13,7 @@ import Navigation from "../Navigation/Navigation";
 import data from "../../utils/constants"
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Movies from "../Movies/Movies";
-
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 
 function App() {
@@ -23,13 +23,23 @@ function App() {
     //Список меню
 
     //Подключаем хэдер и футер к роутам
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
     const pathsWithHeader = ['/', '/movies', '/saved-movies', '/profile'].includes(pathname);
     const pathsWithFooter = ['/', '/movies', '/saved-movies'].includes(pathname);
     const [isChecked, setCheck] = useState(false);
 
     //Заготовка под логин
     const [loggedIn, setLoggedIn] = useState(false);
+
+    //Состояние прелоадера
+    //обработчик загрузки
+    const [isLoading, setIsLoading] = useState(false);
+
+    //статус регистрации
+    const [statusReg, setStatusReg] = useState(false);
+
+    //стейты попапа
+    const [isPopupOpen, setPopup] = useState(false);
 
     const onLogin = (data) => {
         navigate("/");
@@ -40,24 +50,40 @@ function App() {
     const onRegister = (data) => {
         navigate("/signin");
         console.log(data)
+        setStatusReg(true)
     };
 
+
+    function closePopup() {
+        setPopup(false);
+    }
+
     return (
+
         <div className="App">
+
             {pathsWithHeader && (
                 <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
             )}
-            <Navigation active={menuActive} setActive={setMenuActive} />
+            <Navigation active={menuActive} setActive={setMenuActive}/>
             <Routes>
-                <Route path='/' element={<Main/>} />
-                <Route path='/profile' element={<Profile/>} />
-                <Route path='/signin' element={<Login onLogin={onLogin}/>} />
-                <Route path='/signup' element={<Register onRegister={onRegister}/>} />
+                <Route path='/' element={<Main/>}/>
+                <Route path='/profile' element={<Profile/>}/>
+                <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
+                <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
                 <Route path='/movies' element={<Movies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
-                <Route path='/saved-movies' element={<SavedMovies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
+                <Route path='/saved-movies'
+                       element={<SavedMovies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
+                <Route path='*' element={<NotFoundPage/>}/>
             </Routes>
-            {pathsWithFooter && <Footer />}
+            {pathsWithFooter && <Footer/>}
+            <InfoTooltip
+                isOpen={isPopupOpen}
+                onClose={closePopup}
+                statusReg={statusReg}
+            />
         </div>
+
     );
 }
 
