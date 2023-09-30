@@ -1,6 +1,7 @@
 .Info-tooltip {
     margin: 0;
     padding: 0 0 0 0;
+    box-sizing: border-box;
 }
 
 .Info-tooltip__popup {
@@ -109,16 +110,8 @@
     }
 }
 
-@media screen and (max-width: 768px) {
-    .Info-tooltip {
-
-    }
-}
-
 @media screen and (max-width: 320px) {
-    .Info-tooltip {
 
-    }
 
     .Info-tooltip__conteiner {
         padding: 25px 22px 25px 22px;

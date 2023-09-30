@@ -6,10 +6,8 @@ import PageWithForm from "../PageWithForm/PageWithForm";
 const Login = ({onLogin}) => {
     const {
         register,
-        handleSubmit,
-        formState: {errors, isValid},
+        formState: {errors},
         getValues,
-        reset,
     } = useForm({mode: "onChange"});
 
     function handleLogin() {

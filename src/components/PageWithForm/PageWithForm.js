@@ -1,28 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 import "./PageWithForm.css";
 import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
 
 const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit}) => {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
     const {
-        register,
         handleSubmit,
-        formState: {errors, isValid},
-        reset
+        formState: {isValid},
     } = useForm({mode: "onChange"});
-
-    function handleEmail(e) {
-        setEmail(e.target.value);
-    }
-
-    // input change
-    function handlePassword(e) {
-        setPassword(e.target.value);
-    }
 
 
     return (<>

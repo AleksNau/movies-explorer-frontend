@@ -75,9 +75,6 @@
 }
 
 @media screen and (max-width: 320px) {
-    .portfolio {
-
-    }
 
     .portfolio__list {
         padding: 40px 0 0 0;

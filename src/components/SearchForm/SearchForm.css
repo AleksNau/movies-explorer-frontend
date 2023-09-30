@@ -4,7 +4,6 @@
     display: flex;
     gap: 10px;
     align-items: center;
-
 }
 
 .search-form__input {
@@ -38,16 +37,4 @@
 
 .search-form__submit:hover {
     opacity: 0.8;
-}
-
-@media screen and (max-width: 768px) {
-    .search-form {
-
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .search-form {
-
-    }
 }

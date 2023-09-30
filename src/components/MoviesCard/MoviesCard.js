@@ -22,7 +22,6 @@ const MoviesCard = ({cardData}) => {
                 </button>
             )}
 
-
             <div className="movies-card__info">
                 <p className="movies-card__name">{cardData.description}</p>
                 <p className="movies-card__time">{cardData.duration}</p>

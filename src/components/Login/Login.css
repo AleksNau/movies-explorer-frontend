@@ -69,7 +69,6 @@
     transition: opacity linear .4s;
 }
 
-
 .login__submit:hover {
     opacity: 0.8;
 }
@@ -112,9 +111,6 @@
 }
 
 @media screen and (max-width: 320px) {
-    .login {
-
-    }
 
     .login__submit {
         margin-top: 267px;

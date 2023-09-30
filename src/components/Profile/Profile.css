@@ -80,6 +80,7 @@
 }
 
 @media screen and (max-width: 768px) {
+
     .profile {
         max-width: calc(260px + (410 - 260) * ((100vw - 320px) / (768 - 320)));
     }
@@ -88,13 +89,9 @@
         padding-bottom: calc(80px + (123 - 80) * ((100vw - 320px) / (768 - 320)));
     }
 
-
 }
 
 @media screen and (max-width: 320px) {
-    .profile {
-
-    }
 
     .profile__button_submit {
         margin-top: 379px;

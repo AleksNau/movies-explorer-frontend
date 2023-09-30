@@ -11,9 +11,3 @@
         padding: 80px calc(10px + (30 - 10) * ((100vw - 320px) / (768 - 320))) 0 calc(10px + (30 - 10) * ((100vw - 320px) / (768 - 320)));
     }
 }
-
-@media screen and (max-width: 320px) {
-    .movies {
-
-    }
-}

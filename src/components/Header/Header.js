@@ -24,16 +24,16 @@ const Header = ({setActive, active, loggedIn}) => {
 
 
             {(pathname === '/' && !loggedIn) ? (<div className="header__profile-conteiner">
-                <button className="header__button header__button_sign-up" onClick={() => {
+                <button type={"button"} className="header__button header__button_sign-up" onClick={() => {
                     navigate("/signup")
                 }}>Регистрация
                 </button>
-                <button className="header__button header__button_sign-in" onClick={() => {
+                <button type={"button"} className="header__button header__button_sign-in" onClick={() => {
                     navigate("/signin")
                 }}>Войти
                 </button>
             </div>) : (<div>
-                <button className="header__button header__button_account" onClick={() => {
+                <button type={"button"} className="header__button header__button_account" onClick={() => {
                     navigate("/profile")
                 }}>Аккаунт
                 </button>

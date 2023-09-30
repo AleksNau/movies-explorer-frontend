@@ -104,9 +104,6 @@
 }
 
 @media screen and (max-width: 768px) {
-    .navigation {
-
-    }
 
     .navigation__list {
         padding: 0 0 calc(444px + (621 - 444) * ((100vw - 320px) / (768 - 320))) 0;
@@ -119,9 +116,6 @@
 }
 
 @media screen and (max-width: 320px) {
-    .navigation {
-
-    }
 
     .navigation__item:not(:first-child) {
         padding-top: 26px;

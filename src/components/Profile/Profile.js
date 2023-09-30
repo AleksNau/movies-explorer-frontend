@@ -1,35 +1,25 @@
-import React, {useState} from "react";
+import React from "react";
 import "./Profile.css";
 import {useForm} from "react-hook-form";
 
-const Profile = () => {
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
+const Profile = ({onProfile}) => {
 
     const {
         register,
         handleSubmit,
         formState: {errors, isValid},
-        reset
+        getValues
     } = useForm({mode: "onChange"});
 
-    const onSubmit = (data) => {
-        alert(JSON.stringify(data))
-    }
-
-    function handleName(e) {
-        setName(e.target.value);
-    }
-
-    function handleEmail(e) {
-        setEmail(e.target.value);
+    function handleProfile() {
+        onProfile(getValues())
     }
 
     return (
         <section className="profile">
             <h3 className="profile__title">Привет,Виталий!</h3>
             <form id="form" className="profile__form" onSubmit={
-                handleSubmit(onSubmit)
+                handleSubmit(handleProfile)
             }>
                 <label className="profile__field">
                     Имя
@@ -38,7 +28,6 @@ const Profile = () => {
                         id="name-input"
                         type="text"
                         value="Виталий"
-                        onChange={handleName}
                         {...register('name', {
                             minLength:
                                 {
@@ -56,14 +45,13 @@ const Profile = () => {
                     />
 
                 </label>
-                <span className="profile__input-error">&nbsp;</span>
+                <span className="profile__input-error">{errors?.name?.message}&nbsp;</span>
                 <label className="profile__field">
                     E-mail
                     <input
                         className="profile__input"
                         id="email-input"
                         value="test@mail.ru"
-                        onChange={handleEmail}
                         {...register('email', {
                             pattern:
                                 {
@@ -81,13 +69,13 @@ const Profile = () => {
                     />
 
                 </label>
-                <span className="profile__input-error">&nbsp;</span>
+                <span className="profile__input-error">{errors?.email?.message}&nbsp;</span>
                 <button
                     className="profile__button profile__button_submit"
                     type="submit">
                     Редактировать
                 </button>
-                <button type="button" className="profile__button profile__button_logout">
+                <button type="button" disabled={!isValid} className="profile__button profile__button_logout">
                     Выйти из аккаунта
                 </button>
             </form>

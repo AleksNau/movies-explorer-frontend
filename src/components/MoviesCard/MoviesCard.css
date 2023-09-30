@@ -98,7 +98,7 @@
         width: calc(300px + (339 - 300) * ((100vw - 320px) / (768 - 320)));
         max-width: 360px;
         height: calc(168px + (190 - 168) * ((100vw - 320px) / (768 - 320)));
-        background-color: red;
+        background-color: transparent;
     }
 
     .movies-card__info {
@@ -111,9 +111,6 @@
 }
 
 @media screen and (max-width: 320px) {
-    .movies-card {
-
-    }
 
     .movies-card__time {
         width: 44px;

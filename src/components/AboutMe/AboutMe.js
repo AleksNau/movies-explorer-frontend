@@ -18,7 +18,7 @@ const AboutMe = () => {
                     <a href="https://github.com/AleksNau" className="about-me__github" target="_blank"
                        rel="noreferrer">Github</a>
                 </div>
-                <img src={myPhoto} className="about-me__photo" alt="author"></img>
+                <img src={myPhoto} className="about-me__photo" alt="author"/>
             </div>
         </section>
     );

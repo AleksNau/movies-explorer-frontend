@@ -1,20 +1,15 @@
-import React, {useState} from "react";
+import React from "react";
 import "./Register.css";
 import {useForm} from "react-hook-form";
 import PageWithForm from "../PageWithForm/PageWithForm";
 
 const Register = ({onRegister}) => {
 
-    const [name, setName] = useState("");
     const {
         register,
-        formState: {errors, isValid},
+        formState: {errors},
         getValues
     } = useForm({mode: "onChange"});
-
-    function handleName(e) {
-        setName(e.target.value);
-    }
 
     function handleRegister() {
         onRegister(getValues())
@@ -37,7 +32,6 @@ const Register = ({onRegister}) => {
                         type="text"
                         className="register__input"
                         placeholder="имя"
-                        onChange={handleName}
                         {...register('name', {
                             minLength:
                                 {
