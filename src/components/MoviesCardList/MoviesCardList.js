@@ -24,7 +24,7 @@ const MoviesCardList = ({data}) => {
             <ul className="movies-card-list">
             {
                 data.map(card => (
-                    <MoviesCard cardData={card}/>
+                    <MoviesCard key={card.movieId} cardData={card}/>
                 ))
             }
         </ul>
