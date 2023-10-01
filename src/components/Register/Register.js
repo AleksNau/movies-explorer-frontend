@@ -2,6 +2,7 @@ import React from "react";
 import "./Register.css";
 import {useForm} from "react-hook-form";
 import PageWithForm from "../PageWithForm/PageWithForm";
+import {passwordValidation, emailValidation,nameValidation} from '../../utils/validation';
 
 const Register = ({onRegister}) => {
 
@@ -32,20 +33,7 @@ const Register = ({onRegister}) => {
                         type="text"
                         className="register__input"
                         placeholder="имя"
-                        {...register('name', {
-                            minLength:
-                                {
-                                    value: 2,
-                                    message: "Минимум 2 символа"
-                                },
-                            maxLength:
-                                {
-                                    value: 40,
-                                    message: "Максимум 40 символов"
-                                },
-                            required: "Поле обязательно к заполнению"
-
-                        })}
+                        {...register('name', nameValidation)}
                     />
                     <span id="name-error" className="register__error">{errors?.name?.message}&nbsp;</span>
                 </label>
@@ -54,25 +42,7 @@ const Register = ({onRegister}) => {
                         id="email"
                         className="form__input"
                         placeholder="Email"
-                        {...register('email', {
-                            pattern:
-                                {
-                                    value: /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g,
-                                    message: "Введите коректный эмейл"
-                                },
-                            minLength:
-                                {
-                                    value: 2,
-                                    message: "Минимум 2 символа"
-                                },
-                            maxLength:
-                                {
-                                    value: 40,
-                                    message: "Максимум 40 символов"
-                                },
-                            required: "Поле обязательно к заполнению"
-
-                        })}
+                        {...register('email', emailValidation)}
                     />
                     <span id="name-error" className="form__error">{errors?.email?.message}
                         &nbsp;
@@ -84,20 +54,7 @@ const Register = ({onRegister}) => {
                         type="password"
                         className="form__input"
                         placeholder="Пароль"
-                        {...register('password', {
-                            minLength:
-                                {
-                                    value: 2,
-                                    message: "Минимум 2 символа"
-                                },
-                            maxLength:
-                                {
-                                    value: 30,
-                                    message: "Максимум 30 символов"
-                                },
-                            required: "Поле обязательно к заполнению"
-
-                        })}
+                        {...register('password', passwordValidation)}
                     />
                     <span id="info-error" className="form__error">{errors?.password?.message}
                         &nbsp;

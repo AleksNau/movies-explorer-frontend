@@ -53,8 +53,7 @@ function App() {
 
         navigate("/");
         setLoggedIn(true);
-        setCurrentUser({data});
-        console.log(data)
+        setCurrentUser({email:data.email});
     };
 
     const onRegister = (data) => {

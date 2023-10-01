@@ -2,7 +2,7 @@ import React,{useState,useContext} from "react";
 import "./Profile.css";
 import {useForm} from "react-hook-form";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
-
+import {nameValidation, emailValidation, } from '../../utils/validation';
 const Profile = ({onProfile}) => {
     const {name = "Боб",email} = useContext(CurrentUserContext);
     //Cтейт кнопки редактирования
@@ -31,22 +31,9 @@ const Profile = ({onProfile}) => {
                         className="profile__input"
                         id="name-input"
                         type="text"
-                        value={`${name}`}
+                        value={name}
                         disabled={formNotActive}
-                        {...register('name', {
-                            minLength:
-                                {
-                                    value: 2,
-                                    message: "Минимум 2 символа"
-                                },
-                            maxLength:
-                                {
-                                    value: 40,
-                                    message: "Максимум 40 символов"
-                                },
-                            required: "Поле обязательно к заполнению"
-
-                        })}
+                        {...register('name', nameValidation)}
                     />
 
                 </label>
@@ -58,20 +45,7 @@ const Profile = ({onProfile}) => {
                         id="email-input"
                         value={`${email}`}
                         disabled={formNotActive}
-                        {...register('email', {
-                            pattern:
-                                {
-                                    value: /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g,
-                                    message: "Введите коректный эмейл"
-                                },
-                            maxLength:
-                                {
-                                    value: 40,
-                                    message: "Максимум 40 символов"
-                                },
-                            required: "Поле обязательно к заполнению"
-
-                        })}
+                        {...register('email', emailValidation)}
                     />
 
                 </label>
@@ -83,7 +57,7 @@ const Profile = ({onProfile}) => {
                 </button>
                     <button type="button" className="profile__button profile__button_logout">
                     Выйти из аккаунта
-                    </button></>) : ( <button type="submit" className="profile__button profile__button_submit">
+                    </button></>) : ( <button type="submit" disabled={!isValid} className="profile__button profile__button_submit">
                     Сохранить
                 </button>)}
             </form>
