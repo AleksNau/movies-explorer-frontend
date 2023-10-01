@@ -25,8 +25,19 @@
     cursor: pointer;
 }
 
+.header__logo {
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+    cursor: pointer;
+}
+
+.header__logo:hover {
+    opacity: 0.8;
+}
+
 .header__button:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .header__movies-conteiner {

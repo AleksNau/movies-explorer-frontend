@@ -44,6 +44,10 @@
     border-style: none;
 }
 
+.register__input:focus {
+    outline: 1px solid #4285F4;
+}
+
 .register__submit {
     margin-top: 69px;
     box-sizing: border-box;

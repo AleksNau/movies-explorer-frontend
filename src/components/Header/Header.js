@@ -8,7 +8,9 @@ const Header = ({setActive, active, loggedIn}) => {
     let {pathname} = useLocation();
     return (
         <header className="header">
-            <img src={logo} alt="логотип" className="header__logo"/>
+            <img src={logo} alt="логотип" className="header__logo" onClick={() => {
+                navigate("/")
+            }}/>
 
             {pathname === "/movies" || pathname === "/saved-movies" || pathname === "/profile" ? (
                 <div className="header__movies-conteiner">

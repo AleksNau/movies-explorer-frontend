@@ -1,9 +1,12 @@
-import React from "react";
+import React,{useState,useContext} from "react";
 import "./Profile.css";
 import {useForm} from "react-hook-form";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
 const Profile = ({onProfile}) => {
-
+    const {name = "Боб",email} = useContext(CurrentUserContext);
+    //Cтейт кнопки редактирования
+    const [formNotActive, setFormNotActive] = useState(true);
     const {
         register,
         handleSubmit,
@@ -13,11 +16,12 @@ const Profile = ({onProfile}) => {
 
     function handleProfile() {
         onProfile(getValues())
+        setFormNotActive(true)
     }
 
     return (
         <section className="profile">
-            <h3 className="profile__title">Привет,Виталий!</h3>
+            <h3 className="profile__title">Привет, {name}!</h3>
             <form id="form" className="profile__form" onSubmit={
                 handleSubmit(handleProfile)
             }>
@@ -27,7 +31,8 @@ const Profile = ({onProfile}) => {
                         className="profile__input"
                         id="name-input"
                         type="text"
-                        value="Виталий"
+                        value={`${name}`}
+                        disabled={formNotActive}
                         {...register('name', {
                             minLength:
                                 {
@@ -51,7 +56,8 @@ const Profile = ({onProfile}) => {
                     <input
                         className="profile__input"
                         id="email-input"
-                        value="test@mail.ru"
+                        value={`${email}`}
+                        disabled={formNotActive}
                         {...register('email', {
                             pattern:
                                 {
@@ -70,14 +76,16 @@ const Profile = ({onProfile}) => {
 
                 </label>
                 <span className="profile__input-error">{errors?.email?.message}&nbsp;</span>
-                <button
-                    className="profile__button profile__button_submit"
-                    type="submit">
+                {formNotActive ? (<><button
+                    className="profile__button profile__button_edit"
+                    type="button" onClick={() => setFormNotActive(false)}>
                     Редактировать
                 </button>
-                <button type="button" disabled={!isValid} className="profile__button profile__button_logout">
+                    <button type="button" className="profile__button profile__button_logout">
                     Выйти из аккаунта
-                </button>
+                    </button></>) : ( <button type="submit" className="profile__button profile__button_submit">
+                    Сохранить
+                </button>)}
             </form>
         </section>
     );

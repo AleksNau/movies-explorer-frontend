@@ -13,21 +13,24 @@
     border-radius: 10px;
     background-color: #303030;
     text-align: center;
-    line-height: 36px;
+}
 
+.nav-tab__link {
+    line-height: 36px;
     font-family: 'Inter', ‘Arial’, sans-serif;
     font-size: 12px;
     font-weight: 500;
     color: #ffffff;
 
+    text-decoration: none;
     -webkit-transition: opacity linear .4s;
     -o-transition: opacity linear .4s;
     transition: opacity linear .4s;
     cursor: pointer;
 }
 
-.nav-tab__button:hover {
-    opacity: 0.5;
+.nav-tab__link:hover {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {
@@ -42,9 +45,6 @@
 }
 
 @media screen and (max-width: 320px) {
-    .nav-tab {
-
-    }
 
     .nav-tab__button {
         font-size: 10px;

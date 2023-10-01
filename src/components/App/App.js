@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState} from "react";
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -15,9 +16,12 @@ import Movies from "../Movies/Movies";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 import data from "../../utils/constants"
+import Preloader from "../Preloader/Preloader";
 
 function App() {
     const navigate = useNavigate();
+    //Стейт пользователя
+    const [currentUser, setCurrentUser] = useState({});
     //Состояния меню
     const [menuActive, setMenuActive] = useState(false);
     //Список меню
@@ -42,8 +46,14 @@ function App() {
     const [isPopupOpen, setPopup] = useState(false);
 
     const onLogin = (data) => {
+        setIsLoading(true)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 2000)
+
         navigate("/");
         setLoggedIn(true);
+        setCurrentUser({data});
         console.log(data)
     };
 
@@ -62,14 +72,14 @@ function App() {
     }
 
     return (
-
+        <CurrentUserContext.Provider value={currentUser}>
         <div className="App">
             {pathsWithHeader && (
                 <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
             )}
             <Navigation active={menuActive} setActive={setMenuActive}/>
             <Routes>
-                <Route path='/' element={<Main/>}/>
+                <Route path='/' element={isLoading ? (<Preloader/>) :(<Main/>)}/>
                 <Route path='/profile' element={<Profile onProfile={onProfile}/> }/>
                 <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
                 <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
@@ -86,7 +96,7 @@ function App() {
                 statusReg={statusReg}
             />
         </div>
-
+        </CurrentUserContext.Provider>
     );
 }
 

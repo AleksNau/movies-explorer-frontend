@@ -2,17 +2,21 @@ import React from "react";
 import "./PageWithForm.css";
 import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
+import {useNavigate} from "react-router-dom";
 
 const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit}) => {
+
+    const navigate = useNavigate();
 
     const {
         handleSubmit,
         formState: {isValid},
     } = useForm({mode: "onChange"});
 
-
     return (<>
-            <img src={logo} alt="логотип" className="form__logo"/>
+            <img src={logo} alt="логотип" className="form__logo" onClick={() => {
+                navigate("/")
+            }}/>
             <form
                 onSubmit={
                     handleSubmit(onSubmit)
