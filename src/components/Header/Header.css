@@ -41,6 +41,10 @@
     opacity: 0.8;
 }
 
+.header__button:active {
+    font-weight: 500;
+}
+
 .header__movies-conteiner {
     box-sizing: border-box;
     display: flex;
@@ -145,6 +149,10 @@
 
     .header__button-burger {
         display: block;
+    }
+
+    .header__movies-conteiner {
+        display: none;
     }
 }
 

@@ -76,7 +76,7 @@ function App() {
             {pathsWithHeader && (
                 <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
             )}
-            <Navigation active={menuActive} setActive={setMenuActive}/>
+            {(loggedIn) ? (<Navigation active={menuActive} setActive={setMenuActive}/>) : ('')}
             <Routes>
                 <Route path='/' element={isLoading ? (<Preloader/>) :(<Main/>)}/>
                 <Route path='/profile' element={<Profile onProfile={onProfile}/> }/>

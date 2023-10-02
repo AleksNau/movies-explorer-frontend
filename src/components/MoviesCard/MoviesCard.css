@@ -29,6 +29,9 @@
 .movies-card__button-checked {
     position: absolute;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 14px;
     right: 14px;
     width: 21px;
@@ -37,6 +40,10 @@
     border-radius: 30px;
     background-color: #FF3055;
     cursor: pointer;
+}
+
+.movies-card__button-checked_del {
+    background-color: #313131;
 }
 
 .movies-card__image {
