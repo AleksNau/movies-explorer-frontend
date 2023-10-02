@@ -12,7 +12,7 @@ const Header = ({setActive, active, loggedIn}) => {
                 navigate("/")
             }}/>
 
-            {pathname === "/movies" || pathname === "/saved-movies" || pathname === "/profile" ? (
+            {(loggedIn) && (pathname === "/movies" || pathname === "/saved-movies" || pathname === "/profile") ? (
                 <div className="header__movies-conteiner">
                     <button className="header__button" onClick={() => {
                         navigate("/movies")

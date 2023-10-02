@@ -1,18 +1,25 @@
-import React,{useState,useContext} from "react";
+import React,{useState,useContext,useEffect} from "react";
 import "./Profile.css";
 import {useForm} from "react-hook-form";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import {nameValidation, emailValidation, } from '../../utils/validation';
 const Profile = ({onProfile}) => {
-    const {name = "Боб",email} = useContext(CurrentUserContext);
+    const {name = "Боб",email = 'test@mail.ru'} = useContext(CurrentUserContext);
     //Cтейт кнопки редактирования
     const [formNotActive, setFormNotActive] = useState(true);
     const {
         register,
         handleSubmit,
         formState: {errors, isValid},
-        getValues
+        getValues,
+        setValue
     } = useForm({mode: "onChange"});
+
+    useEffect(() => {
+setValue('name',name);
+setValue('email',email);
+        }, [name, email])
+
 
     function handleProfile() {
         onProfile(getValues())
@@ -31,7 +38,6 @@ const Profile = ({onProfile}) => {
                         className="profile__input"
                         id="name-input"
                         type="text"
-                        value={name}
                         disabled={formNotActive}
                         {...register('name', nameValidation)}
                     />
@@ -43,7 +49,6 @@ const Profile = ({onProfile}) => {
                     <input
                         className="profile__input"
                         id="email-input"
-                        value={`${email}`}
                         disabled={formNotActive}
                         {...register('email', emailValidation)}
                     />
