@@ -45,8 +45,16 @@
 }
 
 @media screen and (max-width: 320px) {
-
+    .nav-tab {
+        gap:6px;
+    }
     .nav-tab__button {
+        width: 82px;
+        height: 26px;
+        border-radius: 6px;
+    }
+
+    .nav-tab__link {
         font-size: 10px;
         line-height: 26px;
         border-radius: 6px;

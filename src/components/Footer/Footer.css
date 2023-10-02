@@ -104,9 +104,20 @@
 
     .footer__title {
         font-size: 12px;
+        padding-bottom: 21px;
     }
 
     .footer__item {
         font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 0px;
+
+    }
+    .footer__date {
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 0px;
+        color: #8B8B8B;
+        padding-top: 29px;
     }
 }

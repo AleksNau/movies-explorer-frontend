@@ -134,7 +134,7 @@
 
 @media screen and (max-width: 768px) {
     .header {
-        padding: 0 calc(14px + (50 - 14) * ((100vw - 320px) / (768 - 320)));
+        padding: 0 calc(14px + (30 - 14) * ((100vw - 320px) / (768 - 320)));
     }
 
     .header__button-burger {
