@@ -37,8 +37,8 @@ const Profile = ({onProfile}) => {
                     />
 
                 </label>
-                <span className="profile__input-error">{errors?.name?.message}&nbsp;</span>
-                <label className="profile__field">
+                <span className="profile__input-error profile__input-error_line">{errors?.name?.message}&nbsp;</span>
+                <label className="profile__field profile__field_email">
                     E-mail
                     <input
                         className="profile__input"

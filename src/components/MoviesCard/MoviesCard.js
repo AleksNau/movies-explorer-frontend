@@ -24,7 +24,7 @@ const MoviesCard = ({cardData}) => {
 
             <div className="movies-card__info">
                 <p className="movies-card__name">{cardData.description}</p>
-                <p className="movies-card__time">{cardData.duration}</p>
+                <p className="movies-card__time">{cardData.duration}ч {cardData.duration}м</p>
             </div>
         </li>
     );

@@ -20,7 +20,7 @@ const Header = ({setActive, active, loggedIn}) => {
                     </button>
                     <button className="header__button" onClick={() => {
                         navigate("/saved-movies")
-                    }}>Сохраненые фильмы
+                    }}>Сохранённые фильмы
                     </button>
                 </div>) : ("")}
 
