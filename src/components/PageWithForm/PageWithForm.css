@@ -52,7 +52,7 @@
 }
 
 .form__submit {
-    margin-top: 179px;
+    margin-top: 159px;
     box-sizing: border-box;
     height: 45px;
     border-radius: 3px;
@@ -72,6 +72,9 @@
     transition: opacity linear .4s;
 }
 
+.form__submit_register {
+    margin-top: 69px;
+}
 
 .form__submit:hover {
     opacity: 0.8;
@@ -121,8 +124,26 @@
 }
 
 @media screen and (max-width: 320px) {
-
+    .form__logo {
+        display: block;
+        padding-bottom: 50px;
+        margin: 0 auto;
+    }
     .form__submit {
-        margin-top: 267px;
+        margin-top: 247px;
+    }
+
+    .form__title {
+        text-align: center;
+        padding-bottom: 80px;
+    }
+
+    .form__question {
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 0em;
+    }
+    .form__submit_register {
+        margin-top: 157px;
     }
 }

@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
 import {useNavigate} from "react-router-dom";
 
-const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit}) => {
+const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit, buttonClass}) => {
 
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, o
                     {children}
                     <button
                         type="submit"
-                        className="form__submit"
+                        className={`form__submit ${buttonClass}`}
                         disabled={!isValid}
                         form={`sign-up-form`}
                         value={buttonTitle}

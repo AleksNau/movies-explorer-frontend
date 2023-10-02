@@ -26,6 +26,7 @@ const Register = ({onRegister}) => {
                 link={"/index"}
                 subtitle={'Уже зарегистрированы?'}
                 onSubmit={handleRegister}
+                buttonClass={'form__submit_register'}
             >
                 <label className="register__label">Имя
                     <input
