@@ -28,7 +28,7 @@ setValue('email',email);
 
     return (
         <section className="profile">
-            <h3 className="profile__title">Привет, {name}!</h3>
+            <h2 className="profile__title">Привет, {name}!</h2>
             <form id="form" className="profile__form" onSubmit={
                 handleSubmit(handleProfile)
             }>

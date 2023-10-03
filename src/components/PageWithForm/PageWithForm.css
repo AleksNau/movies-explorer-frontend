@@ -111,7 +111,7 @@
     color: #EE3465;
 }
 
-.form__logo {
+.logo {
     padding: 70px 0 40px 0;
     -webkit-transition: opacity linear .4s;
     -o-transition: opacity linear .4s;
@@ -119,12 +119,12 @@
     cursor: pointer;
 }
 
-.form__logo:hover {
+.logo:hover {
     opacity: 0.8;
 }
 
 @media screen and (max-width: 320px) {
-    .form__logo {
+    .logo {
         display: block;
         padding-bottom: 50px;
         margin: 0 auto;

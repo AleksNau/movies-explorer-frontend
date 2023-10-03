@@ -26,11 +26,11 @@ const InfoTooltip = ({isOpen, onClose, statusReg}) => {
                         alt="логотип"
                         className="Info-tooltip__status-image"
                     />
-                    <h2 className="Info-tooltip__title">
+                    <p className="Info-tooltip__title">
                         {statusReg
                             ? "Вы успешно зарегистрировались!"
                             : "Что-то пошло не так! Попробуйте ещё раз."}
-                    </h2>
+                    </p>
                 </div>
             </div>
         </div>

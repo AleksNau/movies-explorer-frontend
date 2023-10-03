@@ -9,7 +9,7 @@ const MoviesCardList = ({data}) => {
 
     function loadMore() {
         maxList += 3;
-        const moreButton = document.querySelector('.movies-card-list__button')
+        const moreButton = document.querySelector('.more-button')
         const array = Array.from(document.querySelector('.movies-card-list').children);
         const visItems = array.slice(0, maxList)
 
@@ -29,8 +29,8 @@ const MoviesCardList = ({data}) => {
                     ))
                 }
             </ul>
-            <div className="movies-card-list__button-container">
-                <button className="movies-card-list__button" onClick={() => loadMore()}>
+            <div className="more-button-container">
+                <button className="more-button" onClick={() => loadMore()}>
                     Ещё
                 </button>
             </div>

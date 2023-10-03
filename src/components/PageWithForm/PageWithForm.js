@@ -14,7 +14,7 @@ const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, o
     } = useForm({mode: "onChange"});
 
     return (<>
-            <img src={logo} alt="логотип" className="form__logo" onClick={() => {
+            <img src={logo} alt="логотип" className="logo" onClick={() => {
                 navigate("/")
             }}/>
             <form
