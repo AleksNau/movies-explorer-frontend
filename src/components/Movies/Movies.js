@@ -6,10 +6,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 const Movies = ({data, isChecked, setCheck}) => {
     return (
-        <section className="movies">
+        <div className="movies">
             <SearchForm isChecked={isChecked} setCheck={setCheck}/>
             <MoviesCardList data={data}/>
-        </section>
+        </div>
     );
 };
 

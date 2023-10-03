@@ -42,7 +42,7 @@
 @media screen and (max-width: 768px) {
     .movies-card-list {
         padding-bottom: 10px;
-        gap: 41px 30px
+        gap: 41px 30px;
     }
 
     .more-button {
@@ -54,7 +54,13 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
+    .movies-card-list {
+        gap: 41px 5px;
+    }
+}
+
+    @media screen and (max-width: 320px) {
     .movies-card-list {
         padding-top: 50px;
         gap: 35px;

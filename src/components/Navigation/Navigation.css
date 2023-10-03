@@ -101,6 +101,10 @@
     border-radius: 20px;
     border-style: none;
     cursor: pointer;
+
+    -webkit-transition: opacity linear .2s;
+    -o-transition: opacity linear .2s;
+    transition: opacity linear .2s;
 }
 
 .navigation__button-account:hover {

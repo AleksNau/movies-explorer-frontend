@@ -28,7 +28,7 @@ const Profile = ({onProfile}) => {
     }
 
     return (
-        <section className="profile">
+        <div className="profile">
             <h2 className="profile__title">Привет, {name}!</h2>
             <form id="form" className="profile__form" onSubmit={
                 handleSubmit(handleProfile)
@@ -69,7 +69,7 @@ const Profile = ({onProfile}) => {
                     Сохранить
                 </button>)}
             </form>
-        </section>
+        </div>
     );
 };
 

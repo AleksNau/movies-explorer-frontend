@@ -3,7 +3,6 @@
     padding: 0 0 0 0;
     box-sizing: border-box;
     max-width: 360px;
-    position: relative;
 }
 
 .movies-card__button-save {
@@ -53,7 +52,11 @@
     height: calc(190px + (201 - 190) * ((100vw - 768px) / (1280 - 768)));
     border-style: none;
     border-radius: 6px;
-    background-color: black;
+    background-color: transparent;
+}
+
+.movies-card__conteiner {
+    position: relative;
 }
 
 .movies-card__info {
@@ -117,6 +120,26 @@
 
     .movies-card__time {
         width: 44px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .movies-card {
+        width: 250px;
+    }
+
+    .movies-card__image {
+        width: 250px;
+
+    }
+}
+
+@media screen and (max-width: 545px) {
+    .movies-card {
+        width: 300px;
+    }
+
+    .movies-card__image {
+        width: 300px;
     }
 }
 
