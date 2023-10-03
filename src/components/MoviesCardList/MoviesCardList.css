@@ -6,7 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 46px 30px
+    gap: 44px 30px
 }
 
 .more-button-container {
@@ -42,21 +42,25 @@
 @media screen and (max-width: 768px) {
     .movies-card-list {
         padding-bottom: 10px;
-        gap: 45px 30px
+        gap: 41px 30px
     }
 
     .more-button {
         width: calc(240px + (320 - 240) * ((100vw - 320px) / (768 - 320)));
+    }
+
+    .more-button-container {
+        padding-bottom: 83px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .movies-card-list {
         padding-top: 50px;
-        gap: 36px;
+        gap: 35px;
     }
 
     .more-button-container {
-        padding-top: 60px;
+        padding-top: 50px;
     }
 }
