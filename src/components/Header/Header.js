@@ -43,7 +43,7 @@ const Header = ({setActive, active, loggedIn}) => {
             </div>)}
 
 
-            {(loggedIn) ? (<button className="header__button-burger" onClick={() => setActive(!active)}>
+            {(pathForMovieButtons) ? (<button className="header__button-burger" onClick={() => setActive(!active)}>
                 <span className="header__button-line"/>
             </button>) : ('')}
         </header>

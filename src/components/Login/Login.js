@@ -21,7 +21,7 @@ const Login = ({onLogin}) => {
                 title={'Рады видеть!'}
                 buttonTitle={'Войти'}
                 linkText={'Регистрация'}
-                link={"/index"}
+                link={"/signin"}
                 subtitle={'Ещё не зарегистрированы?'}
                 onSubmit={handleLogin}
             >

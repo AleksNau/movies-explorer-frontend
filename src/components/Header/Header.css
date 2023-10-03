@@ -154,6 +154,10 @@
     .header__movies-conteiner {
         display: none;
     }
+
+    .header__button_account {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 320px) {
