@@ -53,7 +53,7 @@ const Register = ({onRegister}) => {
                     <input
                         id="pass"
                         type="password"
-                        className="form__input"
+                        className={errors?.password? ('form__input form__input_error') : (`form__input`)}
                         placeholder="Пароль"
                         {...register('password', passwordValidation)}
                     />

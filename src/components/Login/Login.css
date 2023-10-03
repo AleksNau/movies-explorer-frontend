@@ -2,6 +2,7 @@
     margin: 0 auto;
     padding: 0 0 0 0;
     max-width: 396px;
+    min-height: 100%;
     height: 100vh;
 }
 
@@ -32,6 +33,7 @@
     background-color: #2F2F2F;
     border-style: none;
     width: 100%;
+    color: #FFFFFF;
 }
 
 .login__label {

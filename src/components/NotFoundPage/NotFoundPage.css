@@ -17,6 +17,7 @@
     text-align: center;
     color: #FFFFFF;
     font-family: 'Inter', ‘Arial’, sans-serif;
+    letter-spacing: 0em;
 }
 
 .not-found-page__text {
@@ -28,6 +29,7 @@
     text-align: center;
     font-family: 'Inter', ‘Arial’, sans-serif;
     color: #FFFFFF;
+    letter-spacing: 0em;
 }
 
 .not-found-page__button {
@@ -52,8 +54,9 @@
 
 
 @media screen and (max-width: 768px) {
-    .not-found-page {
-
+    .not-found-page__title {
+        font-size: calc(80px + (140 - 80) * ((100vw - 320px) / (768 - 320)));
+        line-height: calc(97px + (169 - 97) * ((100vw - 320px) / (768 - 320)));
     }
 }
 
@@ -62,7 +65,16 @@
 
     }
 
+    .not-found-page__text {
+        padding-top: 10px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+
     .not-found-page__button {
         padding-top: 284px;
+        font-size: 12px;
+        line-height: 15px;
     }
 }
