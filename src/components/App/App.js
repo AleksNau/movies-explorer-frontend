@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useState} from "react";
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -53,7 +53,7 @@ function App() {
 
         navigate("/");
         setLoggedIn(true);
-        setCurrentUser({email:data.email});
+        setCurrentUser({email: data.email});
     };
 
     const onRegister = (data) => {
@@ -72,29 +72,29 @@ function App() {
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-        <div className="App">
-            {pathsWithHeader && (
-                <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
-            )}
-            {(loggedIn) ? (<Navigation active={menuActive} setActive={setMenuActive}/>) : ('')}
-            <Routes>
-                <Route path='/' element={isLoading ? (<Preloader/>) :(<Main/>)}/>
-                <Route path='/profile' element={<Profile onProfile={onProfile}/> }/>
-                <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
-                <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
-                <Route path='/movies' element={<Movies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
-                <Route path='/saved-movies'
-                       element={<SavedMovies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
-                <Route path='*' element={<NotFoundPage/>}/>
-            </Routes>
-            {pathsWithFooter && <Footer/>}
-            { /*Заготовка под модалку с ошибкой*/}
-            <InfoTooltip
-                isOpen={isPopupOpen}
-                onClose={closePopup}
-                statusReg={statusReg}
-            />
-        </div>
+            <div className="App">
+                {pathsWithHeader && (
+                    <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
+                )}
+                {(loggedIn) ? (<Navigation active={menuActive} setActive={setMenuActive}/>) : ('')}
+                <Routes>
+                    <Route path='/' element={isLoading ? (<Preloader/>) : (<Main/>)}/>
+                    <Route path='/profile' element={<Profile onProfile={onProfile}/>}/>
+                    <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
+                    <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
+                    <Route path='/movies' element={<Movies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
+                    <Route path='/saved-movies'
+                           element={<SavedMovies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
+                    <Route path='*' element={<NotFoundPage/>}/>
+                </Routes>
+                {pathsWithFooter && <Footer/>}
+                { /*Заготовка под модалку с ошибкой*/}
+                <InfoTooltip
+                    isOpen={isPopupOpen}
+                    onClose={closePopup}
+                    statusReg={statusReg}
+                />
+            </div>
         </CurrentUserContext.Provider>
     );
 }

@@ -1,10 +1,11 @@
-import React,{useState,useContext,useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./Profile.css";
 import {useForm} from "react-hook-form";
-import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
-import {nameValidation, emailValidation, } from '../../utils/validation';
+import {CurrentUserContext} from '../../contexts/CurrentUserContext.js';
+import {emailValidation, nameValidation,} from '../../utils/validation';
+
 const Profile = ({onProfile}) => {
-    const {name = "Боб",email = 'test@mail.ru'} = useContext(CurrentUserContext);
+    const {name = "Боб", email = 'test@mail.ru'} = useContext(CurrentUserContext);
     //Cтейт кнопки редактирования
     const [formNotActive, setFormNotActive] = useState(true);
     const {
@@ -16,9 +17,9 @@ const Profile = ({onProfile}) => {
     } = useForm({mode: "onChange"});
 
     useEffect(() => {
-setValue('name',name);
-setValue('email',email);
-        }, [name, email])
+        setValue('name', name);
+        setValue('email', email);
+    }, [name, email])
 
 
     function handleProfile() {
@@ -55,14 +56,16 @@ setValue('email',email);
 
                 </label>
                 <span className="profile__input-error">{errors?.email?.message}&nbsp;</span>
-                {formNotActive ? (<><button
-                    className="profile__button profile__button_edit"
-                    type="button" onClick={() => setFormNotActive(false)}>
-                    Редактировать
-                </button>
+                {formNotActive ? (<>
+                    <button
+                        className="profile__button profile__button_edit"
+                        type="button" onClick={() => setFormNotActive(false)}>
+                        Редактировать
+                    </button>
                     <button type="button" className="profile__button profile__button_logout">
-                    Выйти из аккаунта
-                    </button></>) : ( <button type="submit" disabled={!isValid} className="profile__button profile__button_submit">
+                        Выйти из аккаунта
+                    </button>
+                </>) : (<button type="submit" disabled={!isValid} className="profile__button profile__button_submit">
                     Сохранить
                 </button>)}
             </form>

@@ -46,8 +46,9 @@
 
 @media screen and (max-width: 320px) {
     .nav-tab {
-        gap:6px;
+        gap: 6px;
     }
+
     .nav-tab__button {
         width: 82px;
         height: 26px;

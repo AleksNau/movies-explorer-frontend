@@ -14,7 +14,8 @@ const Navigation = ({active, setActive}) => {
                         фильмы</Link></li>
                 </nav>
                 <button type={"button"} className="navigation__button-account"><Link className="navigation__link"
-                                                                     to='/profile'>Аккаунт</Link></button>
+                                                                                     to='/profile'>Аккаунт</Link>
+                </button>
             </div>
         </div>
 

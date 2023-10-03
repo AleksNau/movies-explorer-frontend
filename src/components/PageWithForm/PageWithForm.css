@@ -129,6 +129,7 @@
         padding-bottom: 50px;
         margin: 0 auto;
     }
+
     .form__submit {
         margin-top: 247px;
     }
@@ -143,6 +144,7 @@
         line-height: 15px;
         letter-spacing: 0em;
     }
+
     .form__submit_register {
         margin-top: 157px;
     }

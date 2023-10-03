@@ -54,6 +54,7 @@
 .profile__input:focus {
     outline: 1px solid #4285F4;
 }
+
 .profile__input-error {
     height: 16px;
 }
@@ -65,6 +66,7 @@
 .profile__field_email {
     padding-top: 17px;
 }
+
 .profile__button {
     font-family: 'Inter', ‘Arial’, sans-serif;
     font-size: 13px;
@@ -121,6 +123,7 @@
     .profile {
         max-width: calc(260px + (410 - 260) * ((100vw - 320px) / (768 - 320)));
     }
+
     .profile__button_edit {
         margin-top: 379px;
     }

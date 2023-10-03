@@ -2,7 +2,7 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import "./Login.css";
 import PageWithForm from "../PageWithForm/PageWithForm";
-import {passwordValidation, emailValidation} from '../../utils/validation';
+import {emailValidation, passwordValidation} from '../../utils/validation';
 
 const Login = ({onLogin}) => {
     const {

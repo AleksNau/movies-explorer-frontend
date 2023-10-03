@@ -125,10 +125,12 @@
     .movies-card__time {
         width: 44px;
     }
+
     .movies-card__info {
         height: 18px;
         padding: 16px 0 0 0;
     }
+
     .movies-card__button-save {
         top: 10px;
         right: 10px;

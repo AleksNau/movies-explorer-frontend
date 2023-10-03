@@ -13,7 +13,7 @@ const nameValidation = {
 
 }
 
-const emailValidation ={
+const emailValidation = {
     pattern:
         {
             value: /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g,
@@ -28,7 +28,7 @@ const emailValidation ={
 
 }
 
-const passwordValidation ={
+const passwordValidation = {
     minLength:
         {
             value: 2,

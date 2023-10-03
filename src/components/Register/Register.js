@@ -2,7 +2,7 @@ import React from "react";
 import "./Register.css";
 import {useForm} from "react-hook-form";
 import PageWithForm from "../PageWithForm/PageWithForm";
-import {passwordValidation, emailValidation,nameValidation} from '../../utils/validation';
+import {emailValidation, nameValidation, passwordValidation} from '../../utils/validation';
 
 const Register = ({onRegister}) => {
 

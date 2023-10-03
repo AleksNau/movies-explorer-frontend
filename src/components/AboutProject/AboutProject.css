@@ -117,8 +117,9 @@
         font-size: 12px;
         line-height: 18px;
     }
+
     .about-project__conteiner {
-      padding-bottom: 93px;
+        padding-bottom: 93px;
         column-gap: 30px;
     }
 
