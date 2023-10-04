@@ -49,6 +49,7 @@
 }
 
 .navigation__link {
+    padding-bottom: 4px;
     font-family: 'Inter', ‘Arial’, sans-serif;
     -webkit-transition: all linear .2s;
     -o-transition: all linear .2s;
@@ -126,6 +127,10 @@
 @media screen and (max-width: 320px) {
     .navigation__list {
         padding-top: 144px;
+    }
+
+    .navigation__link {
+        padding-bottom: 7px;
     }
     .navigation__item:not(:first-child) {
         padding-top: 25px;
