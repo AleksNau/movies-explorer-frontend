@@ -6,14 +6,14 @@ import logo from "../../images/logo.svg";
 const Header = ({setActive, active, loggedIn}) => {
     const navigate = useNavigate();
     let {pathname} = useLocation();
-    const pathForMovieButtons = [ '/movies', '/saved-movies', '/profile'].includes(pathname);
+    const pathForMovieButtons = [ '/','/movies', '/saved-movies', '/profile'].includes(pathname);
     return (
         <header className="header">
             <img src={logo} alt="логотип" className="header__logo" onClick={() => {
                 navigate("/")
             }}/>
 
-            {(pathForMovieButtons) ? (
+            {(pathForMovieButtons && (loggedIn === true)) ? (
                 <div className="header__movies-conteiner">
                     <button className="header__button" onClick={() => {
                         navigate("/movies")

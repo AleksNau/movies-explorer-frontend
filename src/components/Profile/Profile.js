@@ -3,6 +3,7 @@ import "./Profile.css";
 import {useForm} from "react-hook-form";
 import {CurrentUserContext} from '../../contexts/CurrentUserContext.js';
 import {emailValidation, nameValidation,} from '../../utils/validation';
+import Main from "../Main/Main";
 
 const Profile = ({onProfile}) => {
     const {name = "Боб", email = 'test@mail.ru'} = useContext(CurrentUserContext);
@@ -28,48 +29,51 @@ const Profile = ({onProfile}) => {
     }
 
     return (
-        <div className="profile">
-            <h2 className="profile__title">Привет, {name}!</h2>
-            <form id="form" className="profile__form" onSubmit={
-                handleSubmit(handleProfile)
-            }>
-                <label className="profile__field">
-                    Имя
-                    <input
-                        className="profile__input"
-                        id="name-input"
-                        type="text"
-                        disabled={formNotActive}
-                        {...register('name', nameValidation)}
-                    />
+        <Main>
+            <section className="profile">
+                <h2 className="profile__title">Привет, {name}!</h2>
+                <form id="form" className="profile__form" onSubmit={
+                    handleSubmit(handleProfile)
+                }>
+                    <label className="profile__field">
+                        Имя
+                        <input
+                            className="profile__input"
+                            id="name-input"
+                            type="text"
+                            disabled={formNotActive}
+                            {...register('name', nameValidation)}
+                        />
 
-                </label>
-                <span className="profile__input-error profile__input-error_line">{errors?.name?.message}&nbsp;</span>
-                <label className="profile__field profile__field_email">
-                    E-mail
-                    <input
-                        className="profile__input"
-                        id="email-input"
-                        disabled={formNotActive}
-                        {...register('email', emailValidation)}
-                    />
+                    </label>
+                    <span className="profile__input-error profile__input-error_line">{errors?.name?.message}&nbsp;</span>
+                    <label className="profile__field profile__field_email">
+                        E-mail
+                        <input
+                            className="profile__input"
+                            id="email-input"
+                            disabled={formNotActive}
+                            {...register('email', emailValidation)}
+                        />
 
-                </label>
-                <span className="profile__input-error">{errors?.email?.message}&nbsp;</span>
-                {formNotActive ? (<>
-                    <button
-                        className="profile__button profile__button_edit"
-                        type="button" onClick={() => setFormNotActive(false)}>
-                        Редактировать
-                    </button>
-                    <button type="button" className="profile__button profile__button_logout">
-                        Выйти из аккаунта
-                    </button>
-                </>) : (<button type="submit" disabled={!isValid} className="profile__button profile__button_submit">
-                    Сохранить
-                </button>)}
-            </form>
-        </div>
+                    </label>
+                    <span className="profile__input-error">{errors?.email?.message}&nbsp;</span>
+                    {formNotActive ? (<>
+                        <button
+                            className="profile__button profile__button_edit"
+                            type="button" onClick={() => setFormNotActive(false)}>
+                            Редактировать
+                        </button>
+                        <button type="button" className="profile__button profile__button_logout">
+                            Выйти из аккаунта
+                        </button>
+                    </>) : (<button type="submit" disabled={!isValid} className="profile__button profile__button_submit">
+                        Сохранить
+                    </button>)}
+                </form>
+            </section>
+        </Main>
+
     );
 };
 

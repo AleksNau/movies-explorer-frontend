@@ -5,7 +5,7 @@ import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import Main from "../Main/Main";
+import Landing from "../Landing/Landing";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
@@ -78,7 +78,7 @@ function App() {
                 )}
                 <Navigation active={menuActive} setActive={setMenuActive}/>
                 <Routes>
-                    <Route path='/' element={isLoading ? (<Preloader/>) : (<Main/>)}/>
+                    <Route path='/' element={isLoading ? (<Preloader/>) : (<Landing/>)}/>
                     <Route path='/profile' element={<Profile onProfile={onProfile}/>}/>
                     <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
                     <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
