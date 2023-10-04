@@ -26,7 +26,7 @@ const Header = ({setActive, active, loggedIn}) => {
                 </div>) : ("")}
 
 
-            {(pathname === '/' && !loggedIn) ? (<div className="header__profile-conteiner">
+            {((pathname === '/') && (loggedIn === false)) ? (<div className="header__profile-conteiner">
                 <button type={"button"} className="header__button header__button_sign-up" onClick={() => {
                     navigate("/signup")
                 }}>Регистрация
@@ -43,7 +43,7 @@ const Header = ({setActive, active, loggedIn}) => {
             </div>)}
 
 
-            {(pathForMovieButtons) ? (<button className="header__button-burger" onClick={() => setActive(!active)}>
+            {((pathForMovieButtons || pathname === '/')&& (loggedIn === true)) ? (<button className="header__button-burger" onClick={() => setActive(!active)}>
                 <span className="header__button-line"/>
             </button>) : ('')}
         </header>

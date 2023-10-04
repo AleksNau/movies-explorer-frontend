@@ -1,10 +1,9 @@
 .not-found-page {
     margin: 0;
-    padding: 0 0 30px 0;
+    padding: 246px 0 30px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     box-sizing: border-box;
     min-height: 100%;
     height: 100vh;
@@ -16,9 +15,12 @@
     font-size: 140px;
     line-height: 169px;
     text-align: center;
+    font-weight: 400;
+    letter-spacing: 0em;
+
     color: #FFFFFF;
     font-family: 'Inter', ‘Arial’, sans-serif;
-    letter-spacing: 0em;
+
 }
 
 .not-found-page__text {
@@ -55,6 +57,9 @@
 
 
 @media screen and (max-width: 768px) {
+    .not-found-page {
+        padding-top: calc(329px + (408 - 329) * ((100vw - 320px) / (768 - 320)));
+    }
     .not-found-page__title {
         font-size: calc(80px + (140 - 80) * ((100vw - 320px) / (768 - 320)));
         line-height: calc(97px + (169 - 97) * ((100vw - 320px) / (768 - 320)));
@@ -62,9 +67,6 @@
 }
 
 @media screen and (max-width: 320px) {
-    .not-found-page {
-
-    }
 
     .not-found-page__text {
         padding-top: 10px;

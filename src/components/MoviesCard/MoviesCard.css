@@ -52,7 +52,7 @@
     height: calc(190px + (201 - 190) * ((100vw - 768px) / (1280 - 768)));
     border-style: none;
     border-radius: 6px;
-    background-color: transparent;
+    background-color: black;
 }
 
 .movies-card__conteiner {

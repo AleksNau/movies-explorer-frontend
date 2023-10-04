@@ -28,12 +28,12 @@
 
 .search-form__submit {
     box-sizing: border-box;
-    width: 44px;
+    width: 45px;
     height: 44px;
-
     background: #4285F4 url('../../images/search.svg') center no-repeat;
+    background-position-x: 6px;
     border-style: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
     -webkit-transition: opacity linear .4s;
     -o-transition: opacity linear .4s;
@@ -42,4 +42,18 @@
 
 .search-form__submit:hover {
     opacity: 0.8;
+}
+
+@media screen and (max-width: 320px) {
+    .search-form {
+        padding: 0 4px;
+    }
+    .search-form__input {
+        height: 44px;
+        padding: 13px;
+    }
+
+    .search-form__submit {
+        width: 52px;
+    }
 }

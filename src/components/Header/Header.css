@@ -1,5 +1,5 @@
 .header {
-    padding: 21px 30px;
+    padding: 19px 30px 20px 30px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -51,7 +51,7 @@
     gap: 16px;
     justify-content: flex-end;
     width: 100%;
-    max-width: 266px;
+    max-width: 271px;
 }
 
 .header__profile-conteiner {

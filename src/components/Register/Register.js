@@ -23,7 +23,7 @@ const Register = ({onRegister}) => {
                 title={'Добро пожаловать!'}
                 buttonTitle={'Зарегистрироваться'}
                 linkText={'Войти'}
-                link={"/signup"}
+                link={"/signin"}
                 subtitle={'Уже зарегистрированы?'}
                 onSubmit={handleRegister}
                 buttonClass={'form__submit_register'}

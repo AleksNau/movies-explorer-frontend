@@ -1,6 +1,6 @@
 .about-me {
     margin: 0 auto;
-    padding: 110px 30px 100px 30px;
+    padding: 110px 30px 102px 30px;
     box-sizing: border-box;
     max-width: 1200px;
 }
@@ -81,7 +81,7 @@
 
 @media screen and (max-width: 768px) {
     .about-me {
-        padding: 90px calc(14px + (50 - 14) * ((100vw - 320px) / (768 - 320)));
+        padding: 90px calc(14px + (50 - 14) * ((100vw - 320px) / (768 - 320))) 92px;
     }
 
     .about-me__name {

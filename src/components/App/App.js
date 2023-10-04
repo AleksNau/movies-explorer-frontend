@@ -33,7 +33,7 @@ function App() {
     const [isChecked, setCheck] = useState(false);
 
     //Заготовка под логин
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
 
     //Состояние прелоадера
     //обработчик загрузки
