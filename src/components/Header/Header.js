@@ -2,6 +2,7 @@ import React from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/logo.svg";
+import Navigation from "../Navigation/Navigation";
 
 const Header = ({setActive, active, loggedIn}) => {
     const navigate = useNavigate();
@@ -46,6 +47,7 @@ const Header = ({setActive, active, loggedIn}) => {
             {((pathForMovieButtons || pathname === '/')&& (loggedIn === true)) ? (<button className="header__button-burger" onClick={() => setActive(!active)}>
                 <span className="header__button-line"/>
             </button>) : ('')}
+            <Navigation active={active} setActive={setActive}/>
         </header>
     );
 };

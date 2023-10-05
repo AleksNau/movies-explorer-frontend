@@ -10,7 +10,6 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import Profile from "../Profile/Profile";
-import Navigation from "../Navigation/Navigation";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Movies from "../Movies/Movies";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
@@ -76,7 +75,7 @@ function App() {
                 {pathsWithHeader && (
                     <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
                 )}
-                <Navigation active={menuActive} setActive={setMenuActive}/>
+
                 <Routes>
                     <Route path='/' element={isLoading ? (<Preloader/>) : (<Landing/>)}/>
                     <Route path='/profile' element={<Profile onProfile={onProfile}/>}/>
