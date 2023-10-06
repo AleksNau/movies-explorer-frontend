@@ -1,0 +1,193 @@
+.header {
+    padding: 19px 30px 20px 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    min-height: 74px;
+}
+
+.header__button {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 0;
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+    cursor: pointer;
+}
+
+.header__logo {
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+    cursor: pointer;
+}
+
+.header__logo:hover {
+    opacity: 0.8;
+}
+
+.header__button:hover {
+    opacity: 0.8;
+}
+
+.header__button:active {
+    font-weight: 500;
+}
+
+.header__movies-conteiner {
+    box-sizing: border-box;
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 271px;
+}
+
+.header__profile-conteiner {
+    display: flex;
+    gap: 30px
+}
+
+.header__button_account {
+    background-color: rgba(49, 49, 49, 1);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+
+    width: 100px;
+    height: 32px;
+    border-radius: 20px;
+}
+
+
+.header__button_sign-up {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+}
+
+.header__button_sign-in {
+    width: 76px;
+    height: 32px;
+    border-radius: 3px;
+    background-color: rgba(61, 220, 132, 1);
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+}
+
+
+.header__button-burger {
+    display: none;
+    box-sizing: border-box;
+    border-style: none;
+    background-color: transparent;
+    padding: 0;
+    width: 28px;
+    height: 21px;
+    position: relative;
+    cursor: pointer;
+    -webkit-transition: opacity linear .4s;
+    -o-transition: opacity linear .4s;
+    transition: opacity linear .4s;
+}
+
+.header__button-burger:hover {
+    opacity: 0.8;
+}
+
+.header__button-burger:before {
+    top: 0;
+    left: -7px;
+    content: '';
+    position: absolute;
+    width: 28px;
+    background-color: #FFF;
+    height: 3px;
+}
+
+.header__button-line {
+    top: 9px;
+    left: -7px;
+    content: '';
+    position: absolute;
+    width: 28px;
+    background-color: #FFF;
+    height: 3px;
+}
+
+.header__button-burger:after {
+    left: -7px;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    width: 28px;
+    background-color: #FFF;
+    height: 3px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 0 calc(14px + (30 - 14) * ((100vw - 320px) / (768 - 320)));
+    }
+
+    .header__button-burger {
+        display: block;
+    }
+
+    .header__movies-conteiner {
+        display: none;
+    }
+
+    .header__button_account {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+
+    }
+
+    .header__button_sign-up {
+        font-size: 10px;
+    }
+
+    .header__button_sign-in {
+        width: 54px;
+        height: 26px;
+        border-radius: 3px;
+        font-size: 10px;
+    }
+
+    .header__button-burger:before {
+        left: -3px;
+        width: 22px;
+    }
+
+    .header__button-line {
+        left: -3px;
+        width: 22px;
+    }
+
+    .header__button-burger:after {
+        left: -3px;
+        width: 22px;
+    }
+}
