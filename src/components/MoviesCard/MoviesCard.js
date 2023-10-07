@@ -5,12 +5,13 @@ import {useLocation} from "react-router-dom";
 const MoviesCard = ({cardData}) => {
     const [isChecked, setCheck] = useState(cardData.isSaved);
     let {pathname} = useLocation();
+    const {image} = cardData;
     return (
         <li className="movies-card">
 <div className="movies-card__conteiner">
             <video
                 className="movies-card__image"
-                poster={cardData.image}
+                poster={`https://api.nomoreparties.co/${image.url}`}
             >
             </video>
     {pathname === "/movies" ? !isChecked ? (
@@ -31,7 +32,7 @@ const MoviesCard = ({cardData}) => {
 </div>
 
             <div className="movies-card__info">
-                <p className="movies-card__name">{cardData.description}</p>
+                <p className="movies-card__name">{cardData.nameRU}</p>
                 <p className="movies-card__time">{cardData.duration}ч {cardData.duration}м</p>
             </div>
         </li>

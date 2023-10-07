@@ -5,7 +5,7 @@ import {CurrentUserContext} from '../../contexts/CurrentUserContext.js';
 import {emailValidation, nameValidation,} from '../../utils/validation';
 import Main from "../Main/Main";
 
-const Profile = ({onProfile}) => {
+const Profile = ({onProfile,onLogout}) => {
     const {name = "Боб", email = 'test@mail.ru'} = useContext(CurrentUserContext);
     //Cтейт кнопки редактирования
     const [formNotActive, setFormNotActive] = useState(true);
@@ -64,7 +64,7 @@ const Profile = ({onProfile}) => {
                             type="button" onClick={() => setFormNotActive(false)}>
                             Редактировать
                         </button>
-                        <button type="button" className="profile__button profile__button_logout">
+                        <button type="button" className="profile__button profile__button_logout" onClick={onLogout}>
                             Выйти из аккаунта
                         </button>
                     </>) : (<button type="submit" disabled={!isValid} className="profile__button profile__button_submit">

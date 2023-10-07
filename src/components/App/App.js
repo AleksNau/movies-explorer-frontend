@@ -1,8 +1,10 @@
 import './App.css';
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
+import moviesApi from "../../utils/MoviesApi";
+import authMain from "../../utils/MainApi";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Landing from "../Landing/Landing";
@@ -32,7 +34,7 @@ function App() {
     const [isChecked, setCheck] = useState(false);
 
     //Заготовка под логин
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     //Состояние прелоадера
     //обработчик загрузки
@@ -44,30 +46,97 @@ function App() {
     //стейты попапа
     const [isPopupOpen, setPopup] = useState(false);
 
-    const onLogin = (data) => {
-        setIsLoading(true)
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 2000)
+    function auth(jwt) {
+        return authMain
+            .getContent(jwt)
+            .then((res) => {
+                if (res) {
+                    setLoggedIn(true);
+                    setCurrentUser({
+                        name: res.name,
+                        email: res.email,
+                    });
+                    console.log(res)
+                    navigate("/")
+                }
+            })
+            .catch(console.error);
+    }
 
-        navigate("/");
-        setLoggedIn(true);
-        setCurrentUser({email: data.email});
+    useEffect(() => {
+        const token = localStorage.getItem("jwt");
+        if (token) {
+            auth(token);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (loggedIn) {
+            navigate("/");
+        }
+    }, [loggedIn]);
+
+    const onLogin = (data) => {
+        console.log(`Данные логина:`+ data)
+        authMain
+            .signin(data)
+            .then((res) => {
+                if (!res) throw new Error("Неправильное имя и пароль!");
+                if (res.token) {
+                    setLoggedIn(true);
+                    localStorage.setItem("jwt", res.token);
+                    navigate("/");
+                }
+            })
+            .catch(console.error)
+            .finally(()=>{
+                console.log("Успешная авторизация")
+                setIsLoading(false)})
     };
 
     const onRegister = (data) => {
-        navigate("/signin");
-        console.log(data)
-        setStatusReg(true)
+        console.log(`Данные регистрации :` + data)
+        return authMain
+            .registration(data)
+            .then((res) => {
+                if (res) {
+                    setStatusReg(true)
+                    navigate("/signin");
+                }
+            })
+            .catch(() => {
+                console.error();
+                setStatusReg(false);
+            })
+            .finally(()=>{
+                console.log("Успешная регистрация")
+                })
     };
 
     const onProfile = (data) => {
         console.log(data)
+
+        setIsLoading(true);
+        authMain
+            .setProfileInfo(data,localStorage.getItem("jwt"))
+            .then((updatedInfo) => {
+                setCurrentUser(updatedInfo);
+            })
+            .catch(console.error)
+            .finally(() => setIsLoading(false));
     };
+
+    function signOut() {
+        localStorage.removeItem("jwt");
+        setLoggedIn(false);
+        navigate("/signin");
+    }
 
     function closePopup() {
         setPopup(false);
     }
+
+
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -78,7 +147,7 @@ function App() {
 
                 <Routes>
                     <Route path='/' element={isLoading ? (<Preloader/>) : (<Landing/>)}/>
-                    <Route path='/profile' element={<Profile onProfile={onProfile}/>}/>
+                    <Route path='/profile' element={<Profile onProfile={onProfile} onLogout={signOut}/>}/>
                     <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
                     <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
                     <Route path='/movies' element={<Movies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
