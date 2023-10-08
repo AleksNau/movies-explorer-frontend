@@ -67,6 +67,16 @@ class mainApi {
             }),
         }).then(this._checkResponse);
     }
+
+    deleteCard(id,token) {
+        return fetch(this._url + `/cards/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization" : `Bearer ${token}`
+            },
+        }).then(this._checkResponse);
+    }
 }
 
 const authMain = new mainApi("http://localhost:3000");

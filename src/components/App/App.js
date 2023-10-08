@@ -45,6 +45,8 @@ function App() {
 
     //стейты попапа
     const [isPopupOpen, setPopup] = useState(false);
+    //стейт сохраненных карточек
+    const [savedMovies, setSavedMovies] = useState([]);
 
     function auth(jwt) {
         return authMain
@@ -134,6 +136,35 @@ function App() {
 
     function closePopup() {
         setPopup(false);
+    }
+
+    function handleCardDelete(card) {
+        setIsLoading(true);
+        authMain
+            .deleteCard(card._id, localStorage.getItem("jwt"))
+            .then(() => {
+                setSavedMovies((state) => state.filter((item) => item._id !== card._id));//может быть проблема с id .id _id проверить как на бэке
+            })
+            .catch(console.error)
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }
+
+    function HandleToggleMovie(data) {
+        const isAdd = savedMovies.some(element => data.id === element.movieId)
+        const searchClickMovie = savedMovies.filter((movie)=> {
+            return movie.movieId === data.id
+        })
+
+        if (isAdd) {
+            handleCardDelete(searchClickMovie[0]._id)
+        } else {
+            authMain.addMovie(data, localStorage.jwt)
+                .then(res => {
+                    setSavedMovies([res, ...savedMovies])
+                })
+        }
     }
 
 
