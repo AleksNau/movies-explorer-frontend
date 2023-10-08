@@ -127,7 +127,7 @@ function App() {
     };
 
     function signOut() {
-        localStorage.removeItem("jwt");
+        localStorage.clear();//localStorage.removeItem("jwt");
         setLoggedIn(false);
         navigate("/signin");
     }
@@ -150,7 +150,7 @@ function App() {
                     <Route path='/profile' element={<Profile onProfile={onProfile} onLogout={signOut}/>}/>
                     <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
                     <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
-                    <Route path='/movies' element={<Movies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
+                    <Route path='/movies' element={<Movies data={data} isChecked={isChecked} setCheck={setCheck} setIsLoading={setIsLoading}/>}/>
                     <Route path='/saved-movies'
                            element={<SavedMovies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
                     <Route path='*' element={<NotFoundPage/>}/>
