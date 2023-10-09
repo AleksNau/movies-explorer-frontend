@@ -11,7 +11,7 @@ const Movies = ({savedMovies, isChecked, setCheck,setIsLoading,addMovie}) => {
     const [allMovies, setAllMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [query, setQuery] = useState('');
-
+    const [notFound, setNotFound] = useState(false);
 
 
     const filter = useCallback((search,isChecked,movies) => {
@@ -40,7 +40,11 @@ const Movies = ({savedMovies, isChecked, setCheck,setIsLoading,addMovie}) => {
             filter(search,isChecked,allMovies)
         }
     }
-
+    useEffect(() => {
+        if (filteredMovies.length === 0) {
+            setNotFound(true)
+        }
+    },[filter])
     useEffect(() => {
         if (localStorage.allMovies && localStorage.shorts && localStorage.movies) {
             const movies = JSON.parse(localStorage.allMovies)
@@ -68,7 +72,7 @@ const Movies = ({savedMovies, isChecked, setCheck,setIsLoading,addMovie}) => {
         <Main>
             <section className="movies">
                 <SearchForm isChecked={isChecked} setCheck={setCheck} onSearchMovies={onSearchMovies} query={query} setQuery={setQuery} changeCheckBox={changeShort}/>
-                <MoviesCardList data={filteredMovies} addMovie={addMovie} savedMovies={savedMovies}/>
+                <MoviesCardList data={filteredMovies} addMovie={addMovie} savedMovies={savedMovies} notFound={notFound}/>
             </section>
         </Main>
 

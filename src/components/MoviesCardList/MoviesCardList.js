@@ -3,7 +3,7 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 
-const MoviesCardList = ({data,addMovie,savedMovies}) => {
+const MoviesCardList = ({data,addMovie,savedMovies,notFound}) => {
     const listLength = data.length;
     let maxList = 6;
 

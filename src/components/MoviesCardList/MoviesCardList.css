@@ -39,6 +39,12 @@
     opacity: 0.8;
 }
 
+.movies-card-list__not-found {
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     .movies-card-list {
         padding-bottom: 10px;
