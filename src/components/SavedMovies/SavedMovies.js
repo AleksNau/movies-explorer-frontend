@@ -8,10 +8,10 @@ import {useCallback, useEffect} from "react";
 
 const SavedMovies = ({data, isChecked, setCheck}) => {
     const [filteredMovies, setFilteredMovies] = useState(data);
+    const [isCheck, setIsCheck] = useState(false);
     const [query, setQuery] = useState('');
 
-    const filter = useCallback((search,isChecked,movies) => {
-        localStorage.setItem('savedMovies', JSON.stringify(filteredMovies));
+    const filter = useCallback((search,isCheck,movies) => {
         setQuery(search)
         setFilteredMovies(movies.filter((movie) => {
             const searchName = movie.nameRU.toLowerCase().includes(search.toLowerCase())
@@ -19,25 +19,21 @@ const SavedMovies = ({data, isChecked, setCheck}) => {
         }))
     },[])
 
+    function searchMovies(search) {
+        filter(search,isCheck,data)
+    }
+
     useEffect(() => {
-        if (localStorage.savedMovies && localStorage.shorts && localStorage.movies) {
-            const movies = JSON.parse(localStorage.savedMovies)
-            const search = JSON.parse(localStorage.movies)
-            const isCheck = JSON.parse(localStorage.allMovies)
-            setQuery(search)
-            setCheck(isCheck)
-            setFilteredMovies(movies) //скорее всего лишнее
-            filter(search,isCheck,movies)
-        }
-    },[filter])
+        filter(query,isCheck,data)
+    },[filter,query,isCheck,data])
 
     function changeShort() {
         if (isChecked) {
             setCheck(false)
-            filter(query,false,filteredMovies)
+            filter(query,false,data)
         } else {
             setCheck(true)
-            filter(query,true,filteredMovies)
+            filter(query,true,data)
         }
     }
 

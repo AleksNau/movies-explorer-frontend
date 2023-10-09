@@ -18,6 +18,7 @@ import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 import data from "../../utils/constants"
 import Preloader from "../Preloader/Preloader";
+import mainApi from "../../utils/MainApi";
 
 function App() {
     const navigate = useNavigate();
@@ -166,6 +167,15 @@ function App() {
                 })
         }
     }
+
+    React.useEffect(() => {
+        Promise.all([mainApi.getProfileInfo(localStorage.getItem("jwt")), mainApi.getCards(localStorage.getItem("jwt"))])
+            .then(([info, cards]) => {
+                setCurrentUser(info);
+                setSavedMovies(cards);
+            })
+            .catch(console.error);
+    }, [loggedIn]);
 
 
 
