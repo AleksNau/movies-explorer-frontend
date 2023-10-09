@@ -7,7 +7,7 @@ import moviesApi from "../../utils/MoviesApi";
 import {useState,useEffect,useCallback} from "react";
 
 
-const Movies = ({data, isChecked, setCheck,setIsLoading}) => {
+const Movies = ({savedMovies, isChecked, setCheck,setIsLoading,addMovie}) => {
     const [allMovies, setAllMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [query, setQuery] = useState('');
@@ -68,7 +68,7 @@ const Movies = ({data, isChecked, setCheck,setIsLoading}) => {
         <Main>
             <section className="movies">
                 <SearchForm isChecked={isChecked} setCheck={setCheck} onSearchMovies={onSearchMovies} query={query} setQuery={setQuery} changeCheckBox={changeShort}/>
-                <MoviesCardList data={filteredMovies}/>
+                <MoviesCardList data={filteredMovies} addMovie={addMovie} savedMovies={savedMovies}/>
             </section>
         </Main>
 

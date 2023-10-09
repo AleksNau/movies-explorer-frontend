@@ -77,7 +77,31 @@ class mainApi {
             },
         }).then(this._checkResponse);
     }
+
+    addMovie = (data) => {
+        // console.log(data);
+        return fetch(`${this._url}/movies`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                country: data.country,
+                director: data.director,
+                duration: data.duration,
+                year: data.year,
+                description: data.description,
+                image: 'https://api.nomoreparties.co' + data.image.url,
+                trailerLink: data.trailerLink,
+                thumbnail: 'https://api.nomoreparties.co' + data.image.formats.thumbnail.url,
+                movieId: data.id,
+                nameRU: data.nameRU,
+                nameEN: data.nameEN,
+            }),
+        }).then(this._checkResponse);
+    };
 }
 
-const authMain = new mainApi("http://localhost:3000");
-export default authMain;
+const apiMain = new mainApi("http://localhost:3000");
+export default apiMain;

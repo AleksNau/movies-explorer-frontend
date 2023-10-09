@@ -4,7 +4,7 @@ import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
 import moviesApi from "../../utils/MoviesApi";
-import authMain from "../../utils/MainApi";
+import apiMain from "../../utils/MainApi";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Landing from "../Landing/Landing";
@@ -49,7 +49,7 @@ function App() {
     const [savedMovies, setSavedMovies] = useState([]);
 
     function auth(jwt) {
-        return authMain
+        return apiMain
             .getContent(jwt)
             .then((res) => {
                 if (res) {
@@ -80,7 +80,7 @@ function App() {
 
     const onLogin = (data) => {
         console.log(`Данные логина:`+ data)
-        authMain
+        apiMain
             .signin(data)
             .then((res) => {
                 if (!res) throw new Error("Неправильное имя и пароль!");
@@ -98,7 +98,7 @@ function App() {
 
     const onRegister = (data) => {
         console.log(`Данные регистрации :` + data)
-        return authMain
+        return apiMain
             .registration(data)
             .then((res) => {
                 if (res) {
@@ -119,7 +119,7 @@ function App() {
         console.log(data)
 
         setIsLoading(true);
-        authMain
+        apiMain
             .setProfileInfo(data,localStorage.getItem("jwt"))
             .then((updatedInfo) => {
                 setCurrentUser(updatedInfo);
@@ -140,7 +140,7 @@ function App() {
 
     function handleCardDelete(card) {
         setIsLoading(true);
-        authMain
+        apiMain
             .deleteCard(card._id, localStorage.getItem("jwt"))
             .then(() => {
                 setSavedMovies((state) => state.filter((item) => item._id !== card._id));//может быть проблема с id .id _id проверить как на бэке
@@ -160,7 +160,7 @@ function App() {
         if (isAdd) {
             handleCardDelete(searchClickMovie[0]._id)
         } else {
-            authMain.addMovie(data, localStorage.jwt)
+            apiMain.addMovie(data, localStorage.jwt)
                 .then(res => {
                     setSavedMovies([res, ...savedMovies])
                 })
@@ -181,9 +181,9 @@ function App() {
                     <Route path='/profile' element={<Profile onProfile={onProfile} onLogout={signOut}/>}/>
                     <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
                     <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
-                    <Route path='/movies' element={<Movies data={data} isChecked={isChecked} setCheck={setCheck} setIsLoading={setIsLoading}/>}/>
+                    <Route path='/movies' element={<Movies isChecked={isChecked} setCheck={setCheck} setIsLoading={setIsLoading} addMovie={HandleToggleMovie} savedMovies={savedMovies}/>}/>
                     <Route path='/saved-movies'
-                           element={<SavedMovies data={data} isChecked={isChecked} setCheck={setCheck}/>}/>
+                           element={<SavedMovies data={savedMovies} isChecked={isChecked} setCheck={setCheck}/>}/>
                     <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
                 {pathsWithFooter && <Footer/>}

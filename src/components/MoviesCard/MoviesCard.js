@@ -26,7 +26,7 @@ const MoviesCard = ({cardData,savedMovies,addMovie}) => {
                 >
                 </video>
                 {pathname === "/movies" ? !isChecked ? (
-                    <button className="movies-card__button-save" onClick={() => setCheck(!isChecked)}>Сохранить</button>
+                    <button className="movies-card__button-save" onClick={() => handleAddMovie()}>Сохранить</button>
                 ) : (
                     <button className="movies-card__button-checked" onClick={() => setCheck(!isChecked)}>
                         <svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg">
