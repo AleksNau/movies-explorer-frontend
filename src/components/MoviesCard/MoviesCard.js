@@ -17,12 +17,20 @@ const MoviesCard = ({cardData,savedMovies,addMovie}) => {
       }
     }
 
+
+    const durationConverter = (duration) => {
+        const hours = Math.floor(duration / 60);
+        const minutes = duration % 60;
+        return `${hours}ч${minutes}м`;
+    }
+    const imageUrl = `https://api.nomoreparties.co/${image.url}`;
+    const imageSavedUrl = `${image}`;
     return (
         <li className="movies-card">
             <div className="movies-card__conteiner">
                 <video
                     className="movies-card__image"
-                    poster={`https://api.nomoreparties.co/${image.url}`}
+                    poster={pathname === "/movies" ? (imageUrl) : (imageSavedUrl)}
                 >
                 </video>
                 {pathname === "/movies" ? !isChecked ? (
@@ -44,7 +52,7 @@ const MoviesCard = ({cardData,savedMovies,addMovie}) => {
 
             <div className="movies-card__info">
                 <p className="movies-card__name">{cardData.nameRU}</p>
-                <p className="movies-card__time">{cardData.duration}ч {cardData.duration}м</p>
+                <p className="movies-card__time">{durationConverter(cardData.duration)}</p>
             </div>
         </li>
     );

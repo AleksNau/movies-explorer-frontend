@@ -88,11 +88,12 @@ function App() {
                 if (res.token) {
                     setLoggedIn(true);
                     localStorage.setItem("jwt", res.token);
-                    navigate("/");
+
                 }
             })
             .catch(console.error)
             .finally(()=>{
+                navigate("/");
                 console.log("Успешная авторизация")
                 setIsLoading(false)})
     };

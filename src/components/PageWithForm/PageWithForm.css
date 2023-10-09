@@ -70,12 +70,21 @@
     transition: opacity linear .4s;
 }
 
+.form__submit_not-valid {
+    background-color: #8B8B8B;
+    cursor: auto;
+}
+
 .form__submit_register {
     margin-top: 71px;
 }
 
 .form__submit:hover {
     opacity: 0.8;
+}
+
+.form__submit_not-valid:hover {
+    opacity: 1;
 }
 
 .form__question {

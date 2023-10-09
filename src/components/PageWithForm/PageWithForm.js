@@ -4,13 +4,12 @@ import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
 import {useNavigate} from "react-router-dom";
 
-const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit, buttonClass}) => {
+const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit, buttonClass,isValid}) => {
 
     const navigate = useNavigate();
 
     const {
         handleSubmit,
-        formState: {isValid},
     } = useForm({mode: "onChange"});
 
     return (<>
@@ -31,7 +30,7 @@ const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, o
                     {children}
                     <button
                         type="submit"
-                        className={`form__submit ${buttonClass}`}
+                        className={isValid ? (`form__submit ${buttonClass}`): (`form__submit ${buttonClass} form__submit_not-valid`)}
                         disabled={!isValid}
                         form={`sign-up-form`}
                         value={buttonTitle}

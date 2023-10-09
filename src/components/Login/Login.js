@@ -9,6 +9,7 @@ const Login = ({onLogin}) => {
         register,
         formState: {errors},
         getValues,
+        isValid
     } = useForm({mode: "onChange"});
 
     function handleLogin() {
@@ -24,6 +25,7 @@ const Login = ({onLogin}) => {
                 link={"/signup"}
                 subtitle={'Ещё не зарегистрированы?'}
                 onSubmit={handleLogin}
+                isValid={isValid}
             >
                 <label className="form__label">E-mail
                     <input

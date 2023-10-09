@@ -8,7 +8,7 @@ const Register = ({onRegister}) => {
 
     const {
         register,
-        formState: {errors},
+        formState: {errors,isValid},
         getValues
     } = useForm({mode: "onChange"});
 
@@ -27,6 +27,7 @@ const Register = ({onRegister}) => {
                 subtitle={'Уже зарегистрированы?'}
                 onSubmit={handleRegister}
                 buttonClass={'form__submit_register'}
+                isValid={isValid}
             >
                 <label className="register__label">Имя
                     <input
