@@ -100,7 +100,18 @@ class mainApi {
                 nameEN: data.nameEN,
             }),
         }).then(this._checkResponse);
+
+
     };
+
+    getCards() {
+        return fetch(`${this._url}/movies`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(this._checkResponse);
+    }
 
 
 }

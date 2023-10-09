@@ -8,10 +8,9 @@ import {useCallback, useEffect} from "react";
 
 const SavedMovies = ({data, isChecked, setCheck}) => {
     const [filteredMovies, setFilteredMovies] = useState(data);
-    const [isCheck, setIsCheck] = useState(false);
     const [query, setQuery] = useState('');
 
-    const filter = useCallback((search,isCheck,movies) => {
+    const filter = useCallback((search,isChecked,movies) => {
         setQuery(search)
         setFilteredMovies(movies.filter((movie) => {
             const searchName = movie.nameRU.toLowerCase().includes(search.toLowerCase())
@@ -20,20 +19,22 @@ const SavedMovies = ({data, isChecked, setCheck}) => {
     },[])
 
     function searchMovies(search) {
-        filter(search,isCheck,data)
+        filter(search,isChecked,data)
     }
 
     useEffect(() => {
-        filter(query,isCheck,data)
-    },[filter,query,isCheck,data])
+        filter(query,isChecked,data)
+    },[filter,query,isChecked,data])
 
     function changeShort() {
         if (isChecked) {
             setCheck(false)
             filter(query,false,data)
+            console.log(data)
         } else {
             setCheck(true)
             filter(query,true,data)
+            console.log(data)
         }
     }
 
@@ -41,7 +42,7 @@ const SavedMovies = ({data, isChecked, setCheck}) => {
         <Main>
             <section className="saved-movies">
                 <SearchForm isChecked={isChecked} setCheck={setCheck} query={query} setQuery={setQuery} changeCheckBox={changeShort}/>
-                <MoviesCardList data={data}/>
+                <MoviesCardList data={filteredMovies}/>
             </section>
         </Main>
     );
