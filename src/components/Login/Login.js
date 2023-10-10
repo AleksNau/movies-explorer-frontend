@@ -7,9 +7,9 @@ import {emailValidation, passwordValidation} from '../../utils/validation';
 const Login = ({onLogin}) => {
     const {
         register,
-        formState: {errors},
+        formState: {errors,isValid},
         getValues,
-        isValid
+
     } = useForm({mode: "onChange"});
 
     function handleLogin() {
@@ -25,6 +25,7 @@ const Login = ({onLogin}) => {
                 link={"/signup"}
                 subtitle={'Ещё не зарегистрированы?'}
                 onSubmit={handleLogin}
+                buttonClass={''}
                 isValid={isValid}
             >
                 <label className="form__label">E-mail

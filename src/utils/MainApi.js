@@ -69,7 +69,7 @@ class mainApi {
     }
 
     deleteCard(id,token) {
-        return fetch(this._url + `/cards/${id}`, {
+        return fetch(this._url + `/movies/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -108,6 +108,7 @@ class mainApi {
         return fetch(`${this._url}/movies`, {
             method: 'GET',
             headers: {
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
                 'Content-Type': 'application/json',
             },
         }).then(this._checkResponse);

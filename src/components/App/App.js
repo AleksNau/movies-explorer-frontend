@@ -160,9 +160,9 @@ function App() {
         })
 
         if (isAdd) {
-            handleCardDelete(searchClickMovie[0]._id)
+            handleCardDelete(searchClickMovie[0])
         } else {
-            apiMain.addMovie(data, localStorage.jwt)
+            apiMain.addMovie(data, localStorage.getItem("jwt"))
                 .then(res => {
                     setSavedMovies([res, ...savedMovies])
                 })
@@ -194,7 +194,7 @@ function App() {
                     <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
                     <Route path='/movies' element={<Movies isChecked={isChecked} setCheck={setCheck} setIsLoading={setIsLoading} addMovie={HandleToggleMovie} savedMovies={savedMovies}/>}/>
                     <Route path='/saved-movies'
-                           element={<SavedMovies data={savedMovies} isChecked={isChecked} setCheck={setCheck}/>}/>
+                           element={<SavedMovies data={savedMovies} isChecked={isChecked} setCheck={setCheck} onDelete={handleCardDelete}/>}/>
                     <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
                 {pathsWithFooter && <Footer/>}

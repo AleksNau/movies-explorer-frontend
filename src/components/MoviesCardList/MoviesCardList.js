@@ -3,7 +3,7 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 
-const MoviesCardList = ({data,addMovie,savedMovies,notFound}) => {
+const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
     const listLength = data.length;
     let maxList = 6;
 
@@ -25,7 +25,7 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound}) => {
             <ul className="movies-card-list">
                 {
                     data.map(card => (
-                        <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies}/>
+                        <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies} onDelete={onDelete}/>
                     ))
                 }
             </ul>
