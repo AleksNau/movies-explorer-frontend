@@ -29,7 +29,6 @@ const Register = ({onRegister,errorSubmit,setErrorSubmit}) => {
                 buttonClass={'form__submit_register'}
                 isValid={isValid}
                 errorSubmit={errorSubmit}
-                setErrorSubmit={setErrorSubmit}
             >
                 <label className="register__label">Имя
                     <input
@@ -46,7 +45,7 @@ const Register = ({onRegister,errorSubmit,setErrorSubmit}) => {
                         id="email"
                         className="form__input"
                         placeholder="Email"
-                        {...register('email', emailValidation)}
+                        {...register('email', {onChange:()=> {setErrorSubmit(false)},...emailValidation})}
                     />
                     <span id="name-error" className="form__error">{errors?.email?.message}
                         &nbsp;
@@ -58,7 +57,7 @@ const Register = ({onRegister,errorSubmit,setErrorSubmit}) => {
                         type="password"
                         className={errors?.password? ('form__input form__input_error') : (`form__input`)}
                         placeholder="Пароль"
-                        {...register('password', passwordValidation)}
+                        {...register('password', {onChange:()=> {setErrorSubmit(false)},...passwordValidation})}
                     />
                     <span id="info-error" className="form__error">{errors?.password?.message}
                         &nbsp;

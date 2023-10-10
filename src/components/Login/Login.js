@@ -4,7 +4,7 @@ import "./Login.css";
 import PageWithForm from "../PageWithForm/PageWithForm";
 import {emailValidation, passwordValidation} from '../../utils/validation';
 
-const Login = ({onLogin,setErrorSubmit}) => {
+const Login = ({onLogin,setErrorSubmit,errorSubmit}) => {
     const {
         register,
         formState: {errors,isValid},
@@ -27,14 +27,14 @@ const Login = ({onLogin,setErrorSubmit}) => {
                 onSubmit={handleLogin}
                 buttonClass={''}
                 isValid={isValid}
-                setErrorSubmit={setErrorSubmit}
+                errorSubmit={errorSubmit}
             >
                 <label className="form__label">E-mail
                     <input
                         id="email"
                         className="form__input"
                         placeholder="Email"
-                        {...register('email', emailValidation)}
+                        {...register('email', {onChange:()=> {setErrorSubmit(false)},...emailValidation})}
                     />
                     <span id="name-error" className="form__error">{errors?.email?.message}
                         &nbsp;
@@ -46,7 +46,7 @@ const Login = ({onLogin,setErrorSubmit}) => {
                         type="password"
                         className="form__input"
                         placeholder="Пароль"
-                        {...register('password', passwordValidation)}
+                        {...register('password', {onChange:()=> {setErrorSubmit(false)},...passwordValidation})}
                     />
                     <span id="info-error" className="form__error">{errors?.password?.message}
                         &nbsp;
