@@ -29,11 +29,13 @@ const MoviesCard = ({cardData,savedMovies,addMovie,onDelete}) => {
     return (
         <li className="movies-card">
             <div className="movies-card__conteiner">
+                <a href={cardData.trailerLink} target='_blank' rel='noreferrer'>
                 <video
                     className="movies-card__image"
                     poster={pathname === "/movies" ? (imageUrl) : (imageSavedUrl)}
                 >
                 </video>
+                </a>
                 {pathname === "/movies" ? !isSaved ? (
                     <button className="movies-card__button-save" onClick={() => handleAddMovie()}>Сохранить</button>
                 ) : (
@@ -60,7 +62,3 @@ const MoviesCard = ({cardData,savedMovies,addMovie,onDelete}) => {
 };
 
 export default MoviesCard;
-
-/* <iframe className="movies-card__image"src={cardData.trailer} poster={cardData.image}  frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen title={cardData.movieId}></iframe>*/

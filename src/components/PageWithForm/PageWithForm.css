@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+.red {
+    color: red;
+    font-size: 20px;
+}
+
 .form__fieldset {
     display: flex;
     flex-direction: column;

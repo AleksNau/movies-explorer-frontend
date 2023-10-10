@@ -4,12 +4,13 @@ import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
 import {useNavigate} from "react-router-dom";
 
-const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit, buttonClass,isValid}) => {
+const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit, buttonClass,isValid,errorSubmit}) => {
 
     const navigate = useNavigate();
 
     const {
         handleSubmit,
+
     } = useForm({mode: "onChange"});
 
     return (<>
@@ -24,10 +25,12 @@ const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, o
                 className={`form`}
                 id={`sign-up-form`}
                 method="post"
+                noValidate
             >
                 <fieldset className="form__fieldset">
                     <legend className="form__title">{title}</legend>
                     {children}
+                    <p className={"red"}>{errorSubmit ? ("что то пошло не так"): ("")}</p>
                     <button
                         type="submit"
                         className={isValid ? (`form__submit ${buttonClass}`): (`form__submit ${buttonClass} form__submit_not-valid`)}

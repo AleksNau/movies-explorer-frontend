@@ -44,7 +44,8 @@ function App() {
 
     //статус регистрации
     const [statusReg, setStatusReg] = useState(false);
-
+    //статус регистрации
+    const [errorSubmit, setErrorSubmit] = useState(false);
     //стейты попапа
     const [isPopupOpen, setPopup] = useState(false);
     //стейт сохраненных карточек
@@ -60,7 +61,6 @@ function App() {
                         name: res.name,
                         email: res.email,
                     });
-                    console.log(res)
                     navigate("/")
                 }
             })
@@ -111,7 +111,8 @@ function App() {
             })
             .catch(() => {
                 console.error();
-                setStatusReg(false);
+                setErrorSubmit(true);
+
             })
             .finally(()=>{
                 console.log("Успешная регистрация")
@@ -193,22 +194,33 @@ function App() {
                     <Route path='/profile' element={
                         <ProtectedRoute
                             component={Profile}
+                            loggedIn={loggedIn}
                             onProfile={onProfile}
                             onLogout={signOut}
                         />
                     }/>
-                    <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
-                    <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
+                    <Route path='/signin' element={<Login onLogin={onLogin}
+                                                          errorSubmit={errorSubmit}
+                                                          setErrorSubmit={setErrorSubmit}/>}/>
+                    <Route path='/signup' element={<Register onRegister={onRegister}
+                                                             errorSubmit={errorSubmit}
+                                                             setErrorSubmit={setErrorSubmit}/>}/>
                     <Route path='/movies' element={
                         <ProtectedRoute
                             component={Movies}
-                            isChecked={isChecked} setCheck={setCheck} setIsLoading={setIsLoading} addMovie={HandleToggleMovie} savedMovies={savedMovies}
+                            loggedIn={loggedIn}
+                            isChecked={isChecked}
+                            setCheck={setCheck}
+                            setIsLoading={setIsLoading}
+                            addMovie={HandleToggleMovie}
+                            savedMovies={savedMovies}
                         />
                     }/>
                     <Route path='/saved-movies'
                            element={
                                <ProtectedRoute
                                    component={SavedMovies}
+                                   loggedIn={loggedIn}
                                    data={savedMovies} isChecked={isChecked} setCheck={setCheck} onDelete={handleCardDelete}
                                />
                            }/>

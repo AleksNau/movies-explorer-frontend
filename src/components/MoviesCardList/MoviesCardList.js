@@ -7,7 +7,7 @@ import {useLocation} from "react-router-dom";
 const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
     let {pathname} = useLocation();
     const listLength = data.length;
-    let maxList = 6;
+
     const [shownMovies, setShownMovies] = useState(0);
     function shownCount() {
         const display = window.innerWidth;
@@ -24,12 +24,12 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
 
     useEffect(() => {
         shownCount();
-    }, []);
+    }, [window.innerWidth,pathname]);
 
     useEffect(() => {
         setTimeout(() => {
             window.addEventListener('resize', shownCount);
-        }, 500);
+        }, 100);
     });
 
     function loadMore() {

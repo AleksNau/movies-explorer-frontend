@@ -4,7 +4,7 @@ import "./Login.css";
 import PageWithForm from "../PageWithForm/PageWithForm";
 import {emailValidation, passwordValidation} from '../../utils/validation';
 
-const Login = ({onLogin}) => {
+const Login = ({onLogin,setErrorSubmit}) => {
     const {
         register,
         formState: {errors,isValid},
@@ -27,6 +27,7 @@ const Login = ({onLogin}) => {
                 onSubmit={handleLogin}
                 buttonClass={''}
                 isValid={isValid}
+                setErrorSubmit={setErrorSubmit}
             >
                 <label className="form__label">E-mail
                     <input

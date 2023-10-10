@@ -38,6 +38,7 @@ const Movies = ({savedMovies, isChecked, setCheck,setIsLoading,addMovie}) => {
                 .finally(() => setIsLoading(false))
         } else {
             filter(search,isChecked,allMovies)
+            console.log(filteredMovies.length)
         }
     }
     useEffect(() => {

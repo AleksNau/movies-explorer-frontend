@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import PageWithForm from "../PageWithForm/PageWithForm";
 import {emailValidation, nameValidation, passwordValidation} from '../../utils/validation';
 
-const Register = ({onRegister}) => {
+const Register = ({onRegister,errorSubmit,setErrorSubmit}) => {
 
     const {
         register,
@@ -28,6 +28,8 @@ const Register = ({onRegister}) => {
                 onSubmit={handleRegister}
                 buttonClass={'form__submit_register'}
                 isValid={isValid}
+                errorSubmit={errorSubmit}
+                setErrorSubmit={setErrorSubmit}
             >
                 <label className="register__label">Имя
                     <input
@@ -35,7 +37,7 @@ const Register = ({onRegister}) => {
                         type="text"
                         className="register__input"
                         placeholder="имя"
-                        {...register('name', nameValidation)}
+                        {...register('name', {onChange:()=> {setErrorSubmit(false)},...nameValidation})}
                     />
                     <span id="name-error" className="register__error">{errors?.name?.message}&nbsp;</span>
                 </label>
