@@ -15,6 +15,7 @@ import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Movies from "../Movies/Movies";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import data from "../../utils/constants"
 import Preloader from "../Preloader/Preloader";
@@ -189,12 +190,28 @@ function App() {
 
                 <Routes>
                     <Route path='/' element={isLoading ? (<Preloader/>) : (<Landing/>)}/>
-                    <Route path='/profile' element={<Profile onProfile={onProfile} onLogout={signOut}/>}/>
+                    <Route path='/profile' element={
+                        <ProtectedRoute
+                            component={Profile}
+                            onProfile={onProfile}
+                            onLogout={signOut}
+                        />
+                    }/>
                     <Route path='/signin' element={<Login onLogin={onLogin}/>}/>
                     <Route path='/signup' element={<Register onRegister={onRegister}/>}/>
-                    <Route path='/movies' element={<Movies isChecked={isChecked} setCheck={setCheck} setIsLoading={setIsLoading} addMovie={HandleToggleMovie} savedMovies={savedMovies}/>}/>
+                    <Route path='/movies' element={
+                        <ProtectedRoute
+                            component={Movies}
+                            isChecked={isChecked} setCheck={setCheck} setIsLoading={setIsLoading} addMovie={HandleToggleMovie} savedMovies={savedMovies}
+                        />
+                    }/>
                     <Route path='/saved-movies'
-                           element={<SavedMovies data={savedMovies} isChecked={isChecked} setCheck={setCheck} onDelete={handleCardDelete}/>}/>
+                           element={
+                               <ProtectedRoute
+                                   component={SavedMovies}
+                                   data={savedMovies} isChecked={isChecked} setCheck={setCheck} onDelete={handleCardDelete}
+                               />
+                           }/>
                     <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
                 {pathsWithFooter && <Footer/>}
