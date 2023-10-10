@@ -63,9 +63,9 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
                 }
             </ul>
             <div className="more-button-container">
-                <button className="more-button" onClick={() => loadMore()}>
+                {pathname==="/movies" ? (<button className="more-button" onClick={() => loadMore()}>
                     Ещё
-                </button>
+                </button>) : ("")}
             </div>
 
         </>

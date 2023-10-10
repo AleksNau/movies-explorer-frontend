@@ -81,7 +81,6 @@ function App() {
     }, [loggedIn]);
 
     const onLogin = (data) => {
-        console.log(`Данные логина:`+ data)
         apiMain
             .signin(data)
             .then((res) => {
@@ -94,19 +93,18 @@ function App() {
             })
             .catch(console.error)
             .finally(()=>{
-                navigate("/");
+                navigate("/movies");
                 console.log("Успешная авторизация")
                 setIsLoading(false)})
     };
 
     const onRegister = (data) => {
-        console.log(`Данные регистрации :` + data)
         return apiMain
             .registration(data)
             .then((res) => {
                 if (res) {
                     setStatusReg(true)
-                    navigate("/signin");
+                    onLogin({email:data.email,password:data.password})
                 }
             })
             .catch(() => {
