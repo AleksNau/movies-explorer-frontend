@@ -1,21 +1,51 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import {useLocation} from "react-router-dom";
 
 
 const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
+    let {pathname} = useLocation();
     const listLength = data.length;
     let maxList = 6;
+    const [shownMovies, setShownMovies] = useState(0);
+    function shownCount() {
+        const display = window.innerWidth;
+        if (display > 1180) {
+            setShownMovies(16);
+        } else if (display > 1023) {
+            setShownMovies(12);
+        } else if (display > 800) {
+            setShownMovies(8);
+        } else if (display < 800) {
+            setShownMovies(5);
+        }
+    }
+
+    useEffect(() => {
+        shownCount();
+    }, []);
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.addEventListener('resize', shownCount);
+        }, 500);
+    });
 
     function loadMore() {
-        maxList += 3;
+
         const moreButton = document.querySelector('.more-button')
-        const array = Array.from(document.querySelector('.movies-card-list').children);
-        const visItems = array.slice(0, maxList)
+        const display = window.innerWidth;
+        if (display > 1180) {
+            setShownMovies(shownMovies + 4);
+        } else if (display > 1023) {
+            setShownMovies(shownMovies + 4);
+        }
+        else if (display < 1023) {
+            setShownMovies(shownMovies + 2);
+        }
 
-        visItems.forEach(el => el.classList.add('is-visible'));
-
-        if (visItems.length === listLength) {
+        if (shownMovies >= listLength) {
             moreButton.style.display = 'none';
         }
     }
@@ -23,10 +53,13 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
     return (
         <>
             <ul className="movies-card-list">
-                {
-                    data.map(card => (
+                {pathname === '/movies' ?
+                    (data.slice(0, shownMovies).map(card => (
                         <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies} onDelete={onDelete}/>
-                    ))
+                    ))):(
+                        data.map(card => (
+                            <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies} onDelete={onDelete}/>
+                    )))
                 }
             </ul>
             <div className="more-button-container">
