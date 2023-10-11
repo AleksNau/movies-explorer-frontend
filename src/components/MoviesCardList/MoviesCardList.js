@@ -2,11 +2,14 @@ import React,{useEffect,useState} from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {useLocation} from "react-router-dom";
+import LoadingText from "../../contexts/loadingContext";
+import Preloader from "../Preloader/Preloader";
 
 
 const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
     let {pathname} = useLocation();
     const listLength = data.length;
+    const isLoading = React.useContext(LoadingText);
 
     const [shownMovies, setShownMovies] = useState(0);
     function shownCount() {
@@ -52,18 +55,20 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
 
     return (
         <>
-            <ul className="movies-card-list">
+            {isLoading ? (<Preloader/>) : (<ul className="movies-card-list">
                 {pathname === '/movies' ?
                     (data.slice(0, shownMovies).map(card => (
-                        <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies} onDelete={onDelete}/>
-                    ))):(
+                        <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies}
+                                    onDelete={onDelete}/>
+                    ))) : (
                         data.map(card => (
-                            <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies} onDelete={onDelete}/>
-                    )))
+                            <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies}
+                                        onDelete={onDelete}/>
+                        )))
                 }
-            </ul>
+            </ul>)}
             <div className="more-button-container">
-                {pathname==="/movies" ? (<button className="more-button" onClick={() => loadMore()}>
+                {(pathname==="/movies" && !isLoading) ? (<button className="more-button" onClick={() => loadMore()}>
                     Ещё
                 </button>) : ("")}
             </div>

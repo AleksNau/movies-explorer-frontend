@@ -26,6 +26,8 @@ const Movies = ({savedMovies, isChecked, setCheck,setIsLoading,addMovie}) => {
     },[])
 
     function onSearchMovies(search) {
+        setIsLoading(true)
+
         if(allMovies.length === 0) {
             moviesApi
                 .getCards()
@@ -39,6 +41,7 @@ const Movies = ({savedMovies, isChecked, setCheck,setIsLoading,addMovie}) => {
         } else {
             filter(search,isChecked,allMovies)
             console.log(filteredMovies.length)
+            setIsLoading(false)
         }
     }
     useEffect(() => {

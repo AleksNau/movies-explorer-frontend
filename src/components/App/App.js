@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState,useEffect} from "react";
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
-
+import LoadingText from '../../contexts/loadingContext';
 import moviesApi from "../../utils/MoviesApi";
 import apiMain from "../../utils/MainApi";
 import Header from "../Header/Header";
@@ -17,7 +17,6 @@ import Movies from "../Movies/Movies";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-import data from "../../utils/constants"
 import Preloader from "../Preloader/Preloader";
 import mainApi from "../../utils/MainApi";
 
@@ -182,6 +181,7 @@ function App() {
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
+            <LoadingText.Provider value={isLoading}>
             <div className="App">
                 {pathsWithHeader && (
                     <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
@@ -232,6 +232,7 @@ function App() {
                     statusReg={statusReg}
                 />
             </div>
+            </LoadingText.Provider>
         </CurrentUserContext.Provider>
     );
 }

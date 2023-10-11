@@ -3,10 +3,12 @@ import "./PageWithForm.css";
 import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
 import {useNavigate} from "react-router-dom";
+import LoadingText from "../../contexts/loadingContext.js";
 
 const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit, buttonClass,isValid,errorSubmit}) => {
 
     const navigate = useNavigate();
+    const isLoading = React.useContext(LoadingText);
 
     const {
         handleSubmit,
