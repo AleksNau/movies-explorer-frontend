@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {useLocation} from "react-router-dom";
@@ -6,12 +6,13 @@ import LoadingText from "../../contexts/loadingContext";
 import Preloader from "../Preloader/Preloader";
 
 
-const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
+const MoviesCardList = ({data, addMovie, savedMovies, notFound, onDelete}) => {
     let {pathname} = useLocation();
     const listLength = data.length;
     const isLoading = React.useContext(LoadingText);
 
     const [shownMovies, setShownMovies] = useState(0);
+
     function shownCount() {
         const display = window.innerWidth;
         if (display > 1180) {
@@ -27,7 +28,7 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
 
     useEffect(() => {
         shownCount();
-    }, [window.innerWidth,pathname]);
+    }, [window.innerWidth, pathname]);
 
     useEffect(() => {
         setTimeout(() => {
@@ -43,8 +44,7 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
             setShownMovies(shownMovies + 4);
         } else if (display > 1023) {
             setShownMovies(shownMovies + 4);
-        }
-        else if (display < 1023) {
+        } else if (display < 1023) {
             setShownMovies(shownMovies + 2);
         }
 
@@ -55,7 +55,7 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
 
     return (
         <>
-            {isLoading ? (<Preloader/>) : (<ul className="movies-card-list">
+            {isLoading ? (<Preloader/>) : (data.length > 0 ? (<ul className="movies-card-list">
                 {pathname === '/movies' ?
                     (data.slice(0, shownMovies).map(card => (
                         <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies}
@@ -66,9 +66,9 @@ const MoviesCardList = ({data,addMovie,savedMovies,notFound,onDelete}) => {
                                         onDelete={onDelete}/>
                         )))
                 }
-            </ul>)}
+            </ul>) : (<p className={'white'}>Ничего не найдено</p>))}
             <div className="more-button-container">
-                {(pathname==="/movies" && !isLoading) ? (<button className="more-button" onClick={() => loadMore()}>
+                {(pathname === "/movies" && !isLoading && shownMovies < listLength) ? (<button className="more-button" onClick={() => loadMore()}>
                     Ещё
                 </button>) : ("")}
             </div>

@@ -75,7 +75,7 @@ const Movies = ({savedMovies, isChecked, setCheck,setIsLoading,addMovie}) => {
         return (
         <Main>
             <section className="movies">
-                <SearchForm isChecked={isChecked} setCheck={setCheck} onSearchMovies={onSearchMovies} query={query} setQuery={setQuery} changeCheckBox={changeShort}/>
+                <SearchForm isChecked={isChecked} onSearchMovies={onSearchMovies} query={query} setQuery={setQuery} changeCheckBox={changeShort}/>
                 <MoviesCardList data={filteredMovies} addMovie={addMovie} savedMovies={savedMovies} notFound={notFound}/>
             </section>
         </Main>

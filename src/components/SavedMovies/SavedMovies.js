@@ -39,7 +39,7 @@ const SavedMovies = ({data, isChecked, setCheck,onDelete}) => {
     return (
         <Main>
             <section className="saved-movies">
-                <SearchForm isChecked={isChecked} setCheck={setCheck} query={query} setQuery={setQuery} changeCheckBox={changeShort} onSearchMovies={searchMovies}/>
+                <SearchForm isChecked={isChecked} query={query} setQuery={setQuery} changeCheckBox={changeShort} onSearchMovies={searchMovies}/>
                 <MoviesCardList data={filteredMovies} savedMovies={data} onDelete={onDelete}/>
             </section>
         </Main>

@@ -3,7 +3,7 @@ import React, {useState,useEffect} from "react";
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import LoadingText from '../../contexts/loadingContext';
-import moviesApi from "../../utils/MoviesApi";
+
 import apiMain from "../../utils/MainApi";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
