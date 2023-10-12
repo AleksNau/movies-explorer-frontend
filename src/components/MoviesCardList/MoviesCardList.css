@@ -9,11 +9,6 @@
     gap: 44px 30px
 }
 
-.white {
-    color: white;
-    font-size: 25px;
-}
-
 .more-button-container {
     display: flex;
     flex-direction: column;
@@ -45,6 +40,7 @@
 }
 
 .movies-card-list__not-found {
+    font-family: 'Inter', ‘Arial’, sans-serif;
     color: #ffffff;
     font-size: 20px;
     text-align: center;

@@ -6,9 +6,9 @@ import LoadingText from "../../contexts/loadingContext";
 import Preloader from "../Preloader/Preloader";
 
 
-const MoviesCardList = ({data, addMovie, savedMovies, notFound, onDelete}) => {
+const MoviesCardList = ({filteredMovies, addMovie, savedMovies, onDelete,serverError}) => {
     let {pathname} = useLocation();
-    const listLength = data.length;
+    const listLength = filteredMovies.length;
     const isLoading = React.useContext(LoadingText);
 
     const [shownMovies, setShownMovies] = useState(0);
@@ -55,18 +55,18 @@ const MoviesCardList = ({data, addMovie, savedMovies, notFound, onDelete}) => {
 
     return (
         <>
-            {isLoading ? (<Preloader/>) : (data.length > 0 ? (<ul className="movies-card-list">
+            {isLoading ? (<Preloader/>) : (listLength > 0 ? (<ul className="movies-card-list">
                 {pathname === '/movies' ?
-                    (data.slice(0, shownMovies).map(card => (
+                    (filteredMovies.slice(0, shownMovies).map(card => (
                         <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies}
                                     onDelete={onDelete}/>
                     ))) : (
-                        data.map(card => (
+                        filteredMovies.map(card => (
                             <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies}
                                         onDelete={onDelete}/>
                         )))
                 }
-            </ul>) : (<p className={'white'}>Ничего не найдено</p>))}
+            </ul>) : (<p className='movies-card-list__not-found'>Ничего не найдено</p>))}
             <div className="more-button-container">
                 {(pathname === "/movies" && !isLoading && shownMovies < listLength) ? (<button className="more-button" onClick={() => loadMore()}>
                     Ещё
