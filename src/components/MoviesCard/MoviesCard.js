@@ -30,11 +30,11 @@ const MoviesCard = ({cardData,savedMovies,addMovie,onDelete}) => {
         <li className="movies-card">
             <div className="movies-card__conteiner">
                 <a href={cardData.trailerLink} target='_blank' rel='noreferrer'>
-                <video
-                    className="movies-card__image"
-                    poster={pathname === "/movies" ? (imageUrl) : (imageSavedUrl)}
-                >
-                </video>
+                    <img
+                        src={pathname === "/movies" ? (imageUrl) : (imageSavedUrl)}
+                        alt={cardData.nameRU}
+                        className="movies-card__image"
+                    />
                 </a>
                 {pathname === "/movies" ? !isSaved ? (
                     <button className="movies-card__button-save" onClick={() => handleAddMovie()}>Сохранить</button>

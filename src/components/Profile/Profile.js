@@ -15,11 +15,12 @@ const Profile = ({onProfile,onLogout,editProfile,setEditProfile}) => {
         formState: {errors, isValid},
         getValues,
         setValue,
-        watch
+        watch,
     } = useForm({mode: "onChange"});
 
     const watchName = watch("name");
     const watchEmail = watch("email");
+
     useEffect(() => {
         setValue('name', name);
         setValue('email', email);
@@ -27,7 +28,7 @@ const Profile = ({onProfile,onLogout,editProfile,setEditProfile}) => {
     }, [watch])
 
     const [isCurrentUser, setUserDifference] = useState(true);
-    const disabledButton = (!isValid) && (isCurrentUser);
+
     useEffect(() => {
         name !== watchName || email !== watchEmail
             ? setUserDifference(false)
