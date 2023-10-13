@@ -23,10 +23,11 @@ const Profile = ({onProfile,onLogout,editProfile,setEditProfile}) => {
     useEffect(() => {
         setValue('name', name);
         setValue('email', email);
+        
     }, [watch])
 
     const [isCurrentUser, setUserDifference] = useState(true);
-
+    const disabledButton = (!isValid) && (isCurrentUser);
     useEffect(() => {
         name !== watchName || email !== watchEmail
             ? setUserDifference(false)
@@ -79,8 +80,8 @@ const Profile = ({onProfile,onLogout,editProfile,setEditProfile}) => {
                             Выйти из аккаунта
                         </button>
                     </>) : (<button type="submit"
-                                    disabled={(isCurrentUser)}/*isValid*/
-                                    className={(isCurrentUser) ? (`profile__button profile__button_submit form__submit_not-valid`): (`profile__button profile__button_submit`)}>
+                                    disabled={isCurrentUser ? (true) : (!isValid ? (true) :(false))}
+                                    className={isCurrentUser ? (`profile__button profile__button_submit profile__submit_not-valid`) : (!isValid ? (`profile__button profile__button_submit profile__submit_not-valid`) :(`profile__button profile__button_submit`))}>
                         Сохранить
                     </button>)}
                 </form>
