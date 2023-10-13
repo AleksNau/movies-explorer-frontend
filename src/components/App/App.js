@@ -115,7 +115,7 @@ function App() {
                 console.log("Успешная регистрация")
                 })
     };
-
+    const [editProfile, setEditProfile] = useState(false);
     const onProfile = (data) => {
         console.log(data)
 
@@ -125,9 +125,14 @@ function App() {
             .then((updatedInfo) => {
                 setCurrentUser(updatedInfo);
             })
+            .then(()=>setEditProfile(true))
             .catch(console.error)
             .finally(() => setIsLoading(false));
     };
+
+    useEffect(() => {
+        setEditProfile(false)
+    },[pathname])
 
     function signOut() {
         localStorage.clear();//localStorage.removeItem("jwt");
@@ -192,9 +197,11 @@ function App() {
                     <Route path='/profile' element={
                         <ProtectedRoute
                             component={Profile}
-                            loggedIn={loggedIn}
                             onProfile={onProfile}
                             onLogout={signOut}
+                            editProfile={editProfile}
+                            setEditProfile={setEditProfile}
+                            loggedIn={loggedIn}
                         />
                     }/>
                     <Route path='/signin' element={<Login onLogin={onLogin}

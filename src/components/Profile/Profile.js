@@ -5,7 +5,7 @@ import {CurrentUserContext} from '../../contexts/CurrentUserContext.js';
 import {emailValidation, nameValidation,} from '../../utils/validation';
 import Main from "../Main/Main";
 
-const Profile = ({onProfile,onLogout}) => {
+const Profile = ({onProfile,onLogout,editProfile,setEditProfile}) => {
     const {name = "Боб", email = 'test@mail.ru'} = useContext(CurrentUserContext);
     //Cтейт кнопки редактирования
     const [formNotActive, setFormNotActive] = useState(true);
@@ -14,14 +14,24 @@ const Profile = ({onProfile,onLogout}) => {
         handleSubmit,
         formState: {errors, isValid},
         getValues,
-        setValue
+        setValue,
+        watch
     } = useForm({mode: "onChange"});
 
+    const watchName = watch("name");
+    const watchEmail = watch("email");
     useEffect(() => {
         setValue('name', name);
         setValue('email', email);
-    }, [name, email])
+    }, [watch])
 
+    const [isCurrentUser, setUserDifference] = useState(true);
+
+    useEffect(() => {
+        name !== watchName || email !== watchEmail
+            ? setUserDifference(false)
+            : setUserDifference(true);
+    }, [watchName,watchEmail]);
 
     function handleProfile() {
         onProfile(getValues())
@@ -42,7 +52,7 @@ const Profile = ({onProfile,onLogout}) => {
                             id="name-input"
                             type="text"
                             disabled={formNotActive}
-                            {...register('name', nameValidation)}
+                            {...register('name', {onChange:()=> {setEditProfile(false)},...nameValidation})}
                         />
 
                     </label>
@@ -53,12 +63,13 @@ const Profile = ({onProfile,onLogout}) => {
                             className="profile__input"
                             id="email-input"
                             disabled={formNotActive}
-                            {...register('email', emailValidation)}
+                            {...register('email', {onChange:()=> {setEditProfile(false)},...emailValidation})}
                         />
 
                     </label>
                     <span className="profile__input-error">{errors?.email?.message}&nbsp;</span>
                     {formNotActive ? (<>
+                        <p className="profile__success-message">{editProfile ? ("Вы успешно обновили данные"):("")}</p>
                         <button
                             className="profile__button profile__button_edit"
                             type="button" onClick={() => setFormNotActive(false)}>
@@ -67,7 +78,9 @@ const Profile = ({onProfile,onLogout}) => {
                         <button type="button" className="profile__button profile__button_logout" onClick={onLogout}>
                             Выйти из аккаунта
                         </button>
-                    </>) : (<button type="submit" disabled={!isValid} className="profile__button profile__button_submit">
+                    </>) : (<button type="submit"
+                                    disabled={(isCurrentUser)}/*isValid*/
+                                    className={(isCurrentUser) ? (`profile__button profile__button_submit form__submit_not-valid`): (`profile__button profile__button_submit`)}>
                         Сохранить
                     </button>)}
                 </form>
