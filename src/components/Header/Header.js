@@ -7,7 +7,7 @@ import Navigation from "../Navigation/Navigation";
 const Header = ({setActive, active, loggedIn}) => {
     const navigate = useNavigate();
     let {pathname} = useLocation();
-    const pathForMovieButtons = [ '/','/movies', '/saved-movies', '/profile'].includes(pathname);
+    const pathForMovieButtons = ['/', '/movies', '/saved-movies', '/profile'].includes(pathname);
     return (
         <header className="header">
             <img src={logo} alt="логотип" className="header__logo" onClick={() => {
@@ -44,9 +44,10 @@ const Header = ({setActive, active, loggedIn}) => {
             </div>)}
 
 
-            {((pathForMovieButtons || pathname === '/')&& (loggedIn === true)) ? (<button className="header__button-burger" onClick={() => setActive(!active)}>
-                <span className="header__button-line"/>
-            </button>) : ('')}
+            {((pathForMovieButtons || pathname === '/') && (loggedIn === true)) ? (
+                <button className="header__button-burger" onClick={() => setActive(!active)}>
+                    <span className="header__button-line"/>
+                </button>) : ('')}
             <Navigation active={active} setActive={setActive}/>
         </header>
     );

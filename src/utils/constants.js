@@ -1,22 +1,24 @@
-import {faker} from '@faker-js/faker';
+const BIG_STEP = 4;
+const MEDIUM_STEP = 4;
+const SMALL_STEP = 2;
 
-const createObject = () => ({
-    country: faker.location.country(),
-    director: faker.person.lastName(),
-    duration: faker.number.int(10),
-    year: faker.number.int({min: 1900, max: 2000}),
-    description: faker.commerce.productName(),
-    image: faker.image.urlLoremFlickr(),
-    trailer: faker.image.urlPicsumPhotos(),
-    nameRU: faker.person.firstName(),
-    nameEN: faker.person.firstName(),
-    thumbnail: faker.image.url(),
-    movieId: faker.string.uuid(),
-    trailerLink: faker.image.urlLoremFlickr(),
-    isSaved: faker.datatype.boolean({probability: 0.5})
-});
+const BASE_URL = "https://api.nomoreparties.co";
 
-const data = Array.from({length: 9}, createObject);
+const DISABLED_BUTTON = `profile__button profile__button_submit profile__submit_not-valid`;
+const ENABLED_BUTTON = `profile__button profile__button_submit`;
 
+const durationConverter = (duration) => {
+    const hours = Math.floor(duration / 60);
+    const minutes = duration % 60;
+    return `${hours}ч${minutes}м`;
+}
 
-export default data;
+module.exports = {
+    BIG_STEP,
+    MEDIUM_STEP,
+    SMALL_STEP,
+    BASE_URL,
+    DISABLED_BUTTON,
+    ENABLED_BUTTON,
+    durationConverter
+}

@@ -4,11 +4,11 @@ import {useForm} from "react-hook-form";
 import PageWithForm from "../PageWithForm/PageWithForm";
 import {emailValidation, nameValidation, passwordValidation} from '../../utils/validation';
 
-const Register = ({onRegister}) => {
+const Register = ({onRegister, errorSubmit, setErrorSubmit}) => {
 
     const {
         register,
-        formState: {errors},
+        formState: {errors, isValid},
         getValues
     } = useForm({mode: "onChange"});
 
@@ -27,6 +27,8 @@ const Register = ({onRegister}) => {
                 subtitle={'Уже зарегистрированы?'}
                 onSubmit={handleRegister}
                 buttonClass={'form__submit_register'}
+                isValid={isValid}
+                errorSubmit={errorSubmit}
             >
                 <label className="register__label">Имя
                     <input
@@ -34,7 +36,11 @@ const Register = ({onRegister}) => {
                         type="text"
                         className="register__input"
                         placeholder="имя"
-                        {...register('name', nameValidation)}
+                        {...register('name', {
+                            onChange: () => {
+                                setErrorSubmit(false)
+                            }, ...nameValidation
+                        })}
                     />
                     <span id="name-error" className="register__error">{errors?.name?.message}&nbsp;</span>
                 </label>
@@ -43,7 +49,11 @@ const Register = ({onRegister}) => {
                         id="email"
                         className="form__input"
                         placeholder="Email"
-                        {...register('email', emailValidation)}
+                        {...register('email', {
+                            onChange: () => {
+                                setErrorSubmit(false)
+                            }, ...emailValidation
+                        })}
                     />
                     <span id="name-error" className="form__error">{errors?.email?.message}
                         &nbsp;
@@ -53,9 +63,13 @@ const Register = ({onRegister}) => {
                     <input
                         id="pass"
                         type="password"
-                        className={errors?.password? ('form__input form__input_error') : (`form__input`)}
+                        className={errors?.password ? ('form__input form__input_error') : (`form__input`)}
                         placeholder="Пароль"
-                        {...register('password', passwordValidation)}
+                        {...register('password', {
+                            onChange: () => {
+                                setErrorSubmit(false)
+                            }, ...passwordValidation
+                        })}
                     />
                     <span id="info-error" className="form__error">{errors?.password?.message}
                         &nbsp;

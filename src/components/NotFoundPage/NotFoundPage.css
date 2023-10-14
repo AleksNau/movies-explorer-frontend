@@ -60,6 +60,7 @@
     .not-found-page {
         padding-top: calc(329px + (408 - 329) * ((100vw - 320px) / (768 - 320)));
     }
+
     .not-found-page__title {
         font-size: calc(80px + (140 - 80) * ((100vw - 320px) / (768 - 320)));
         line-height: calc(97px + (169 - 97) * ((100vw - 320px) / (768 - 320)));
