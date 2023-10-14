@@ -1,5 +1,5 @@
 import React from "react";
 
-const LoadingText = React.createContext();
+const LoadingPreloader = React.createContext();
 
-export default LoadingText;
+export default LoadingPreloader;

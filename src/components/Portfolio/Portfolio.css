@@ -107,9 +107,11 @@
     .portfolio__list {
         padding: 38px 0 0 0;
     }
+
     .portfolio__link-image {
         padding-top: 5px;
     }
+
     .portfolio__item {
         font-size: 18px;
         line-height: 28px; /* 155.556% */

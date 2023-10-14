@@ -3,12 +3,23 @@ import "./PageWithForm.css";
 import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
 import {useNavigate} from "react-router-dom";
-import LoadingText from "../../contexts/loadingContext.js";
+import LoadingPreloader from "../../contexts/loadingContext.js";
 
-const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, onSubmit, buttonClass,isValid,errorSubmit}) => {
+const PageWithForm = ({
+                          title,
+                          buttonTitle,
+                          children,
+                          subtitle,
+                          linkText,
+                          link,
+                          onSubmit,
+                          buttonClass,
+                          isValid,
+                          errorSubmit
+                      }) => {
 
     const navigate = useNavigate();
-    const isLoading = React.useContext(LoadingText);
+    const isLoading = React.useContext(LoadingPreloader);
 
     const {
         handleSubmit,
@@ -32,10 +43,10 @@ const PageWithForm = ({title, buttonTitle, children, subtitle, linkText, link, o
                 <fieldset className="form__fieldset">
                     <legend className="form__title">{title}</legend>
                     {children}
-                    <p className={"red"}>{errorSubmit ? ("что то пошло не так"): ("")}</p>
+                    <p className={"red"}>{errorSubmit ? ("что то пошло не так") : ("")}</p>
                     <button
                         type="submit"
-                        className={isValid ? (`form__submit ${buttonClass}`): (`form__submit ${buttonClass} form__submit_not-valid`)}
+                        className={isValid ? (`form__submit ${buttonClass}`) : (`form__submit ${buttonClass} form__submit_not-valid`)}
                         disabled={!isValid}
                         form={`sign-up-form`}
                         value={buttonTitle}

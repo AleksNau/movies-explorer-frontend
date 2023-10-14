@@ -168,12 +168,14 @@
         line-height: 15px;
         letter-spacing: 0em;
     }
+
     .form__submit {
         font-size: 12px;
         font-weight: 500;
         line-height: 15px;
         letter-spacing: 0em;
     }
+
     .form__submit_register {
         margin-top: 159px;
     }

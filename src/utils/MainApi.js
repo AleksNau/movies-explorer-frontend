@@ -1,3 +1,5 @@
+import {BASE_URL} from '../utils/constants';
+
 class mainApi {
     constructor(url) {
         this._url = url;
@@ -17,10 +19,9 @@ class mainApi {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email: data.email, password:data.password, name: data.name }),
+            body: JSON.stringify({email: data.email, password: data.password, name: data.name}),
         }).then(this._checkResponse);
     }
-
 
 
     signin(data) {
@@ -29,7 +30,7 @@ class mainApi {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email: data.email, password:data.password }),
+            body: JSON.stringify({email: data.email, password: data.password}),
         }).then(this._checkResponse);
     }
 
@@ -48,18 +49,18 @@ class mainApi {
         return fetch(this._url + "/users/me", {
             method: "GET",
             headers: {
-                "Authorization" : `Bearer ${token}`
+                "Authorization": `Bearer ${token}`
             },
         }).then(this._checkResponse);
     }
 
     //функция обновления данных профиля
-    setProfileInfo(profile,token) {
+    setProfileInfo(profile, token) {
         return fetch(this._url + "/users/me", {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization" : `Bearer ${token}`
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
                 name: profile.name,
@@ -68,18 +69,17 @@ class mainApi {
         }).then(this._checkResponse);
     }
 
-    deleteCard(id,token) {
+    deleteCard(id, token) {
         return fetch(this._url + `/movies/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization" : `Bearer ${token}`
+                "Authorization": `Bearer ${token}`
             },
         }).then(this._checkResponse);
     }
 
     addMovie = (data) => {
-        // console.log(data.image.url);
         return fetch(`${this._url}/movies`, {
             method: 'POST',
             headers: {
@@ -92,9 +92,9 @@ class mainApi {
                 duration: data.duration,
                 year: data.year,
                 description: data.description,
-                image: 'https://api.nomoreparties.co' + data.image.url,
+                image: BASE_URL + data.image.url,
                 trailerLink: data.trailerLink,
-                thumbnail: 'https://api.nomoreparties.co' + data.image.formats.thumbnail.url,
+                thumbnail: BASE_URL + data.image.formats.thumbnail.url,
                 movieId: data.id,
                 nameRU: data.nameRU,
                 nameEN: data.nameEN,
@@ -117,5 +117,5 @@ class mainApi {
 
 }
 
-const apiMain = new mainApi("http://localhost:3000");
+const apiMain = new mainApi("https://api.diplom.aleksnau.nomoredomainsicu.ru");
 export default apiMain;

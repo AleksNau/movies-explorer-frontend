@@ -95,7 +95,11 @@
     color: #8B8B8B;
 }
 
-
+@media screen and (max-width: 791px) {
+    .movies-card__info {
+        padding: 22px 0 0 0;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .movies-card__image {
@@ -114,6 +118,7 @@
         width: 44px;
     }
 }
+
 @media screen and (max-width: 767px) {
     .movies-card {
         width: 250px;

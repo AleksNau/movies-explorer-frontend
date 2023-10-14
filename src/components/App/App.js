@@ -1,8 +1,8 @@
 import './App.css';
-import React, {useState,useEffect} from "react";
-import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import {Navigate, Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
-import LoadingText from '../../contexts/loadingContext';
+import LoadingPreloader from '../../contexts/loadingContext';
 
 import apiMain from "../../utils/MainApi";
 import Header from "../Header/Header";
@@ -14,11 +14,9 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Movies from "../Movies/Movies";
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import Preloader from "../Preloader/Preloader";
-import mainApi from "../../utils/MainApi";
 
 function App() {
     const navigate = useNavigate();
@@ -37,16 +35,13 @@ function App() {
     //Заготовка под логин
     const [loggedIn, setLoggedIn] = useState(false);
 
-    //Состояние прелоадера
+
     //обработчик загрузки
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     //статус регистрации
-    const [statusReg, setStatusReg] = useState(false);
-    //статус регистрации
     const [errorSubmit, setErrorSubmit] = useState(false);
-    //стейты попапа
-    const [isPopupOpen, setPopup] = useState(false);
+
     //стейт сохраненных карточек
     const [savedMovies, setSavedMovies] = useState([]);
 
@@ -54,15 +49,17 @@ function App() {
         return apiMain
             .getContent(jwt)
             .then((res) => {
+                setIsLoading(true)
                 if (res) {
                     setLoggedIn(true);
                     setCurrentUser({
                         name: res.name,
                         email: res.email,
                     });
-                    navigate("/")
+
                 }
             })
+            .then(() => setIsLoading(false))
             .catch(console.error);
     }
 
@@ -73,11 +70,6 @@ function App() {
         }
     }, []);
 
-    useEffect(() => {
-        if (loggedIn) {
-            navigate("/");
-        }
-    }, [loggedIn]);
 
     const onLogin = (data) => {
         apiMain
@@ -91,10 +83,10 @@ function App() {
                 }
             })
             .catch(console.error)
-            .finally(()=>{
+            .finally(() => {
+                setIsLoading(false)
                 navigate("/movies");
-                console.log("Успешная авторизация")
-                setIsLoading(false)})
+            })
     };
 
     const onRegister = (data) => {
@@ -102,8 +94,7 @@ function App() {
             .registration(data)
             .then((res) => {
                 if (res) {
-                    setStatusReg(true)
-                    onLogin({email:data.email,password:data.password})
+                    onLogin({email: data.email, password: data.password})
                 }
             })
             .catch(() => {
@@ -111,38 +102,33 @@ function App() {
                 setErrorSubmit(true);
 
             })
-            .finally(()=>{
+            .finally(() => {
                 console.log("Успешная регистрация")
-                })
+            })
     };
     const [editProfile, setEditProfile] = useState(false);
     const onProfile = (data) => {
-        console.log(data)
-
         setIsLoading(true);
         apiMain
-            .setProfileInfo(data,localStorage.getItem("jwt"))
+            .setProfileInfo(data, localStorage.getItem("jwt"))
             .then((updatedInfo) => {
                 setCurrentUser(updatedInfo);
             })
-            .then(()=>setEditProfile(true))
+            .then(() => setEditProfile(true))
             .catch(console.error)
             .finally(() => setIsLoading(false));
     };
 
     useEffect(() => {
         setEditProfile(false)
-    },[pathname])
+    }, [pathname])
 
     function signOut() {
-        localStorage.clear();//localStorage.removeItem("jwt");
+        localStorage.clear();
         setLoggedIn(false);
         navigate("/signin");
     }
 
-    function closePopup() {
-        setPopup(false);
-    }
 
     function handleCardDelete(card) {
         setIsLoading(true);
@@ -159,7 +145,7 @@ function App() {
 
     function HandleToggleMovie(data) {
         const isAdd = savedMovies.some(element => data.id === element.movieId)
-        const searchClickMovie = savedMovies.filter((movie)=> {
+        const searchClickMovie = savedMovies.filter((movie) => {
             return movie.movieId === data.id
         })
 
@@ -174,72 +160,77 @@ function App() {
     }
 
     React.useEffect(() => {
-        Promise.all([mainApi.getProfileInfo(localStorage.getItem("jwt")), mainApi.getCards(localStorage.getItem("jwt"))])
+        Promise.all([apiMain.getProfileInfo(localStorage.getItem("jwt")), apiMain.getCards(localStorage.getItem("jwt"))])
             .then(([info, cards]) => {
+
                 setCurrentUser(info);
                 setSavedMovies(cards);
+                setIsLoading(false)
             })
-            .catch(console.error);
+            .catch(console.error)
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, [loggedIn]);
-
 
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-            <LoadingText.Provider value={isLoading}>
-            <div className="App">
-                {pathsWithHeader && (
-                    <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
-                )}
+            <LoadingPreloader.Provider value={isLoading}>{
+                isLoading ? (<Preloader/>) : (
+                    <div className="App">
+                        {pathsWithHeader && (
+                            <Header active={menuActive} setActive={setMenuActive} loggedIn={loggedIn}/>
+                        )}
 
-                <Routes>
-                    <Route path='/' element={isLoading ? (<Preloader/>) : (<Landing/>)}/>
-                    <Route path='/profile' element={
-                        <ProtectedRoute
-                            component={Profile}
-                            onProfile={onProfile}
-                            onLogout={signOut}
-                            editProfile={editProfile}
-                            setEditProfile={setEditProfile}
-                            loggedIn={loggedIn}
-                        />
-                    }/>
-                    <Route path='/signin' element={<Login onLogin={onLogin}
-                                                          errorSubmit={errorSubmit}
-                                                          setErrorSubmit={setErrorSubmit}/>}/>
-                    <Route path='/signup' element={<Register onRegister={onRegister}
-                                                             errorSubmit={errorSubmit}
-                                                             setErrorSubmit={setErrorSubmit}/>}/>
-                    <Route path='/movies' element={
-                        <ProtectedRoute
-                            component={Movies}
-                            loggedIn={loggedIn}
-                            isChecked={isChecked}
-                            setCheck={setCheck}
-                            setIsLoading={setIsLoading}
-                            addMovie={HandleToggleMovie}
-                            savedMovies={savedMovies}
-                        />
-                    }/>
-                    <Route path='/saved-movies'
-                           element={
-                               <ProtectedRoute
-                                   component={SavedMovies}
-                                   loggedIn={loggedIn}
-                                   data={savedMovies} isChecked={isChecked} setCheck={setCheck} onDelete={handleCardDelete}
-                               />
-                           }/>
-                    <Route path='*' element={<NotFoundPage/>}/>
-                </Routes>
-                {pathsWithFooter && <Footer/>}
-                { /*Заготовка под модалку с ошибкой*/}
-                <InfoTooltip
-                    isOpen={isPopupOpen}
-                    onClose={closePopup}
-                    statusReg={statusReg}
-                />
-            </div>
-            </LoadingText.Provider>
+                        <Routes>
+                            <Route path='/' element={isLoading ? (<Preloader/>) : (<Landing/>)}/>
+                            <Route path='/profile' element={
+                                <ProtectedRoute
+                                    component={Profile}
+                                    onProfile={onProfile}
+                                    onLogout={signOut}
+                                    editProfile={editProfile}
+                                    setEditProfile={setEditProfile}
+                                    loggedIn={loggedIn}
+                                />
+                            }/>
+                            <Route path='/signin'
+                                   element={loggedIn ? (<Navigate to="/movies" replace/>) : (<Login onLogin={onLogin}
+                                                                                                    errorSubmit={errorSubmit}
+                                                                                                    setErrorSubmit={setErrorSubmit}/>)}/>
+                            <Route path='/signup' element={loggedIn ? (<Navigate to="/movies" replace/>) : (
+                                <Register onRegister={onRegister}
+                                          errorSubmit={errorSubmit}
+                                          setErrorSubmit={setErrorSubmit}/>)}/>
+                            <Route path='/movies' element={
+                                <ProtectedRoute
+                                    component={Movies}
+                                    loggedIn={loggedIn}
+                                    isChecked={isChecked}
+                                    setCheck={setCheck}
+                                    setIsLoading={setIsLoading}
+                                    addMovie={HandleToggleMovie}
+                                    savedMovies={savedMovies}
+                                />
+                            }/>
+                            <Route path='/saved-movies'
+                                   element={
+                                       <ProtectedRoute
+                                           component={SavedMovies}
+                                           loggedIn={loggedIn}
+                                           data={savedMovies}
+                                           isChecked={isChecked}
+                                           isLoading={isLoading}
+                                           setCheck={setCheck}
+                                           onDelete={handleCardDelete}
+                                       />
+                                   }/>
+                            <Route path='*' element={<NotFoundPage/>}/>
+                        </Routes>
+                        {pathsWithFooter && <Footer/>}
+                    </div>)}
+            </LoadingPreloader.Provider>
         </CurrentUserContext.Provider>
     );
 }

@@ -4,10 +4,10 @@ import "./Login.css";
 import PageWithForm from "../PageWithForm/PageWithForm";
 import {emailValidation, passwordValidation} from '../../utils/validation';
 
-const Login = ({onLogin,setErrorSubmit,errorSubmit}) => {
+const Login = ({onLogin, setErrorSubmit, errorSubmit}) => {
     const {
         register,
-        formState: {errors,isValid},
+        formState: {errors, isValid},
         getValues,
 
     } = useForm({mode: "onChange"});
@@ -34,7 +34,11 @@ const Login = ({onLogin,setErrorSubmit,errorSubmit}) => {
                         id="email"
                         className="form__input"
                         placeholder="Email"
-                        {...register('email', {onChange:()=> {setErrorSubmit(false)},...emailValidation})}
+                        {...register('email', {
+                            onChange: () => {
+                                setErrorSubmit(false)
+                            }, ...emailValidation
+                        })}
                     />
                     <span id="name-error" className="form__error">{errors?.email?.message}
                         &nbsp;
@@ -46,7 +50,11 @@ const Login = ({onLogin,setErrorSubmit,errorSubmit}) => {
                         type="password"
                         className="form__input"
                         placeholder="Пароль"
-                        {...register('password', {onChange:()=> {setErrorSubmit(false)},...passwordValidation})}
+                        {...register('password', {
+                            onChange: () => {
+                                setErrorSubmit(false)
+                            }, ...passwordValidation
+                        })}
                     />
                     <span id="info-error" className="form__error">{errors?.password?.message}
                         &nbsp;
