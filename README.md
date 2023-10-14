@@ -1,6 +1,6 @@
 # ***Проект Movies-explorer (фронтенд)***
 Проект является **дипломной работой** на курсе веб-разработчик ***Яндекс.Практикума***.
-
+- Ссылка на пулреквест https://github.com/AleksNau/movies-explorer-frontend/pull/2
 - Адрес фронтенда: https://diplom.aleksnau.nomoredomainsrocks.ru
 - Адрес бэкэнда: https://api.diplom.aleksnau.nomoredomainsicu.ru
 
