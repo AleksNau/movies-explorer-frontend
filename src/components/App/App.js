@@ -35,7 +35,6 @@ function App() {
     //Заготовка под логин
     const [loggedIn, setLoggedIn] = useState(false);
 
-
     //обработчик загрузки
     const [isLoading, setIsLoading] = useState(true);
 
@@ -44,6 +43,8 @@ function App() {
 
     //стейт сохраненных карточек
     const [savedMovies, setSavedMovies] = useState([]);
+
+    const [editProfile, setEditProfile] = useState(false);
 
     function auth(jwt) {
         return apiMain
@@ -106,7 +107,7 @@ function App() {
                 console.log("Успешная регистрация")
             })
     };
-    const [editProfile, setEditProfile] = useState(false);
+
     const onProfile = (data) => {
         setIsLoading(true);
         apiMain
@@ -126,7 +127,7 @@ function App() {
     function signOut() {
         localStorage.clear();
         setLoggedIn(false);
-        navigate("/signin");
+        navigate("/");
     }
 
 

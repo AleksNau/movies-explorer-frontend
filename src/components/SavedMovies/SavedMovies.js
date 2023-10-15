@@ -5,9 +5,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
 
-const SavedMovies = ({data, isChecked, setCheck, onDelete}) => {
+const SavedMovies = ({data, onDelete}) => {
     const [filteredMovies, setFilteredMovies] = useState(data);
     const [query, setQuery] = useState('');
+    const [check, setCheck] = useState(false);
 
     const filter = useCallback((search, isChecked, movies) => {
         setQuery(search)
@@ -18,16 +19,16 @@ const SavedMovies = ({data, isChecked, setCheck, onDelete}) => {
     }, [])
 
     function searchMovies(search) {
-        filter(search, isChecked, data)
+        filter(search, check, data)
     }
 
     useEffect(() => {
-        filter(query, isChecked, data)
-    }, [filter, query, isChecked, data])
+        filter(query, check, data)
+    }, [filter, query, check, data])
 
 //функция чекбокса
     function changeShort() {
-        if (isChecked) {
+        if (check) {
             setCheck(false)
             filter(query, false, data)
         } else {
@@ -39,7 +40,7 @@ const SavedMovies = ({data, isChecked, setCheck, onDelete}) => {
     return (
         <Main>
             <section className="saved-movies">
-                <SearchForm isChecked={isChecked} query={query} setQuery={setQuery} changeCheckBox={changeShort}
+                <SearchForm isChecked={check} query={query} setQuery={setQuery} changeCheckBox={changeShort}
                             onSearchMovies={searchMovies}/>
                 <MoviesCardList filteredMovies={filteredMovies} savedMovies={data} onDelete={onDelete}/>
             </section>

@@ -3,7 +3,6 @@ import "./PageWithForm.css";
 import {useForm} from "react-hook-form";
 import logo from "../../images/logo.svg";
 import {useNavigate} from "react-router-dom";
-import LoadingPreloader from "../../contexts/loadingContext.js";
 
 const PageWithForm = ({
                           title,
@@ -19,7 +18,6 @@ const PageWithForm = ({
                       }) => {
 
     const navigate = useNavigate();
-    const isLoading = React.useContext(LoadingPreloader);
 
     const {
         handleSubmit,
