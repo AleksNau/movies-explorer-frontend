@@ -9,17 +9,17 @@ const Portfolio = () => {
                 <li className="portfolio__item">
                     <a href="https://github.com/" className="portfolio__link" target="_blank"
                        rel="noreferrer"><span>Статичный сайт</span>
-                    <span className="portfolio__link-image">&#x2197;</span></a>
+                        <span className="portfolio__link-image">&#x2197;</span></a>
                 </li>
                 <li className="portfolio__item">
                     <a href="https://github.com/" className="portfolio__link" target="_blank"
                        rel="noreferrer"><span>Адаптивный сайт</span>
-                    <span className="portfolio__link-image">&#x2197;</span></a>
+                        <span className="portfolio__link-image">&#x2197;</span></a>
                 </li>
                 <li className="portfolio__item">
                     <a href="https://github.com/" className="portfolio__link" target="_blank"
                        rel="noreferrer"><span>Одностраничное приложение</span>
-                    <span className="portfolio__link-image">&#x2197;</span></a>
+                        <span className="portfolio__link-image">&#x2197;</span></a>
                 </li>
             </ul>
         </section>

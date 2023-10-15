@@ -1,38 +1,67 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import {useLocation} from "react-router-dom";
+import {useWindowWidth} from '../../utils/hooks/useWindowWidth';
+import {BIG_STEP, MEDIUM_STEP, SMALL_STEP} from '../../utils/constants';
+import LoadingPreloader from "../../contexts/loadingContext";
+import Preloader from "../Preloader/Preloader";
 
 
-const MoviesCardList = ({data}) => {
-    const listLength = data.length;
-    let maxList = 6;
+const MoviesCardList = ({filteredMovies, addMovie, savedMovies, onDelete}) => {
+    let {pathname} = useLocation();
+    const [windowWidth] = useWindowWidth();
+
+    const listLength = filteredMovies.length;
+    const isLoading = React.useContext(LoadingPreloader);
+
+    const [shownMovies, setShownMovies] = useState(0);
+
+    const moreButton = document.querySelector('.more-button')
+
+    useEffect(() => {
+        if (windowWidth >= 1280) {
+            setShownMovies(16);
+        } else if (windowWidth >= 768) {
+            setShownMovies(12);
+        } else if (windowWidth >= 480) {
+            setShownMovies(5);
+        }
+    }, [windowWidth]);
 
     function loadMore() {
-        maxList += 3;
-        const moreButton = document.querySelector('.more-button')
-        const array = Array.from(document.querySelector('.movies-card-list').children);
-        const visItems = array.slice(0, maxList)
+        if (windowWidth >= 1280) {
+            setShownMovies(shownMovies + BIG_STEP);
+        } else if (windowWidth >= 768) {
+            setShownMovies(shownMovies + MEDIUM_STEP);
+        } else if (windowWidth >= 480) {
+            setShownMovies(shownMovies + SMALL_STEP);
+        }
 
-        visItems.forEach(el => el.classList.add('is-visible'));
-
-        if (visItems.length === listLength) {
+        if (shownMovies >= listLength) {
             moreButton.style.display = 'none';
         }
     }
 
     return (
         <>
-            <ul className="movies-card-list">
-                {
-                    data.map(card => (
-                        <MoviesCard key={card.movieId} cardData={card}/>
-                    ))
+            {isLoading ? (<Preloader/>) : (listLength > 0 ? (<ul className="movies-card-list">
+                {pathname === '/movies' ?
+                    (filteredMovies.slice(0, shownMovies).map(card => (
+                        <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies}
+                                    onDelete={onDelete}/>
+                    ))) : (
+                        filteredMovies.map(card => (
+                            <MoviesCard key={card.movieId} cardData={card} addMovie={addMovie} savedMovies={savedMovies}
+                                        onDelete={onDelete}/>
+                        )))
                 }
-            </ul>
+            </ul>) : (<p className='movies-card-list__not-found'>Ничего не найдено</p>))}
             <div className="more-button-container">
-                <button className="more-button" onClick={() => loadMore()}>
-                    Ещё
-                </button>
+                {(pathname === "/movies" && !isLoading && shownMovies < listLength) ? (
+                    <button className="more-button" onClick={() => loadMore()}>
+                        Ещё
+                    </button>) : ("")}
             </div>
 
         </>

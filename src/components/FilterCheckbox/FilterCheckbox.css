@@ -7,7 +7,7 @@
 .filter-сheckbox__conteiner {
     margin: 0 auto;
     width: 155px;
-    padding: 28px 0 0 0;
+    padding: 13px 0 0 0;
     display: flex;
 
 }
@@ -86,7 +86,7 @@
     }
 
     .filter-сheckbox__conteiner {
-        padding-top: 40px;
+        padding-top: 25px;
     }
 }
 
@@ -96,7 +96,7 @@
     }
 
     .filter-сheckbox__conteiner {
-        padding-top: 47px;
+        padding-top: 32px;
         padding-left: 7px;
     }
 

@@ -52,7 +52,6 @@
     height: calc(190px + (201 - 190) * ((100vw - 768px) / (1280 - 768)));
     border-style: none;
     border-radius: 6px;
-    background-color: black;
 }
 
 .movies-card__conteiner {
@@ -96,14 +95,11 @@
     color: #8B8B8B;
 }
 
-.movies-card:nth-child(n + 7) {
-    display: none;
+@media screen and (max-width: 791px) {
+    .movies-card__info {
+        padding: 22px 0 0 0;
+    }
 }
-
-.movies-card.is-visible {
-    display: block;
-}
-
 
 @media screen and (max-width: 768px) {
     .movies-card__image {
@@ -122,6 +118,7 @@
         width: 44px;
     }
 }
+
 @media screen and (max-width: 767px) {
     .movies-card {
         width: 250px;

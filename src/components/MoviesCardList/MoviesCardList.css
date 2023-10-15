@@ -39,6 +39,13 @@
     opacity: 0.8;
 }
 
+.movies-card-list__not-found {
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     .movies-card-list {
         padding-bottom: 10px;
@@ -60,7 +67,7 @@
     }
 }
 
-    @media screen and (max-width: 320px) {
+@media screen and (max-width: 320px) {
     .movies-card-list {
         padding-top: 50px;
         gap: 35px;

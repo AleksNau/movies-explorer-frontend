@@ -14,7 +14,8 @@ const Navigation = ({active, setActive}) => {
                     <li className="navigation__item"><Link className="navigation__link" to='/saved-movies'>Сохранённые
                         фильмы</Link></li>
                 </ul>
-                <button type={"button"} className="navigation__button-account" onClick={() => navigate('/profile')}>Аккаунт
+                <button type={"button"} className="navigation__button-account"
+                        onClick={() => navigate('/profile')}>Аккаунт
                 </button>
             </div>
         </div>
